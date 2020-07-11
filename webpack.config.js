@@ -40,7 +40,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             hash: true,
-            title: 'base-phaser-cordova-project',
+            title: 'puppet-master',
             favicon: `${IMAGE_DIR}/favicon.ico`,
             template: `${MAIN_DIR}/index.html`,
             filename: `${DIST_PATH}/index.html`,

@@ -23,10 +23,10 @@ class RobotStageScene extends Scene {
         this.robot = new Robot({
             scene: this,
             x: 0,
-            y: 0,
+            y: 6,
             asset: 'robot',
-        });
-        this.add.existing(this.background);
+        }).setOrigin(0, 0);
+        this.add.existing(this.robot);
     }
 
     update() {

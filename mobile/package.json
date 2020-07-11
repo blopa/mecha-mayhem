@@ -1,6 +1,6 @@
 {
   "name": "com.example.app",
-  "displayName": "base-phaser-cordova-project",
+  "displayName": "puppet-master",
   "version": "1.0.0",
   "description": "Description here.",
   "main": "index.js",

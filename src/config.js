@@ -6,10 +6,10 @@ export default {
     width: 768,
     height: 432,
     scale: {
-        mode: Phaser.Scale.HEIGHT_CONTROLS_WIDTH,
+        mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     autoRound: false,
-    localStorageName: 'base-phaser-cordova-project',
+    localStorageName: 'puppet-master',
     pixelArt: true,
 };
