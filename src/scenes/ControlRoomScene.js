@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
+import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
-// import Background from '../sprites/Background';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -12,13 +12,13 @@ class ControlRoomScene extends Scene {
     }
 
     create() {
-        // this.background = new Background({
-        //     scene: this,
-        //     x: 0,
-        //     y: 0,
-        //     asset: 'control_room',
-        // }).setOrigin(0, 0);
-        // this.add.existing(this.background);
+        this.laserRoom = new Room({
+            scene: this,
+            x: 250,
+            y: 200,
+            asset: 'room',
+        });
+        this.add.existing(this.laserRoom);
 
         this.hero = new Hero({
             scene: this,
@@ -32,12 +32,12 @@ class ControlRoomScene extends Scene {
 
         //Shen stuff
         this.chargeLaserButton = this.input.keyboard.addKey('A');
-        this.controlRoomBackground = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
-        this.controlRoomBackgroundFill = this.add.graphics({ fillStyle: { color: 0x741B47 } });
-        this.controlRoomBackgroundFill.fillRectShape(this.controlRoomBackground);
-        this.laserRoom = new Phaser.Geom.Rectangle(250, 200, 50, 50);
-        this.laserRoomFill = this.add.graphics({ fillStyle: { color: 0xC27BA0 } });
-        this.laserRoomFill.fillRectShape(this.laserRoom);
+        this.controlRoom = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
+        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x741B47 } });
+        this.controlRoomFill.fillRectShape(this.controlRoom);
+        // this.laserRoom = new Phaser.Geom.Rectangle(250, 200, 50, 50);
+        // this.laserRoomFill = this.add.graphics({ fillStyle: { color: 0xC27BA0 } });
+        // this.laserRoomFill.fillRectShape(this.laserRoom);
     }
 
     update(time, delta) {

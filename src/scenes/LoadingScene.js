@@ -11,6 +11,7 @@ class LoadingScene extends Scene {
         this.load.image('robot', 'assets/images/robot.png');
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');
         // this.load.atlas('robot', `assets/images/hero.png`, `assets/atlas/robot_atlas.json`);
+        this.load.image('room', 'assets/images/room.png', 'assets/atlas/hero_atlas.json');
     }
 
     create() {
