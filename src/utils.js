@@ -73,16 +73,22 @@ export function setSpriteDraggable() {
  */
 export function handleSpriteMovement() {
     const cursors = this.scene.input.keyboard.createCursorKeys();
-    const velocity = 3;
+    const velocity = 200;
 
     if (cursors.left.isDown) {
-        this.setX(this.x - velocity);
+        this.body.setVelocityX(-velocity)
+        this.body.setVelocityY(0)
     } else if (cursors.right.isDown) {
-        this.setX(this.x + velocity);
+        this.body.setVelocityX(velocity)
+        this.body.setVelocityY(0)
     } else if (cursors.up.isDown) {
-        this.setY(this.y - velocity);
+        this.body.setVelocityY(-velocity)
+        this.body.setVelocityX(0)
     } else if (cursors.down.isDown) {
-        this.setY(this.y + velocity);
+        this.body.setVelocityY(velocity)
+        this.body.setVelocityX(0)
+    } else {
+        this.body.setVelocity(0,0)
     }
 }
 

@@ -22,7 +22,7 @@ class ControlRoomScene extends Scene {
 
         this.hero = new Hero({
             scene: this,
-            x: 350,
+            x: 100,
             y: 250,
             asset: 'hero',
         });
@@ -47,12 +47,13 @@ class ControlRoomScene extends Scene {
         this.laserChargeBar = this.add.rectangle(this.laserRoom.x + 25 + 5, this.laserRoom.y + 25, 10, 0);
         this.laserChargeBar.setFillStyle(0x00FF00);
 
-        this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5, 50, 10).setFillStyle(0x741B47);
-        this.physics.world.enable(this.wall);
+        this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5 + 10, 50, 10).setFillStyle(0x741B47);
+        
+        this.physics.world.enable(this.wall, 1);
 
-        this.physics.add.collider(this.hero, this.wall, () => {
-            console.log('Im colliding');
-        });
+        // this.wallGroup = this.physics.add.staticGroup(); - if we need a group for later
+
+        this.physics.add.collider(this.hero, this.wall);
     }
 
     update(time, delta) {
