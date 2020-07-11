@@ -12,4 +12,11 @@ export default {
     autoRound: false,
     localStorageName: 'puppet-master',
     pixelArt: true,
+    physics: {
+      default: 'arcade',
+      arcade: {
+        enableBody: true,
+        debug: true,
+      },
+    },
 };
