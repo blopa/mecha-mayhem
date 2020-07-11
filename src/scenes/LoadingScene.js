@@ -7,6 +7,8 @@ class LoadingScene extends Scene {
 
     preload() {
         this.load.image('background', 'assets/images/background.png');
+        this.load.image('background_buildings', 'assets/images/background_buildings.png');
+        this.load.image('background_clouds', 'assets/images/background_clouds.png');
         this.load.image('control_room', 'assets/images/control_room.png');
         this.load.image('robot', 'assets/images/robot.png');
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');

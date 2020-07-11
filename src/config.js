@@ -13,10 +13,10 @@ export default {
     localStorageName: 'puppet-master',
     pixelArt: true,
     physics: {
-      default: 'arcade',
-      arcade: {
-        enableBody: true,
-        debug: true,
-      },
+        default: 'arcade',
+        arcade: {
+            enableBody: true,
+            debug: true,
+        },
     },
 };

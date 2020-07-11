@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { handleSpriteMovement } from '../utils';
+import { HERO_DEPTH } from '../constants';
 
 class Hero extends GameObjects.Sprite {
     constructor({ scene, x, y, asset, frame }) {
@@ -11,7 +12,7 @@ class Hero extends GameObjects.Sprite {
 
         this.createAnimations();
         this.setAnimation('walk');
-        this.setDepth(2);
+        this.setDepth(HERO_DEPTH);
     }
 
     update(time, delta) {

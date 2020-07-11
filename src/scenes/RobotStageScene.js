@@ -1,14 +1,38 @@
 import { Scene } from 'phaser';
 import Background from '../sprites/Background';
 import Robot from '../sprites/Robot';
+import {
+    BACKGROUND_DEPTH,
+    BUILDING, BUILDINGS_BACKGROUND_DEPTH,
+    JET,
+    MISSILE,
+    NOTHING, PARALLAX_BACKGROUND_DEPTH,
+    ROBOT_MOVEMENT_TIME,
+    ROBOT_STAGE_LAYOUT_DATA_KEY,
+} from '../constants';
+import ParallaxBackground from '../sprites/ParallaxBackground';
+import { moveRobot } from '../utils';
 
 class RobotStageScene extends Scene {
     constructor() {
         super('RobotStageScene');
     }
 
-    init(data) {
-        // TODO
+    init() {
+        const data = [
+            NOTHING,
+            NOTHING,
+            NOTHING,
+            JET,
+            NOTHING,
+            NOTHING,
+            BUILDING,
+            NOTHING,
+            MISSILE,
+            NOTHING,
+        ];
+
+        this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
     }
 
     preload() {
@@ -21,8 +45,26 @@ class RobotStageScene extends Scene {
             x: 0,
             y: 0,
             asset: 'background',
+            depth: BACKGROUND_DEPTH,
         }).setOrigin(0, 0);
         this.add.existing(this.background);
+
+        this.buildingsBackground = new Background({
+            scene: this,
+            x: 0,
+            y: 0,
+            asset: 'background_buildings',
+            depth: BUILDINGS_BACKGROUND_DEPTH,
+        }).setOrigin(0, 0);
+        this.add.existing(this.buildingsBackground);
+
+        this.parallaxBackground = new ParallaxBackground({
+            scene: this,
+            depth: PARALLAX_BACKGROUND_DEPTH,
+        });
+        this.parallaxBackground.forEach((parallaxBackground) => {
+            this.add.existing(parallaxBackground);
+        });
 
         this.robot = new Robot({
             scene: this,
@@ -31,10 +73,12 @@ class RobotStageScene extends Scene {
             asset: 'robot',
         }).setOrigin(0, 0);
         this.add.existing(this.robot);
+
+        this::moveRobot();
     }
 
-    update() {
-        // TODO
+    update(time, delta) {
+        this.parallaxBackground.update(time, delta);
     }
 }
 
