@@ -49,6 +49,7 @@ class ControlRoomScene extends Scene {
 
         this.physics.world.enable(this.hero);
         this.physics.world.enable(this.laserRoom);
+        this.physics.world.enable(this.punchRoom);
 
         this.laserChargeCounter = 0;
         this.laserChargeLimit = 1;
@@ -69,17 +70,17 @@ class ControlRoomScene extends Scene {
         this.physics.add.collider(this.hero, this.wall);
 
         // TODO pablo tests
-        const tilemap = this.make.tilemap({ key: 'stage_01' });
-        const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
-        tilemap.createStaticLayer('background', tileset, 0, 150);
-        tilemap.createStaticLayer('details', tileset, 0, 150);
+        // const tilemap = this.make.tilemap({ key: 'stage_01' });
+        // const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
+        // tilemap.createStaticLayer('background', tileset, 0, 150);
+        // tilemap.createStaticLayer('details', tileset, 0, 150);
     }
 
     update(time, delta) {
         this.hero.update(time, delta);
         this.text.text = '';
         //arm laser
-        if (this.laserChargeCounter >= this.laserChargeLimit) {
+        if ((this.laserChargeCounter >= this.laserChargeLimit) && this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Laser ready!';
         } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
             this.laserChargeCounter += 0.01;
@@ -89,15 +90,16 @@ class ControlRoomScene extends Scene {
             this.text.text = 'Hold A to charge laser';
         }
         //arm punch
-        if (this.punchChargeCounter >= this.punchChargeLimit) {
+        if ((this.punchChargeCounter >= this.punchChargeLimit) && this.physics.overlap(this.hero, this.punchRoom)) {
             this.text.text = 'Punch ready!';
-        } else if (this.physics.overlap(this.hero, this.punchRoom) && (this.chargepunchButton.isDown)) {
-            this.punchChargeCounter += 0.01;
+        } else if (this.physics.overlap(this.hero, this.punchRoom) && (Phaser.Input.Keyboard.JustDown(this.chargePunchButton))) {
+            this.punchChargeCounter += 0.1;
             this.punchChargeBar.height = this.punchRoom.height * (this.punchChargeCounter / this.punchChargeLimit) * -1;
             this.text.text = 'Charging...';
         } else if (this.physics.overlap(this.hero, this.punchRoom)) {
-            this.text.text = 'Mash S to charge laser';
+            this.text.text = 'Mash S to charge punch';
         }
+        console.log(this.punchChargeCounter);
     }
 }
 
