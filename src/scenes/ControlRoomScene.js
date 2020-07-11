@@ -58,8 +58,12 @@ class ControlRoomScene extends Scene {
         // TODO pablo tests
         const tilemap = this.make.tilemap({ key: 'stage_01' });
         const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
-        tilemap.createStaticLayer('background', tileset, 0, 150);
-        tilemap.createStaticLayer('details', tileset, 0, 150);
+        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 150);
+        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 150);
+        layer1.setCollisionByProperty({ collides: true });
+        this.physics.add.collider(this.hero, layer1);
+        layer2.setCollisionByProperty({ collides: true });
+        this.physics.add.collider(this.hero, layer2);
     }
 
     update(time, delta) {
