@@ -34,7 +34,7 @@ class ControlRoomScene extends Scene {
         this.chargeLaserButton = this.input.keyboard.addKey('A');
 
         this.controlRoom = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
-        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x741B47 } });
+        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x4C1130 } });
         this.controlRoomFill.fillRectShape(this.controlRoom);
 
         this.physics.world.enable(this.hero);
@@ -46,6 +46,12 @@ class ControlRoomScene extends Scene {
 
         this.laserChargeBar = this.add.rectangle(this.laserRoom.x + 25 + 5, this.laserRoom.y + 25, 10, 0);
         this.laserChargeBar.setFillStyle(0x00FF00);
+
+        this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5, 50, 10).setFillStyle(0x741B47);
+        this.physics.world.enable(this.wall);
+        
+        this.physics.add.collider(this.hero, this.wall)
+        
     }
 
     update(time, delta) {
