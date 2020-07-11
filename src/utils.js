@@ -330,12 +330,28 @@ function createEnemyByType(enemyType, index, x) {
         }
 
         case MISSILE: {
-            return new Missile({
+            const missile = new Missile({
                 scene: this,
                 x,
                 y: 50,
             }).setOrigin(0, 0);
-            const totalTravelTime = (index + 1) * 1000
+
+            const totalTravelTime = (index + 1) * 1000;
+            this.tweens.add({
+                x: (ROBOT_OCCUPATION_SIZE + 1) * ROBOT_MOVEMENT_SIZE,
+                y: missile.y,
+                targets: missile,
+                t: 1,
+                ease: 'Linear',
+                duration: totalTravelTime,
+                repeat: 0,
+                yoyo: false,
+                onComplete: (tween) => {
+                    tween.stop();
+                },
+            });
+
+            return missile;
         }
 
         case BUILDING: {
