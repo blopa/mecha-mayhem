@@ -1,8 +1,8 @@
 import { Scene } from 'phaser';
 
-class SplashScene extends Scene {
+class LoadingScene extends Scene {
     constructor() {
-        super('SplashScene');
+        super('LoadingScene');
     }
 
     preload() {
@@ -12,7 +12,7 @@ class SplashScene extends Scene {
     }
 
     create() {
-        this.scene.start('GameScene');
+        this.scene.start('MainMenuScene');
     }
 
     update() {
@@ -20,4 +20,4 @@ class SplashScene extends Scene {
     }
 }
 
-export default SplashScene;
+export default LoadingScene;

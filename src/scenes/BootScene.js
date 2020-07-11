@@ -24,7 +24,7 @@ class BootScene extends Scene {
 
     update() {
         if (this.fontsReady) {
-            this.scene.start('SplashScene');
+            this.scene.start('LoadingScene');
         }
     }
 

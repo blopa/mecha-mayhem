@@ -1,13 +1,23 @@
 import { Game as PhaserGame } from 'phaser';
 
 import BootScene from './scenes/BootScene';
-import SplashScene from './scenes/SplashScene';
+import LoadingScene from './scenes/LoadingScene';
+import MainMenuScene from './scenes/MainMenuScene';
 import GameScene from './scenes/GameScene';
+import ControlRoomScene from './scenes/ControlRoomScene';
+import RobotStageScene from './scenes/RobotStageScene';
 
 import config from './config';
 
 const gameConfig = Object.assign(config, {
-    scene: [BootScene, SplashScene, GameScene],
+    scene: [
+        BootScene,
+        LoadingScene,
+        GameScene,
+        MainMenuScene,
+        ControlRoomScene,
+        RobotStageScene,
+    ],
 });
 
 class Game extends PhaserGame {
