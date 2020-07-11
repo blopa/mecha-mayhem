@@ -23,6 +23,7 @@ export const ROBOT_DEPTH = 30;
 export const MISSILE_DEPTH = 30;
 export const JET_DEPTH = 30;
 export const BUILDING_DEPTH = 30;
+export const LASER_BEAM_DEPTH = 100;
 
 export const ROOM_DEPTH = 10;
 export const HERO_DEPTH = 30;

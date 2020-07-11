@@ -1,6 +1,7 @@
+import Phaser from 'phaser';
 import {
     BUILDING,
-    JET, METEOR, MISSILE, NOTHING,
+    JET, LASER_BEAM_DEPTH, METEOR, MISSILE, NOTHING,
     ROBOT_MOVEMENT_SIZE,
     ROBOT_MOVEMENT_TIME, ROBOT_OCCUPATION_SIZE,
     ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
@@ -104,9 +105,44 @@ function containsEnemyAtPosition(position) {
 /**
  * @this RobotStageScene
  */
+function handleShootingAction(enemy) {
+    console.log('shooting');
+    this.robot.setAnimation('shoot');
+    this.time.delayedCall(
+        ROBOT_MOVEMENT_TIME,
+        () => {
+            const startPointObj = { x: 100, y: 65 };
+            const endPointObj = { x: 205, y: 90 };
+            const laserBeam = this.add.line(
+                0,
+                0,
+                startPointObj.x,
+                startPointObj.y,
+                endPointObj.x,
+                endPointObj.y,
+                0xff0000
+            ).setOrigin(0, 0).setDepth(LASER_BEAM_DEPTH);
+
+            this.time.delayedCall(
+                ROBOT_MOVEMENT_TIME / 2,
+                () => {
+                    laserBeam.destroy();
+                    enemy.destroy();
+                    this::startRobotMovement();
+                }
+            );
+        }
+    );
+}
+
+/**
+ * @this RobotStageScene
+ */
 function handleActionQueue(position) {
+    let actionTaken = false;
     const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
     const enemyType = stageLayoutData[position];
+    const enemy = this.enemies[position];
     const { inGameActions } = window;
     const {
         willDuck,
@@ -115,12 +151,10 @@ function handleActionQueue(position) {
         willDestroyBuilding,
     } = inGameActions;
 
-    if (willDuck && enemyType === METEOR) {
-        // TODO
-    }
-
     if (willShootLaser && enemyType === JET) {
-        // TODO
+        this::handleShootingAction(enemy);
+        window.inGameActions.willShootLaser = false;
+        actionTaken = true;
     }
 
     if (willShield && enemyType === MISSILE) {
@@ -131,23 +165,25 @@ function handleActionQueue(position) {
         // TODO
     }
 
-    // TODO OMG
-    stageLayoutData[position] = NOTHING;
-    this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, stageLayoutData);
+    if (willDuck && enemyType === METEOR) {
+        // TODO
+    }
+
+    if (actionTaken) {
+        stageLayoutData[position] = NOTHING;
+        this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, stageLayoutData);
+
+        return true;
+    }
+
+    return false;
 }
 
 /**
  * @this RobotStageScene
  */
 export function startRobotMovement() {
-    // this.robot.setAnimation(''); // TODO
     const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
-
-    // does the next block contains an enemy? If yes we need to check our actions
-    if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE + 1)) {
-        console.log('Incoming enemy...');
-        this::handleActionQueue(currentPosition + ROBOT_OCCUPATION_SIZE + 1);
-    }
     this.robot.setAnimation('walk');
 
     this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, currentPosition + 1);
@@ -157,12 +193,15 @@ export function startRobotMovement() {
     });
 
     this.enemies.forEach((enemy, index) => {
-        this::moveRobotRelatedSprite(enemy);
+        if (enemy) {
+            this::moveRobotRelatedSprite(enemy);
+        }
     });
 
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
         () => {
+            let continueLooping = true;
             const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
             this.robot.setAnimation('idle');
 
@@ -177,10 +216,19 @@ export function startRobotMovement() {
                 return;
             }
 
-            this.time.delayedCall(
-                ROBOT_MOVEMENT_TIME,
-                this::startRobotMovement
-            );
+            // does the next block contains an enemy? If yes we need to check our actions
+            if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE + 1)) {
+                console.log('Incoming enemy...');
+                const earlyReturn = this::handleActionQueue(currentPosition + ROBOT_OCCUPATION_SIZE + 1);
+                continueLooping = !earlyReturn;
+            }
+
+            if (continueLooping) {
+                this.time.delayedCall(
+                    ROBOT_MOVEMENT_TIME,
+                    this::startRobotMovement
+                );
+            }
         }
     );
 }
@@ -220,9 +268,9 @@ export function renderStageEnemies() {
     let x = currentPosition * ROBOT_MOVEMENT_SIZE;
     data.forEach((enemyType) => {
         const enemy = this::createEnemyByType(enemyType, x);
+        this.enemies.push(enemy);
         if (enemy) {
             this.add.existing(enemy);
-            this.enemies.push(enemy);
         }
 
         x += ROBOT_MOVEMENT_SIZE;
@@ -238,7 +286,7 @@ function createEnemyByType(enemyType, x) {
             return new Jet({
                 scene: this,
                 x,
-                y: 50,
+                y: 80,
             }).setOrigin(0, 0);
         }
 

@@ -80,6 +80,11 @@ class ControlRoomScene extends Scene {
         // arm laser
         if ((this.laserChargeCounter >= this.laserChargeLimit) && this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Laser ready!';
+            const { inGameActions } = window;
+            const { willShootLaser } = inGameActions;
+            if (!willShootLaser) {
+                window.inGameActions.willShootLaser = true;
+            }
         } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
             this.laserChargeCounter += 0.01;
             this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
@@ -87,6 +92,7 @@ class ControlRoomScene extends Scene {
         } else if (this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Hold A to charge laser';
         }
+
         // arm punch
         if ((this.punchChargeCounter >= this.punchChargeLimit) && this.physics.overlap(this.hero, this.punchRoom)) {
             this.text.text = 'Punch ready!';
@@ -97,7 +103,7 @@ class ControlRoomScene extends Scene {
         } else if (this.physics.overlap(this.hero, this.punchRoom)) {
             this.text.text = 'Mash S to charge punch';
         }
-        console.log(this.punchChargeCounter);
+        // console.log(this.punchChargeCounter);
     }
 }
 
