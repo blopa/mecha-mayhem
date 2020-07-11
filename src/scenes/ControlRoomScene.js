@@ -117,8 +117,10 @@ class ControlRoomScene extends Scene {
         this.hero.update(time, delta);
         this.text.text = '';
         // laser
-        if ((this.laserChargeCounter >= this.laserChargeLimit) && this.physics.overlap(this.hero, this.laserRoom)) {
-            this.text.text = 'Laser ready!';
+        if ((this.laserChargeCounter >= this.laserChargeLimit)) {
+            if (this.physics.overlap(this.hero, this.laserRoom)) {
+                this.text.text = 'Laser ready!';
+            }
             const { inGameActions } = window;
             const { willShootLaser } = inGameActions;
             if (!willShootLaser) {
@@ -153,7 +155,7 @@ class ControlRoomScene extends Scene {
             this.text.text = 'Enter letters to charge shield';
         }
         this.displayShieldSequence();
-        console.log(JSON.stringify(window.inGameActions.willShootLaser));
+        console.log(window.inGameActions.willShootLaser);
     }
 
     shuffle(a) {
