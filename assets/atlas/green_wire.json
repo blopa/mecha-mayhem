@@ -1,7 +1,7 @@
 {
     "frames": [
         {
-            "filename": "green_wires_01",
+            "filename": "green_wire_01",
             "frame": {
                 "x": 351,
                 "y": 0,
@@ -14,7 +14,7 @@
             }
         },
         {
-            "filename": "green_wires_02",
+            "filename": "green_wire_02",
             "frame": {
                 "x": 351,
                 "y": 602,
@@ -27,7 +27,7 @@
             }
         },
         {
-            "filename": "green_wires_03",
+            "filename": "green_wire_03",
             "frame": {
                 "x": 351,
                 "y": 602,
@@ -40,7 +40,7 @@
             }
         },
         {
-            "filename": "green_wires_04",
+            "filename": "green_wire_04",
             "frame": {
                 "x": 351,
                 "y": 602,
@@ -53,7 +53,7 @@
             }
         },
         {
-            "filename": "green_wires_05",
+            "filename": "green_wire_05",
             "frame": {
                 "x": 351,
                 "y": 301,
@@ -66,7 +66,7 @@
             }
         },
         {
-            "filename": "green_wires_06",
+            "filename": "green_wire_06",
             "frame": {
                 "x": 702,
                 "y": 0,
@@ -79,7 +79,7 @@
             }
         },
         {
-            "filename": "green_wires_07",
+            "filename": "green_wire_07",
             "frame": {
                 "x": 0,
                 "y": 602,
@@ -92,7 +92,7 @@
             }
         },
         {
-            "filename": "green_wires_08",
+            "filename": "green_wire_08",
             "frame": {
                 "x": 351,
                 "y": 602,
@@ -105,7 +105,7 @@
             }
         },
         {
-            "filename": "green_wires_09",
+            "filename": "green_wire_09",
             "frame": {
                 "x": 0,
                 "y": 301,
@@ -118,7 +118,7 @@
             }
         },
         {
-            "filename": "green_wires_10",
+            "filename": "green_wire_10",
             "frame": {
                 "x": 0,
                 "y": 0,
@@ -131,7 +131,7 @@
             }
         },
         {
-            "filename": "green_wires_11",
+            "filename": "green_wire_11",
             "frame": {
                 "x": 351,
                 "y": 602,
@@ -144,7 +144,7 @@
             }
         },
         {
-            "filename": "green_wires_12",
+            "filename": "green_wire_12",
             "frame": {
                 "x": 351,
                 "y": 602,
