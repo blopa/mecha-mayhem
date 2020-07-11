@@ -35,6 +35,18 @@ function(t){return!!t.get&&"function"==typeof t.get||!!t.set&&"function"==typeof
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 var n=i(/*! ../utils/Class */0),s=i(/*! ../math/fuzzy/Equal */98),r=new n({initialize:function(t,e){this.x=0,this.y=0,"object"==typeof t?(this.x=t.x||0,this.y=t.y||0):(void 0===e&&(e=t),this.x=t||0,this.y=e||0)},clone:function(){return new r(this.x,this.y)},copy:function(t){return this.x=t.x||0,this.y=t.y||0,this},setFromObject:function(t){return this.x=t.x||0,this.y=t.y||0,this},set:function(t,e){return void 0===e&&(e=t),this.x=t,this.y=e,this},setTo:function(t,e){return this.set(t,e)},setToPolar:function(t,e){return null==e&&(e=1),this.x=Math.cos(t)*e,this.y=Math.sin(t)*e,this},equals:function(t){return this.x===t.x&&this.y===t.y},fuzzyEquals:function(t,e){return s(this.x,t.x,e)&&s(this.y,t.y,e)},angle:function(){var t=Math.atan2(this.y,this.x);return t<0&&(t+=2*Math.PI),t},setAngle:function(t){return this.setToPolar(t,this.length())},add:function(t){return this.x+=t.x,this.y+=t.y,this},subtract:function(t){return this.x-=t.x,this.y-=t.y,this},multiply:function(t){return this.x*=t.x,this.y*=t.y,this},scale:function(t){return isFinite(t)?(this.x*=t,this.y*=t):(this.x=0,this.y=0),this},divide:function(t){return this.x/=t.x,this.y/=t.y,this},negate:function(){return this.x=-this.x,this.y=-this.y,this},distance:function(t){var e=t.x-this.x,i=t.y-this.y;return Math.sqrt(e*e+i*i)},distanceSq:function(t){var e=t.x-this.x,i=t.y-this.y;return e*e+i*i},length:function(){var t=this.x,e=this.y;return Math.sqrt(t*t+e*e)},setLength:function(t){return this.normalize().scale(t)},lengthSq:function(){var t=this.x,e=this.y;return t*t+e*e},normalize:function(){var t=this.x,e=this.y,i=t*t+e*e;return i>0&&(i=1/Math.sqrt(i),this.x=t*i,this.y=e*i),this},normalizeRightHand:function(){var t=this.x;return this.x=-1*this.y,this.y=t,this},normalizeLeftHand:function(){var t=this.x;return this.x=this.y,this.y=-1*t,this},dot:function(t){return this.x*t.x+this.y*t.y},cross:function(t){return this.x*t.y-this.y*t.x},lerp:function(t,e){void 0===e&&(e=0);var i=this.x,n=this.y;return this.x=i+e*(t.x-i),this.y=n+e*(t.y-n),this},transformMat3:function(t){var e=this.x,i=this.y,n=t.val;return this.x=n[0]*e+n[3]*i+n[6],this.y=n[1]*e+n[4]*i+n[7],this},transformMat4:function(t){var e=this.x,i=this.y,n=t.val;return this.x=n[0]*e+n[4]*i+n[12],this.y=n[1]*e+n[5]*i+n[13],this},reset:function(){return this.x=0,this.y=0,this},limit:function(t){var e=this.length();return e&&e>t&&this.scale(t/e),this},reflect:function(t){return t=t.clone().normalize(),this.subtract(t.scale(2*this.dot(t)))},mirror:function(t){return this.reflect(t).negate()},rotate:function(t){var e=Math.cos(t),i=Math.sin(t);return this.set(e*this.x-i*this.y,i*this.x+e*this.y)}});r.ZERO=new r,r.RIGHT=new r(1,0),r.LEFT=new r(-1,0),r.UP=new r(0,-1),r.DOWN=new r(0,1),r.ONE=new r(1,1),t.exports=r},
+/*!*******************************************!*\
+  !*** ./node_modules/phaser/src/phaser.js ***!
+  \*******************************************/
+/*! no static exports found */
+/*! all exports used */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */function(t,e,i){(function(e){
+/**
+ * @author       Richard Davey <rich@photonstorm.com>
+ * @copyright    2020 Photon Storm Ltd.
+ * @license      {@link https://opensource.org/licenses/MIT|MIT License}
+ */
+i(/*! ./polyfills */548);var n=i(/*! ./const */39),s=i(/*! ./utils/object/Extend */19),r={Actions:i(/*! ./actions */265),Animations:i(/*! ./animations */668),BlendModes:i(/*! ./renderer/BlendModes */45),Cache:i(/*! ./cache */669),Cameras:i(/*! ./cameras */672),Core:i(/*! ./core */758),Class:i(/*! ./utils/Class */0),Create:i(/*! ./create */816),Curves:i(/*! ./curves */822),Data:i(/*! ./data */825),Display:i(/*! ./display */827),DOM:i(/*! ./dom */844),Events:i(/*! ./events */845),Game:i(/*! ./core/Game */847),GameObjects:i(/*! ./gameobjects */945),Geom:i(/*! ./geom */463),Input:i(/*! ./input */1232),Loader:i(/*! ./loader */1266),Math:i(/*! ./math */185),Physics:i(/*! ./physics */1292),Plugins:i(/*! ./plugins */1360),Renderer:i(/*! ./renderer */1362),Scale:i(/*! ./scale */1367),ScaleModes:i(/*! ./renderer/ScaleModes */162),Scene:i(/*! ./scene/Scene */407),Scenes:i(/*! ./scene */1368),Structs:i(/*! ./structs */1370),Textures:i(/*! ./textures */1371),Tilemaps:i(/*! ./tilemaps */1373),Time:i(/*! ./time */1414),Tweens:i(/*! ./tweens */1416),Utils:i(/*! ./utils */1433)};r.Sound=i(/*! ./sound */1443),r.Cameras.Sprite3D=i(/*! ../plugins/camera3d/src */1444),r.GameObjects.Sprite3D=i(/*! ../plugins/camera3d/src/sprite3d/Sprite3D */161),r.GameObjects.Factories.Sprite3D=i(/*! ../plugins/camera3d/src/sprite3d/Sprite3DFactory */1446),r.GameObjects.Creators.Sprite3D=i(/*! ../plugins/camera3d/src/sprite3d/Sprite3DCreator */1447),r.FacebookInstantGamesPlugin=i(/*! ../plugins/fbinstant/src/FacebookInstantGamesPlugin */423),r=s(!1,r,n),t.exports=r,e.Phaser=r}).call(this,i(/*! ./../../webpack/buildin/global.js */547))},
 /*!*****************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/Point.js ***!
   \*****************************************************/
@@ -59,18 +71,6 @@ var n=i(/*! ../../utils/Class */0),s=i(/*! ../const */54),r=new n({initialize:fu
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
 var n=i(/*! ../utils/Class */0),s=i(/*! ../plugins/PluginCache */23),r=i(/*! ../scene/events */24),o=new n({initialize:function(t){this.scene=t,this.systems=t.sys,this.displayList,this.updateList,t.sys.events.once(r.BOOT,this.boot,this),t.sys.events.on(r.START,this.start,this)},boot:function(){this.displayList=this.systems.displayList,this.updateList=this.systems.updateList,this.systems.events.once(r.DESTROY,this.destroy,this)},start:function(){this.systems.events.once(r.SHUTDOWN,this.shutdown,this)},existing:function(t){return(t.renderCanvas||t.renderWebGL)&&this.displayList.add(t),t.preUpdate&&this.updateList.add(t),t},shutdown:function(){this.systems.events.off(r.SHUTDOWN,this.shutdown,this)},destroy:function(){this.shutdown(),this.scene.sys.events.off(r.START,this.start,this),this.scene=null,this.systems=null,this.displayList=null,this.updateList=null}});o.register=function(t,e){o.prototype.hasOwnProperty(t)||(o.prototype[t]=e)},o.remove=function(t){o.prototype.hasOwnProperty(t)&&delete o.prototype[t]},s.register("GameObjectFactory",o,"add"),t.exports=o},
-/*!*******************************************!*\
-  !*** ./node_modules/phaser/src/phaser.js ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */function(t,e,i){(function(e){
-/**
- * @author       Richard Davey <rich@photonstorm.com>
- * @copyright    2020 Photon Storm Ltd.
- * @license      {@link https://opensource.org/licenses/MIT|MIT License}
- */
-i(/*! ./polyfills */548);var n=i(/*! ./const */39),s=i(/*! ./utils/object/Extend */19),r={Actions:i(/*! ./actions */265),Animations:i(/*! ./animations */668),BlendModes:i(/*! ./renderer/BlendModes */45),Cache:i(/*! ./cache */669),Cameras:i(/*! ./cameras */672),Core:i(/*! ./core */758),Class:i(/*! ./utils/Class */0),Create:i(/*! ./create */816),Curves:i(/*! ./curves */822),Data:i(/*! ./data */825),Display:i(/*! ./display */827),DOM:i(/*! ./dom */844),Events:i(/*! ./events */845),Game:i(/*! ./core/Game */847),GameObjects:i(/*! ./gameobjects */945),Geom:i(/*! ./geom */463),Input:i(/*! ./input */1232),Loader:i(/*! ./loader */1266),Math:i(/*! ./math */185),Physics:i(/*! ./physics */1292),Plugins:i(/*! ./plugins */1360),Renderer:i(/*! ./renderer */1362),Scale:i(/*! ./scale */1367),ScaleModes:i(/*! ./renderer/ScaleModes */162),Scene:i(/*! ./scene/Scene */407),Scenes:i(/*! ./scene */1368),Structs:i(/*! ./structs */1370),Textures:i(/*! ./textures */1371),Tilemaps:i(/*! ./tilemaps */1373),Time:i(/*! ./time */1414),Tweens:i(/*! ./tweens */1416),Utils:i(/*! ./utils */1433)};r.Sound=i(/*! ./sound */1443),r.Cameras.Sprite3D=i(/*! ../plugins/camera3d/src */1444),r.GameObjects.Sprite3D=i(/*! ../plugins/camera3d/src/sprite3d/Sprite3D */161),r.GameObjects.Factories.Sprite3D=i(/*! ../plugins/camera3d/src/sprite3d/Sprite3DFactory */1446),r.GameObjects.Creators.Sprite3D=i(/*! ../plugins/camera3d/src/sprite3d/Sprite3DCreator */1447),r.FacebookInstantGamesPlugin=i(/*! ../plugins/fbinstant/src/FacebookInstantGamesPlugin */423),r=s(!1,r,n),t.exports=r,e.Phaser=r}).call(this,i(/*! ./../../webpack/buildin/global.js */547))},
 /*!**********************************************************!*\
   !*** ./node_modules/phaser/src/utils/object/GetValue.js ***!
   \**********************************************************/
@@ -838,7 +838,7 @@ t.exports={ADD:i(/*! ./ADD_EVENT */896),COMPLETE:i(/*! ./COMPLETE_EVENT */897),F
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.x1,r=t.y1,o=t.x2,a=t.y2,h=e.x1,l=e.y1,u=e.x2,c=e.y2,d=(c-l)*(o-s)-(u-h)*(a-r);if(0===d)return!1;var f=((u-h)*(r-l)-(c-l)*(s-h))/d,p=((o-s)*(r-l)-(a-r)*(s-h))/d;return f>=0&&f<=1&&p>=0&&p<=1&&(i.x=s+f*(o-s),i.y=r+f*(a-r),!0)}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.x1,r=t.y1,o=t.x2,a=t.y2,h=e.x1,l=e.y1,u=e.x2,c=e.y2,d=(c-l)*(o-s)-(u-h)*(a-r);if(0===d)return!1;var f=((u-h)*(r-l)-(c-l)*(s-h))/d,p=((o-s)*(r-l)-(a-r)*(s-h))/d;return f>=0&&f<=1&&p>=0&&p<=1&&(i.x=s+f*(o-s),i.y=r+f*(a-r),!0)}},
 /*!****************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/Angle.js ***!
   \****************************************************/
@@ -1515,7 +1515,7 @@ var n=i(/*! ../../../../src/utils/Class */0),s=i(/*! ../../../../src/gameobjects
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){return void 0===i&&(i=new n),i.x=t.x+t.radius*Math.cos(e),i.y=t.y+t.radius*Math.sin(e),i}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e,i){return void 0===i&&(i=new n),i.x=t.x+t.radius*Math.cos(e),i.y=t.y+t.radius*Math.sin(e),i}},
 /*!*******************************************************!*\
   !*** ./node_modules/phaser/src/geom/circle/Random.js ***!
   \*******************************************************/
@@ -1527,7 +1527,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){return void 0===i&&(i=
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new n);var i=2*Math.PI*Math.random(),s=Math.random()+Math.random(),r=s>1?2-s:s,o=r*Math.cos(i),a=r*Math.sin(i);return e.x=t.x+o*t.radius,e.y=t.y+a*t.radius,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){void 0===e&&(e=new n);var i=2*Math.PI*Math.random(),s=Math.random()+Math.random(),r=s>1?2-s:s,o=r*Math.cos(i),a=r*Math.sin(i);return e.x=t.x+o*t.radius,e.y=t.y+a*t.radius,e}},
 /*!*********************************************************!*\
   !*** ./node_modules/phaser/src/animations/Animation.js ***!
   \*********************************************************/
@@ -1551,7 +1551,7 @@ var n=i(/*! ../math/Clamp */20),s=i(/*! ../utils/Class */0),r=i(/*! eventemitter
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Perimeter */122),s=i(/*! ../point/Point */4);t.exports=function(t,e,i){if(void 0===i&&(i=new s),e<=0||e>=1)return i.x=t.x,i.y=t.y,i;var r=n(t)*e;return e>.5?(r-=t.width+t.height)<=t.width?(i.x=t.right-r,i.y=t.bottom):(i.x=t.x,i.y=t.bottom-(r-t.width)):r<=t.width?(i.x=t.x+r,i.y=t.y):(i.x=t.right,i.y=t.y+(r-t.width)),i}},
+var n=i(/*! ./Perimeter */122),s=i(/*! ../point/Point */5);t.exports=function(t,e,i){if(void 0===i&&(i=new s),e<=0||e>=1)return i.x=t.x,i.y=t.y,i;var r=n(t)*e;return e>.5?(r-=t.width+t.height)<=t.width?(i.x=t.right-r,i.y=t.bottom):(i.x=t.x,i.y=t.bottom-(r-t.width)):r<=t.width?(i.x=t.x+r,i.y=t.y):(i.x=t.right,i.y=t.y+(r-t.width)),i}},
 /*!********************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/GetPoints.js ***!
   \********************************************************/
@@ -1563,7 +1563,7 @@ var n=i(/*! ./Perimeter */122),s=i(/*! ../point/Point */4);t.exports=function(t,
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Length */63),s=i(/*! ../point/Point */4);t.exports=function(t,e,i,r){void 0===r&&(r=[]),!e&&i>0&&(e=n(t)/i);for(var o=t.x1,a=t.y1,h=t.x2,l=t.y2,u=0;u<e;u++){var c=u/e,d=o+(h-o)*c,f=a+(l-a)*c;r.push(new s(d,f))}return r}},
+var n=i(/*! ./Length */63),s=i(/*! ../point/Point */5);t.exports=function(t,e,i,r){void 0===r&&(r=[]),!e&&i>0&&(e=n(t)/i);for(var o=t.x1,a=t.y1,h=t.x2,l=t.y2,u=0;u<e;u++){var c=u/e,d=o+(h-o)*c,f=a+(l-a)*c;r.push(new s(d,f))}return r}},
 /*!*****************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/Random.js ***!
   \*****************************************************/
@@ -1575,7 +1575,7 @@ var n=i(/*! ./Length */63),s=i(/*! ../point/Point */4);t.exports=function(t,e,i,
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new n);var i=Math.random();return e.x=t.x1+i*(t.x2-t.x1),e.y=t.y1+i*(t.y2-t.y1),e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){void 0===e&&(e=new n);var i=Math.random();return e.x=t.x1+i*(t.x2-t.x1),e.y=t.y1+i*(t.y2-t.y1),e}},
 /*!**********************************************************!*\
   !*** ./node_modules/phaser/src/geom/rectangle/Random.js ***!
   \**********************************************************/
@@ -1587,7 +1587,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new n);va
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=t.x+Math.random()*t.width,e.y=t.y+Math.random()*t.height,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=t.x+Math.random()*t.width,e.y=t.y+Math.random()*t.height,e}},
 /*!****************************************************!*\
   !*** ./node_modules/phaser/src/math/angle/Wrap.js ***!
   \****************************************************/
@@ -1623,7 +1623,7 @@ var n=i(/*! ../Wrap */64);t.exports=function(t){return n(t,-180,180)}},
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new n);var i=Math.random()*Math.PI*2,s=Math.sqrt(Math.random());return e.x=t.x+s*Math.cos(i)*t.width/2,e.y=t.y+s*Math.sin(i)*t.height/2,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){void 0===e&&(e=new n);var i=Math.random()*Math.PI*2,s=Math.sqrt(Math.random());return e.x=t.x+s*Math.cos(i)*t.width/2,e.y=t.y+s*Math.sin(i)*t.height/2,e}},
 /*!*********************************************************!*\
   !*** ./node_modules/phaser/src/geom/triangle/Random.js ***!
   \*********************************************************/
@@ -1635,7 +1635,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new n);va
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new n);var i=t.x2-t.x1,s=t.y2-t.y1,r=t.x3-t.x1,o=t.y3-t.y1,a=Math.random(),h=Math.random();return a+h>=1&&(a=1-a,h=1-h),e.x=t.x1+(i*a+r*h),e.y=t.y1+(s*a+o*h),e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){void 0===e&&(e=new n);var i=t.x2-t.x1,s=t.y2-t.y1,r=t.x3-t.x1,o=t.y3-t.y1,a=Math.random(),h=Math.random();return a+h>=1&&(a=1-a,h=1-h),e.x=t.x1+(i*a+r*h),e.y=t.y1+(s*a+o*h),e}},
 /*!**************************************************************!*\
   !*** ./node_modules/phaser/src/math/RotateAroundDistance.js ***!
   \**************************************************************/
@@ -2015,7 +2015,7 @@ t.exports={ARC:0,BEGIN_PATH:1,CLOSE_PATH:2,FILL_RECT:3,LINE_TO:4,MOVE_TO:5,LINE_
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.width/2,r=t.height/2;return i.x=t.x+s*Math.cos(e),i.y=t.y+r*Math.sin(e),i}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.width/2,r=t.height/2;return i.x=t.x+s*Math.cos(e),i.y=t.y+r*Math.sin(e),i}},
 /*!*********************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/particles/ParticleEmitterManager.js ***!
   \*********************************************************************************/
@@ -2166,7 +2166,7 @@ var n=i(/*! ../../math/distance/DistanceBetween */56);t.exports=function(t,e){re
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4),s=i(/*! ./LineToCircle */226);t.exports=function(t,e,i){if(void 0===i&&(i=[]),s(t,e)){var r,o,a=t.x1,h=t.y1,l=t.x2,u=t.y2,c=e.x,d=e.y,f=e.radius,p=l-a,g=u-h,v=a-c,m=h-d,y=p*p+g*g,x=2*(p*v+g*m),T=x*x-4*y*(v*v+m*m-f*f);if(0===T){var w=-x/(2*y);r=a+w*p,o=h+w*g,w>=0&&w<=1&&i.push(new n(r,o))}else if(T>0){var b=(-x-Math.sqrt(T))/(2*y);r=a+b*p,o=h+b*g,b>=0&&b<=1&&i.push(new n(r,o));var E=(-x+Math.sqrt(T))/(2*y);r=a+E*p,o=h+E*g,E>=0&&E<=1&&i.push(new n(r,o))}}return i}},
+var n=i(/*! ../point/Point */5),s=i(/*! ./LineToCircle */226);t.exports=function(t,e,i){if(void 0===i&&(i=[]),s(t,e)){var r,o,a=t.x1,h=t.y1,l=t.x2,u=t.y2,c=e.x,d=e.y,f=e.radius,p=l-a,g=u-h,v=a-c,m=h-d,y=p*p+g*g,x=2*(p*v+g*m),T=x*x-4*y*(v*v+m*m-f*f);if(0===T){var w=-x/(2*y);r=a+w*p,o=h+w*g,w>=0&&w<=1&&i.push(new n(r,o))}else if(T>0){var b=(-x-Math.sqrt(T))/(2*y);r=a+b*p,o=h+b*g,b>=0&&b<=1&&i.push(new n(r,o));var E=(-x+Math.sqrt(T))/(2*y);r=a+E*p,o=h+E*g,E>=0&&E<=1&&i.push(new n(r,o))}}return i}},
 /*!*****************************************************************!*\
   !*** ./node_modules/phaser/src/geom/intersects/LineToCircle.js ***!
   \*****************************************************************/
@@ -2178,7 +2178,7 @@ var n=i(/*! ../point/Point */4),s=i(/*! ./LineToCircle */226);t.exports=function
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../circle/Contains */61),s=new(i(/*! ../point/Point */4));t.exports=function(t,e,i){if(void 0===i&&(i=s),n(e,t.x1,t.y1))return i.x=t.x1,i.y=t.y1,!0;if(n(e,t.x2,t.y2))return i.x=t.x2,i.y=t.y2,!0;var r=t.x2-t.x1,o=t.y2-t.y1,a=e.x-t.x1,h=e.y-t.y1,l=r*r+o*o,u=r,c=o;if(l>0){var d=(a*r+h*o)/l;u*=d,c*=d}return i.x=t.x1+u,i.y=t.y1+c,u*u+c*c<=l&&u*r+c*o>=0&&n(e,i.x,i.y)}},
+var n=i(/*! ../circle/Contains */61),s=new(i(/*! ../point/Point */5));t.exports=function(t,e,i){if(void 0===i&&(i=s),n(e,t.x1,t.y1))return i.x=t.x1,i.y=t.y1,!0;if(n(e,t.x2,t.y2))return i.x=t.x2,i.y=t.y2,!0;var r=t.x2-t.x1,o=t.y2-t.y1,a=e.x-t.x1,h=e.y-t.y1,l=r*r+o*o,u=r,c=o;if(l>0){var d=(a*r+h*o)/l;u*=d,c*=d}return i.x=t.x1+u,i.y=t.y1+c,u*u+c*c<=l&&u*r+c*o>=0&&n(e,i.x,i.y)}},
 /*!***********************************************************************!*\
   !*** ./node_modules/phaser/src/geom/intersects/GetLineToRectangle.js ***!
   \***********************************************************************/
@@ -2191,7 +2191,7 @@ var n=i(/*! ../circle/Contains */61),s=new(i(/*! ../point/Point */4));t.exports=
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4),s=i(/*! ./LineToLine */92),r=i(/*! ./LineToRectangle */465);t.exports=function(t,e,i){if(void 0===i&&(i=[]),r(t,e))for(var o=e.getLineA(),a=e.getLineB(),h=e.getLineC(),l=e.getLineD(),u=[new n,new n,new n,new n],c=[s(o,t,u[0]),s(a,t,u[1]),s(h,t,u[2]),s(l,t,u[3])],d=0;d<4;d++)c[d]&&i.push(u[d]);return i}},
+var n=i(/*! ../point/Point */5),s=i(/*! ./LineToLine */92),r=i(/*! ./LineToRectangle */465);t.exports=function(t,e,i){if(void 0===i&&(i=[]),r(t,e))for(var o=e.getLineA(),a=e.getLineB(),h=e.getLineC(),l=e.getLineD(),u=[new n,new n,new n,new n],c=[s(o,t,u[0]),s(a,t,u[1]),s(h,t,u[2]),s(l,t,u[3])],d=0;d<4;d++)c[d]&&i.push(u[d]);return i}},
 /*!****************************************************************!*\
   !*** ./node_modules/phaser/src/geom/triangle/ContainsArray.js ***!
   \****************************************************************/
@@ -2505,7 +2505,7 @@ function i(t){return!!t.getActive&&"function"==typeof t.getActive}function n(t){
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../utils/Class */0),s=i(/*! eventemitter3 */10),r=i(/*! ../events */261),o=i(/*! ../../gameobjects/GameObjectCreator */17),a=i(/*! ../../gameobjects/GameObjectFactory */5),h=i(/*! ./const */100),l=i(/*! ../../math/const */16),u=new n({Extends:s,initialize:function(t,e,i){s.call(this),this.parent=t,this.parentIsTimeline=t.hasOwnProperty("isTimeline"),this.data=e,this.totalData=e.length,this.targets=i,this.totalTargets=i.length,this.useFrames=!1,this.timeScale=1,this.loop=0,this.loopDelay=0,this.loopCounter=0,this.startDelay=0,this.hasStarted=!1,this.isSeeking=!1,this.completeDelay=0,this.countdown=0,this.offset=0,this.calculatedOffset=0,this.state=h.PENDING_ADD,this._pausedState=h.INIT,this.paused=!1,this.elapsed=0,this.totalElapsed=0,this.duration=0,this.progress=0,this.totalDuration=0,this.totalProgress=0,this.callbacks={onActive:null,onComplete:null,onLoop:null,onRepeat:null,onStart:null,onUpdate:null,onYoyo:null},this.callbackScope},getValue:function(t){return void 0===t&&(t=0),this.data[t].current},setTimeScale:function(t){return this.timeScale=t,this},getTimeScale:function(){return this.timeScale},isPlaying:function(){return this.state===h.ACTIVE},isPaused:function(){return this.state===h.PAUSED},hasTarget:function(t){return-1!==this.targets.indexOf(t)},updateTo:function(t,e,i){void 0===i&&(i=!1);for(var n=0;n<this.totalData;n++){var s=this.data[n];s.key===t&&(s.end=e,i&&(s.start=s.current))}return this},restart:function(){return this.elapsed=0,this.progress=0,this.totalElapsed=0,this.totalProgress=0,this.state===h.ACTIVE?this.seek(0):this.state===h.REMOVED?(this.seek(0),this.parent.makeActive(this),this):this.state===h.PENDING_ADD?this:this.play()},calcDuration:function(){for(var t=0,e=l.MAX_SAFE_INTEGER,i=this.data,n=0;n<this.totalData;n++){var s=i[n];s.t1=s.duration+s.hold,s.yoyo&&(s.t1+=s.duration),s.t2=s.t1+s.repeatDelay,s.totalDuration=s.delay+s.t1,-1===s.repeat?s.totalDuration+=999999999999*s.t2:s.repeat>0&&(s.totalDuration+=s.t2*s.repeat),s.totalDuration>t&&(t=s.totalDuration),s.delay<e&&(e=s.delay)}this.duration=Math.max(t,.001),this.loopCounter=-1===this.loop?999999999999:this.loop,this.loopCounter>0?this.totalDuration=this.duration+this.completeDelay+(this.duration+this.loopDelay)*this.loopCounter:this.totalDuration=this.duration+this.completeDelay,this.startDelay=e},init:function(){if(this.paused&&!this.parentIsTimeline)return this.state=h.PENDING_ADD,this._pausedState=h.INIT,!1;for(var t=this.data,e=this.totalTargets,i=0;i<this.totalData;i++){var n=t[i],s=n.target,r=n.gen,o=n.key,a=n.index;n.delay=r.delay(s,o,0,a,e,this),n.duration=Math.max(r.duration(s,o,0,a,e,this),.001),n.hold=r.hold(s,o,0,a,e,this),n.repeat=r.repeat(s,o,0,a,e,this),n.repeatDelay=r.repeatDelay(s,o,0,a,e,this)}return this.calcDuration(),this.progress=0,this.totalProgress=0,this.elapsed=0,this.totalElapsed=0,this.state=h.INIT,!0},makeActive:function(){this.parent.makeActive(this),this.dispatchTweenEvent(r.TWEEN_ACTIVE,this.callbacks.onActive)},nextState:function(){this.loopCounter>0?(this.elapsed=0,this.progress=0,this.loopCounter--,this.resetTweenData(!0),this.loopDelay>0?(this.countdown=this.loopDelay,this.state=h.LOOP_DELAY):(this.state=h.ACTIVE,this.dispatchTweenEvent(r.TWEEN_LOOP,this.callbacks.onLoop))):this.completeDelay>0?(this.state=h.COMPLETE_DELAY,this.countdown=this.completeDelay):(this.state=h.PENDING_REMOVE,this.dispatchTweenEvent(r.TWEEN_COMPLETE,this.callbacks.onComplete))},pause:function(){return this.state===h.PAUSED||(this.paused=!0,this._pausedState=this.state,this.state=h.PAUSED),this},play:function(t){void 0===t&&(t=!1);var e=this.state;return e!==h.INIT||this.parentIsTimeline?e===h.ACTIVE||e===h.PENDING_ADD&&this._pausedState===h.PENDING_ADD?this:this.parentIsTimeline||e!==h.PENDING_REMOVE&&e!==h.REMOVED?(this.parentIsTimeline?(this.resetTweenData(t),0===this.calculatedOffset?this.state=h.ACTIVE:(this.countdown=this.calculatedOffset,this.state=h.OFFSET_DELAY)):this.paused?(this.paused=!1,this.makeActive()):(this.resetTweenData(t),this.state=h.ACTIVE,this.makeActive()),this):(this.seek(0),this.parent.makeActive(this),this):(this.resetTweenData(!1),this.state=h.ACTIVE,this)},resetTweenData:function(t){for(var e=this.data,i=this.totalData,n=this.totalTargets,s=0;s<i;s++){var r=e[s],o=r.target,a=r.key,l=r.index;r.progress=0,r.elapsed=0,r.repeatCounter=-1===r.repeat?999999999999:r.repeat,t?(r.start=r.getStartValue(o,a,r.start,l,n,this),r.end=r.getEndValue(o,a,r.end,l,n,this),r.current=r.start,r.state=h.PLAYING_FORWARD):r.state=h.PENDING_RENDER,r.delay>0&&(r.elapsed=r.delay,r.state=h.DELAY),r.getActiveValue&&(o[a]=r.getActiveValue(r.target,r.key,r.start))}},resume:function(){return this.state===h.PAUSED?(this.paused=!1,this.state=this._pausedState):this.play(),this},seek:function(t,e){if(void 0===e&&(e=16.6),this.totalDuration>=36e5)return console.warn("Tween.seek duration too long"),this;this.state===h.REMOVED&&this.makeActive(),this.elapsed=0,this.progress=0,this.totalElapsed=0,this.totalProgress=0;for(var i=this.data,n=this.totalTargets,s=0;s<this.totalData;s++){var r=i[s],o=r.target,a=r.gen,l=r.key,u=r.index;r.progress=0,r.elapsed=0,r.repeatCounter=-1===r.repeat?999999999999:r.repeat,r.delay=a.delay(o,l,0,u,n,this),r.duration=Math.max(a.duration(o,l,0,u,n,this),.001),r.hold=a.hold(o,l,0,u,n,this),r.repeat=a.repeat(o,l,0,u,n,this),r.repeatDelay=a.repeatDelay(o,l,0,u,n,this),r.current=r.start,r.state=h.PLAYING_FORWARD,this.updateTweenData(this,r,0,u,n),r.delay>0&&(r.elapsed=r.delay,r.state=h.DELAY)}this.calcDuration();var c=!1;this.state===h.PAUSED&&(c=!0,this.state=h.ACTIVE),this.isSeeking=!0;do{this.update(0,e)}while(this.totalProgress<t);return this.isSeeking=!1,c&&(this.state=h.PAUSED),this},setCallback:function(t,e,i,n){return this.callbacks[t]={func:e,scope:n,params:i},this},complete:function(t){return void 0===t&&(t=0),t?(this.state=h.COMPLETE_DELAY,this.countdown=t):(this.state=h.PENDING_REMOVE,this.dispatchTweenEvent(r.TWEEN_COMPLETE,this.callbacks.onComplete)),this},remove:function(){return this.parent.remove(this),this},stop:function(t){return this.state===h.ACTIVE&&void 0!==t&&this.seek(t),this.state!==h.REMOVED&&(this.state!==h.PAUSED&&this.state!==h.PENDING_ADD||(this.parentIsTimeline?(this.parent.manager._destroy.push(this),this.parent.manager._toProcess++):(this.parent._destroy.push(this),this.parent._toProcess++)),this.removeAllListeners(),this.state=h.PENDING_REMOVE),this},update:function(t,e){if(this.state===h.PAUSED)return!1;switch(this.useFrames&&(e=1*this.parent.timeScale),e*=this.timeScale,this.elapsed+=e,this.progress=Math.min(this.elapsed/this.duration,1),this.totalElapsed+=e,this.totalProgress=Math.min(this.totalElapsed/this.totalDuration,1),this.state){case h.ACTIVE:this.hasStarted||this.isSeeking||(this.startDelay-=e,this.startDelay<=0&&(this.hasStarted=!0,this.dispatchTweenEvent(r.TWEEN_START,this.callbacks.onStart)));for(var i=!1,n=0;n<this.totalData;n++){var s=this.data[n];this.updateTweenData(this,s,e)&&(i=!0)}i||this.nextState();break;case h.LOOP_DELAY:this.countdown-=e,this.countdown<=0&&(this.state=h.ACTIVE,this.dispatchTweenEvent(r.TWEEN_LOOP,this.callbacks.onLoop));break;case h.OFFSET_DELAY:this.countdown-=e,this.countdown<=0&&(this.state=h.ACTIVE);break;case h.COMPLETE_DELAY:this.countdown-=e,this.countdown<=0&&(this.state=h.PENDING_REMOVE,this.dispatchTweenEvent(r.TWEEN_COMPLETE,this.callbacks.onComplete))}return this.state===h.PENDING_REMOVE},dispatchTweenDataEvent:function(t,e,i){this.isSeeking||(this.emit(t,this,i.key,i.target,i.current,i.previous),e&&(e.params[1]=i.target,e.func.apply(e.scope,e.params)))},dispatchTweenEvent:function(t,e){this.isSeeking||(this.emit(t,this,this.targets),e&&(e.params[1]=this.targets,e.func.apply(e.scope,e.params)))},setStateFromEnd:function(t,e,i){return e.yoyo?(e.elapsed=i,e.progress=i/e.duration,e.flipX&&e.target.toggleFlipX(),e.flipY&&e.target.toggleFlipY(),this.dispatchTweenDataEvent(r.TWEEN_YOYO,t.callbacks.onYoyo,e),e.start=e.getStartValue(e.target,e.key,e.start,e.index,t.totalTargets,t),h.PLAYING_BACKWARD):e.repeatCounter>0?(e.repeatCounter--,e.elapsed=i,e.progress=i/e.duration,e.flipX&&e.target.toggleFlipX(),e.flipY&&e.target.toggleFlipY(),e.start=e.getStartValue(e.target,e.key,e.start,e.index,t.totalTargets,t),e.end=e.getEndValue(e.target,e.key,e.start,e.index,t.totalTargets,t),e.repeatDelay>0?(e.elapsed=e.repeatDelay-i,e.current=e.start,e.target[e.key]=e.current,h.REPEAT_DELAY):(this.dispatchTweenDataEvent(r.TWEEN_REPEAT,t.callbacks.onRepeat,e),h.PLAYING_FORWARD)):h.COMPLETE},setStateFromStart:function(t,e,i){return e.repeatCounter>0?(e.repeatCounter--,e.elapsed=i,e.progress=i/e.duration,e.flipX&&e.target.toggleFlipX(),e.flipY&&e.target.toggleFlipY(),e.end=e.getEndValue(e.target,e.key,e.start,e.index,t.totalTargets,t),e.repeatDelay>0?(e.elapsed=e.repeatDelay-i,e.current=e.start,e.target[e.key]=e.current,h.REPEAT_DELAY):(this.dispatchTweenDataEvent(r.TWEEN_REPEAT,t.callbacks.onRepeat,e),h.PLAYING_FORWARD)):h.COMPLETE},updateTweenData:function(t,e,i){var n=e.target;switch(e.state){case h.PLAYING_FORWARD:case h.PLAYING_BACKWARD:if(!n){e.state=h.COMPLETE;break}var s=e.elapsed,o=e.duration,a=0;(s+=i)>o&&(a=s-o,s=o);var l=e.state===h.PLAYING_FORWARD,u=s/o;if(e.elapsed=s,e.progress=u,e.previous=e.current,1===u)l?(e.current=e.end,n[e.key]=e.end,e.hold>0?(e.elapsed=e.hold-a,e.state=h.HOLD_DELAY):e.state=this.setStateFromEnd(t,e,a)):(e.current=e.start,n[e.key]=e.start,e.state=this.setStateFromStart(t,e,a));else{var c=l?e.ease(u):e.ease(1-u);e.current=e.start+(e.end-e.start)*c,n[e.key]=e.current}this.dispatchTweenDataEvent(r.TWEEN_UPDATE,t.callbacks.onUpdate,e);break;case h.DELAY:e.elapsed-=i,e.elapsed<=0&&(e.elapsed=Math.abs(e.elapsed),e.state=h.PENDING_RENDER);break;case h.REPEAT_DELAY:e.elapsed-=i,e.elapsed<=0&&(e.elapsed=Math.abs(e.elapsed),e.state=h.PLAYING_FORWARD,this.dispatchTweenDataEvent(r.TWEEN_REPEAT,t.callbacks.onRepeat,e));break;case h.HOLD_DELAY:e.elapsed-=i,e.elapsed<=0&&(e.state=this.setStateFromEnd(t,e,Math.abs(e.elapsed)));break;case h.PENDING_RENDER:n?(e.start=e.getStartValue(n,e.key,n[e.key],e.index,t.totalTargets,t),e.end=e.getEndValue(n,e.key,e.start,e.index,t.totalTargets,t),e.current=e.start,n[e.key]=e.start,e.state=h.PLAYING_FORWARD):e.state=h.COMPLETE}return e.state!==h.COMPLETE}});u.TYPES=["onActive","onComplete","onLoop","onRepeat","onStart","onUpdate","onYoyo"],a.register("tween",(function(t){return this.scene.sys.tweens.add(t)})),o.register("tween",(function(t){return this.scene.sys.tweens.create(t)})),t.exports=u},
+var n=i(/*! ../../utils/Class */0),s=i(/*! eventemitter3 */10),r=i(/*! ../events */261),o=i(/*! ../../gameobjects/GameObjectCreator */17),a=i(/*! ../../gameobjects/GameObjectFactory */6),h=i(/*! ./const */100),l=i(/*! ../../math/const */16),u=new n({Extends:s,initialize:function(t,e,i){s.call(this),this.parent=t,this.parentIsTimeline=t.hasOwnProperty("isTimeline"),this.data=e,this.totalData=e.length,this.targets=i,this.totalTargets=i.length,this.useFrames=!1,this.timeScale=1,this.loop=0,this.loopDelay=0,this.loopCounter=0,this.startDelay=0,this.hasStarted=!1,this.isSeeking=!1,this.completeDelay=0,this.countdown=0,this.offset=0,this.calculatedOffset=0,this.state=h.PENDING_ADD,this._pausedState=h.INIT,this.paused=!1,this.elapsed=0,this.totalElapsed=0,this.duration=0,this.progress=0,this.totalDuration=0,this.totalProgress=0,this.callbacks={onActive:null,onComplete:null,onLoop:null,onRepeat:null,onStart:null,onUpdate:null,onYoyo:null},this.callbackScope},getValue:function(t){return void 0===t&&(t=0),this.data[t].current},setTimeScale:function(t){return this.timeScale=t,this},getTimeScale:function(){return this.timeScale},isPlaying:function(){return this.state===h.ACTIVE},isPaused:function(){return this.state===h.PAUSED},hasTarget:function(t){return-1!==this.targets.indexOf(t)},updateTo:function(t,e,i){void 0===i&&(i=!1);for(var n=0;n<this.totalData;n++){var s=this.data[n];s.key===t&&(s.end=e,i&&(s.start=s.current))}return this},restart:function(){return this.elapsed=0,this.progress=0,this.totalElapsed=0,this.totalProgress=0,this.state===h.ACTIVE?this.seek(0):this.state===h.REMOVED?(this.seek(0),this.parent.makeActive(this),this):this.state===h.PENDING_ADD?this:this.play()},calcDuration:function(){for(var t=0,e=l.MAX_SAFE_INTEGER,i=this.data,n=0;n<this.totalData;n++){var s=i[n];s.t1=s.duration+s.hold,s.yoyo&&(s.t1+=s.duration),s.t2=s.t1+s.repeatDelay,s.totalDuration=s.delay+s.t1,-1===s.repeat?s.totalDuration+=999999999999*s.t2:s.repeat>0&&(s.totalDuration+=s.t2*s.repeat),s.totalDuration>t&&(t=s.totalDuration),s.delay<e&&(e=s.delay)}this.duration=Math.max(t,.001),this.loopCounter=-1===this.loop?999999999999:this.loop,this.loopCounter>0?this.totalDuration=this.duration+this.completeDelay+(this.duration+this.loopDelay)*this.loopCounter:this.totalDuration=this.duration+this.completeDelay,this.startDelay=e},init:function(){if(this.paused&&!this.parentIsTimeline)return this.state=h.PENDING_ADD,this._pausedState=h.INIT,!1;for(var t=this.data,e=this.totalTargets,i=0;i<this.totalData;i++){var n=t[i],s=n.target,r=n.gen,o=n.key,a=n.index;n.delay=r.delay(s,o,0,a,e,this),n.duration=Math.max(r.duration(s,o,0,a,e,this),.001),n.hold=r.hold(s,o,0,a,e,this),n.repeat=r.repeat(s,o,0,a,e,this),n.repeatDelay=r.repeatDelay(s,o,0,a,e,this)}return this.calcDuration(),this.progress=0,this.totalProgress=0,this.elapsed=0,this.totalElapsed=0,this.state=h.INIT,!0},makeActive:function(){this.parent.makeActive(this),this.dispatchTweenEvent(r.TWEEN_ACTIVE,this.callbacks.onActive)},nextState:function(){this.loopCounter>0?(this.elapsed=0,this.progress=0,this.loopCounter--,this.resetTweenData(!0),this.loopDelay>0?(this.countdown=this.loopDelay,this.state=h.LOOP_DELAY):(this.state=h.ACTIVE,this.dispatchTweenEvent(r.TWEEN_LOOP,this.callbacks.onLoop))):this.completeDelay>0?(this.state=h.COMPLETE_DELAY,this.countdown=this.completeDelay):(this.state=h.PENDING_REMOVE,this.dispatchTweenEvent(r.TWEEN_COMPLETE,this.callbacks.onComplete))},pause:function(){return this.state===h.PAUSED||(this.paused=!0,this._pausedState=this.state,this.state=h.PAUSED),this},play:function(t){void 0===t&&(t=!1);var e=this.state;return e!==h.INIT||this.parentIsTimeline?e===h.ACTIVE||e===h.PENDING_ADD&&this._pausedState===h.PENDING_ADD?this:this.parentIsTimeline||e!==h.PENDING_REMOVE&&e!==h.REMOVED?(this.parentIsTimeline?(this.resetTweenData(t),0===this.calculatedOffset?this.state=h.ACTIVE:(this.countdown=this.calculatedOffset,this.state=h.OFFSET_DELAY)):this.paused?(this.paused=!1,this.makeActive()):(this.resetTweenData(t),this.state=h.ACTIVE,this.makeActive()),this):(this.seek(0),this.parent.makeActive(this),this):(this.resetTweenData(!1),this.state=h.ACTIVE,this)},resetTweenData:function(t){for(var e=this.data,i=this.totalData,n=this.totalTargets,s=0;s<i;s++){var r=e[s],o=r.target,a=r.key,l=r.index;r.progress=0,r.elapsed=0,r.repeatCounter=-1===r.repeat?999999999999:r.repeat,t?(r.start=r.getStartValue(o,a,r.start,l,n,this),r.end=r.getEndValue(o,a,r.end,l,n,this),r.current=r.start,r.state=h.PLAYING_FORWARD):r.state=h.PENDING_RENDER,r.delay>0&&(r.elapsed=r.delay,r.state=h.DELAY),r.getActiveValue&&(o[a]=r.getActiveValue(r.target,r.key,r.start))}},resume:function(){return this.state===h.PAUSED?(this.paused=!1,this.state=this._pausedState):this.play(),this},seek:function(t,e){if(void 0===e&&(e=16.6),this.totalDuration>=36e5)return console.warn("Tween.seek duration too long"),this;this.state===h.REMOVED&&this.makeActive(),this.elapsed=0,this.progress=0,this.totalElapsed=0,this.totalProgress=0;for(var i=this.data,n=this.totalTargets,s=0;s<this.totalData;s++){var r=i[s],o=r.target,a=r.gen,l=r.key,u=r.index;r.progress=0,r.elapsed=0,r.repeatCounter=-1===r.repeat?999999999999:r.repeat,r.delay=a.delay(o,l,0,u,n,this),r.duration=Math.max(a.duration(o,l,0,u,n,this),.001),r.hold=a.hold(o,l,0,u,n,this),r.repeat=a.repeat(o,l,0,u,n,this),r.repeatDelay=a.repeatDelay(o,l,0,u,n,this),r.current=r.start,r.state=h.PLAYING_FORWARD,this.updateTweenData(this,r,0,u,n),r.delay>0&&(r.elapsed=r.delay,r.state=h.DELAY)}this.calcDuration();var c=!1;this.state===h.PAUSED&&(c=!0,this.state=h.ACTIVE),this.isSeeking=!0;do{this.update(0,e)}while(this.totalProgress<t);return this.isSeeking=!1,c&&(this.state=h.PAUSED),this},setCallback:function(t,e,i,n){return this.callbacks[t]={func:e,scope:n,params:i},this},complete:function(t){return void 0===t&&(t=0),t?(this.state=h.COMPLETE_DELAY,this.countdown=t):(this.state=h.PENDING_REMOVE,this.dispatchTweenEvent(r.TWEEN_COMPLETE,this.callbacks.onComplete)),this},remove:function(){return this.parent.remove(this),this},stop:function(t){return this.state===h.ACTIVE&&void 0!==t&&this.seek(t),this.state!==h.REMOVED&&(this.state!==h.PAUSED&&this.state!==h.PENDING_ADD||(this.parentIsTimeline?(this.parent.manager._destroy.push(this),this.parent.manager._toProcess++):(this.parent._destroy.push(this),this.parent._toProcess++)),this.removeAllListeners(),this.state=h.PENDING_REMOVE),this},update:function(t,e){if(this.state===h.PAUSED)return!1;switch(this.useFrames&&(e=1*this.parent.timeScale),e*=this.timeScale,this.elapsed+=e,this.progress=Math.min(this.elapsed/this.duration,1),this.totalElapsed+=e,this.totalProgress=Math.min(this.totalElapsed/this.totalDuration,1),this.state){case h.ACTIVE:this.hasStarted||this.isSeeking||(this.startDelay-=e,this.startDelay<=0&&(this.hasStarted=!0,this.dispatchTweenEvent(r.TWEEN_START,this.callbacks.onStart)));for(var i=!1,n=0;n<this.totalData;n++){var s=this.data[n];this.updateTweenData(this,s,e)&&(i=!0)}i||this.nextState();break;case h.LOOP_DELAY:this.countdown-=e,this.countdown<=0&&(this.state=h.ACTIVE,this.dispatchTweenEvent(r.TWEEN_LOOP,this.callbacks.onLoop));break;case h.OFFSET_DELAY:this.countdown-=e,this.countdown<=0&&(this.state=h.ACTIVE);break;case h.COMPLETE_DELAY:this.countdown-=e,this.countdown<=0&&(this.state=h.PENDING_REMOVE,this.dispatchTweenEvent(r.TWEEN_COMPLETE,this.callbacks.onComplete))}return this.state===h.PENDING_REMOVE},dispatchTweenDataEvent:function(t,e,i){this.isSeeking||(this.emit(t,this,i.key,i.target,i.current,i.previous),e&&(e.params[1]=i.target,e.func.apply(e.scope,e.params)))},dispatchTweenEvent:function(t,e){this.isSeeking||(this.emit(t,this,this.targets),e&&(e.params[1]=this.targets,e.func.apply(e.scope,e.params)))},setStateFromEnd:function(t,e,i){return e.yoyo?(e.elapsed=i,e.progress=i/e.duration,e.flipX&&e.target.toggleFlipX(),e.flipY&&e.target.toggleFlipY(),this.dispatchTweenDataEvent(r.TWEEN_YOYO,t.callbacks.onYoyo,e),e.start=e.getStartValue(e.target,e.key,e.start,e.index,t.totalTargets,t),h.PLAYING_BACKWARD):e.repeatCounter>0?(e.repeatCounter--,e.elapsed=i,e.progress=i/e.duration,e.flipX&&e.target.toggleFlipX(),e.flipY&&e.target.toggleFlipY(),e.start=e.getStartValue(e.target,e.key,e.start,e.index,t.totalTargets,t),e.end=e.getEndValue(e.target,e.key,e.start,e.index,t.totalTargets,t),e.repeatDelay>0?(e.elapsed=e.repeatDelay-i,e.current=e.start,e.target[e.key]=e.current,h.REPEAT_DELAY):(this.dispatchTweenDataEvent(r.TWEEN_REPEAT,t.callbacks.onRepeat,e),h.PLAYING_FORWARD)):h.COMPLETE},setStateFromStart:function(t,e,i){return e.repeatCounter>0?(e.repeatCounter--,e.elapsed=i,e.progress=i/e.duration,e.flipX&&e.target.toggleFlipX(),e.flipY&&e.target.toggleFlipY(),e.end=e.getEndValue(e.target,e.key,e.start,e.index,t.totalTargets,t),e.repeatDelay>0?(e.elapsed=e.repeatDelay-i,e.current=e.start,e.target[e.key]=e.current,h.REPEAT_DELAY):(this.dispatchTweenDataEvent(r.TWEEN_REPEAT,t.callbacks.onRepeat,e),h.PLAYING_FORWARD)):h.COMPLETE},updateTweenData:function(t,e,i){var n=e.target;switch(e.state){case h.PLAYING_FORWARD:case h.PLAYING_BACKWARD:if(!n){e.state=h.COMPLETE;break}var s=e.elapsed,o=e.duration,a=0;(s+=i)>o&&(a=s-o,s=o);var l=e.state===h.PLAYING_FORWARD,u=s/o;if(e.elapsed=s,e.progress=u,e.previous=e.current,1===u)l?(e.current=e.end,n[e.key]=e.end,e.hold>0?(e.elapsed=e.hold-a,e.state=h.HOLD_DELAY):e.state=this.setStateFromEnd(t,e,a)):(e.current=e.start,n[e.key]=e.start,e.state=this.setStateFromStart(t,e,a));else{var c=l?e.ease(u):e.ease(1-u);e.current=e.start+(e.end-e.start)*c,n[e.key]=e.current}this.dispatchTweenDataEvent(r.TWEEN_UPDATE,t.callbacks.onUpdate,e);break;case h.DELAY:e.elapsed-=i,e.elapsed<=0&&(e.elapsed=Math.abs(e.elapsed),e.state=h.PENDING_RENDER);break;case h.REPEAT_DELAY:e.elapsed-=i,e.elapsed<=0&&(e.elapsed=Math.abs(e.elapsed),e.state=h.PLAYING_FORWARD,this.dispatchTweenDataEvent(r.TWEEN_REPEAT,t.callbacks.onRepeat,e));break;case h.HOLD_DELAY:e.elapsed-=i,e.elapsed<=0&&(e.state=this.setStateFromEnd(t,e,Math.abs(e.elapsed)));break;case h.PENDING_RENDER:n?(e.start=e.getStartValue(n,e.key,n[e.key],e.index,t.totalTargets,t),e.end=e.getEndValue(n,e.key,e.start,e.index,t.totalTargets,t),e.current=e.start,n[e.key]=e.start,e.state=h.PLAYING_FORWARD):e.state=h.COMPLETE}return e.state!==h.COMPLETE}});u.TYPES=["onActive","onComplete","onLoop","onRepeat","onStart","onUpdate","onYoyo"],a.register("tween",(function(t){return this.scene.sys.tweens.add(t)})),o.register("tween",(function(t){return this.scene.sys.tweens.create(t)})),t.exports=u},
 /*!********************************************************!*\
   !*** ./node_modules/phaser/src/tweens/events/index.js ***!
   \********************************************************/
@@ -2853,7 +2853,7 @@ var n=i(/*! ../../bounds/GetRight */50),s=i(/*! ../../bounds/GetTop */53),r=i(/*
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./CircumferencePoint */163),s=i(/*! ../../math/FromPercent */97),r=i(/*! ../../math/const */16),o=i(/*! ../point/Point */4);t.exports=function(t,e,i){void 0===i&&(i=new o);var a=s(e,0,r.PI2);return n(t,a,i)}},
+var n=i(/*! ./CircumferencePoint */163),s=i(/*! ../../math/FromPercent */97),r=i(/*! ../../math/const */16),o=i(/*! ../point/Point */5);t.exports=function(t,e,i){void 0===i&&(i=new o);var a=s(e,0,r.PI2);return n(t,a,i)}},
 /*!**********************************************************!*\
   !*** ./node_modules/phaser/src/geom/circle/GetPoints.js ***!
   \**********************************************************/
@@ -2961,7 +2961,7 @@ var n=i(/*! ./GetPoint */166),s=i(/*! ./Perimeter */122);t.exports=function(t,e,
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){return void 0===i&&(i=new n),i.x=t.x1+(t.x2-t.x1)*e,i.y=t.y1+(t.y2-t.y1)*e,i}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e,i){return void 0===i&&(i=new n),i.x=t.x1+(t.x2-t.x1)*e,i.y=t.y1+(t.y2-t.y1)*e,i}},
 /*!******************************************************!*\
   !*** ./node_modules/phaser/src/math/RotateAround.js ***!
   \******************************************************/
@@ -3069,7 +3069,7 @@ t.exports={CHANGE_DATA:i(/*! ./CHANGE_DATA_EVENT */608),CHANGE_DATA_KEY:i(/*! ./
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Perimeter */122),s=i(/*! ../point/Point */4);t.exports=function(t,e,i,r){if(void 0===r&&(r=[]),!e&&!i)return r;e?i=Math.round(n(t)/e):e=n(t)/i;for(var o=t.x,a=t.y,h=0,l=0;l<i;l++)switch(r.push(new s(o,a)),h){case 0:(o+=e)>=t.right&&(h=1,a+=o-t.right,o=t.right);break;case 1:(a+=e)>=t.bottom&&(h=2,o-=a-t.bottom,a=t.bottom);break;case 2:(o-=e)<=t.left&&(h=3,a-=t.left-o,o=t.left);break;case 3:(a-=e)<=t.top&&(h=0,a=t.top)}return r}},
+var n=i(/*! ./Perimeter */122),s=i(/*! ../point/Point */5);t.exports=function(t,e,i,r){if(void 0===r&&(r=[]),!e&&!i)return r;e?i=Math.round(n(t)/e):e=n(t)/i;for(var o=t.x,a=t.y,h=0,l=0;l<i;l++)switch(r.push(new s(o,a)),h){case 0:(o+=e)>=t.right&&(h=1,a+=o-t.right,o=t.right);break;case 1:(a+=e)>=t.bottom&&(h=2,o-=a-t.bottom,a=t.bottom);break;case 2:(o-=e)<=t.left&&(h=3,a-=t.left-o,o=t.left);break;case 3:(a-=e)<=t.top&&(h=0,a=t.top)}return r}},
 /*!***********************************************************!*\
   !*** ./node_modules/phaser/src/utils/array/RotateLeft.js ***!
   \***********************************************************/
@@ -4034,7 +4034,7 @@ var n=i(/*! ../../utils/Class */0),s=i(/*! ../events */57),r=i(/*! ../../utils/N
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../utils/Class */0),s=i(/*! ../core/events */22),r=i(/*! eventemitter3 */10),o=i(/*! ../loader/FileTypesManager */9),a=i(/*! ../gameobjects/GameObjectCreator */17),h=i(/*! ../gameobjects/GameObjectFactory */5),l=i(/*! ../utils/object/GetFastValue */2),u=i(/*! ./PluginCache */23),c=i(/*! ../utils/array/Remove */135),d=new n({Extends:r,initialize:function(t){r.call(this),this.game=t,this.plugins=[],this.scenePlugins=[],this._pendingGlobal=[],this._pendingScene=[],t.isBooted?this.boot():t.events.once(s.BOOT,this.boot,this)},boot:function(){var t,e,i,n,r,o,a,h=this.game.config,u=h.installGlobalPlugins;for(u=u.concat(this._pendingGlobal),t=0;t<u.length;t++)e=u[t],i=l(e,"key",null),n=l(e,"plugin",null),r=l(e,"start",!1),o=l(e,"mapping",null),a=l(e,"data",null),i&&(n?this.install(i,n,r,o,a):console.warn("Missing `plugin` for key: "+i));for(u=(u=h.installScenePlugins).concat(this._pendingScene),t=0;t<u.length;t++)e=u[t],i=l(e,"key",null),n=l(e,"plugin",null),o=l(e,"mapping",null),i&&(n?this.installScenePlugin(i,n,o):console.warn("Missing `plugin` for key: "+i));this._pendingGlobal=[],this._pendingScene=[],this.game.events.once(s.DESTROY,this.destroy,this)},addToScene:function(t,e,i){var n,s,r,o=this.game,a=t.scene,h=t.settings.map,l=t.settings.isBooted;for(n=0;n<e.length;n++)o[s=e[n]]?(t[s]=o[s],h.hasOwnProperty(s)&&(a[h[s]]=t[s])):"game"===s&&h.hasOwnProperty(s)&&(a[h[s]]=o);for(var c=0;c<i.length;c++)for(r=i[c],n=0;n<r.length;n++)if(s=r[n],u.hasCore(s)){var d=u.getCore(s),f=new d.plugin(a,this);t[d.mapping]=f,d.custom?a[d.mapping]=f:h.hasOwnProperty(d.mapping)&&(a[h[d.mapping]]=f),l&&f.boot()}for(r=this.plugins,n=0;n<r.length;n++){var p=r[n];p.mapping&&(a[p.mapping]=p.plugin)}},getDefaultScenePlugins:function(){var t=this.game.config.defaultPlugins;return t=t.concat(this.scenePlugins)},installScenePlugin:function(t,e,i,n,s){if(void 0===s&&(s=!1),"function"==typeof e){if(u.hasCore(t)){if(!s&&u.hasCore(t))return void console.warn("Scene Plugin key in use: "+t)}else u.register(t,e,i,!0),this.scenePlugins.push(t);if(n){var r=new e(n,this);n.sys[t]=r,i&&""!==i&&(n[i]=r),r.boot()}}else console.warn("Invalid Scene Plugin: "+t)},install:function(t,e,i,n,s){if(void 0===i&&(i=!1),void 0===n&&(n=null),void 0===s&&(s=null),"function"!=typeof e)return console.warn("Invalid Plugin: "+t),null;if(u.hasCustom(t))return console.warn("Plugin key in use: "+t),null;if(null!==n&&(i=!0),this.game.isBooted){if(u.registerCustom(t,e,n,s),i)return this.start(t)}else this._pendingGlobal.push({key:t,plugin:e,start:i,mapping:n,data:s});return null},getIndex:function(t){for(var e=this.plugins,i=0;i<e.length;i++){if(e[i].key===t)return i}return-1},getEntry:function(t){var e=this.getIndex(t);if(-1!==e)return this.plugins[e]},isActive:function(t){var e=this.getEntry(t);return e&&e.active},start:function(t,e){void 0===e&&(e=t);var i=this.getEntry(e);return i&&!i.active?(i.active=!0,i.plugin.start()):i||(i=this.createEntry(t,e)),i?i.plugin:null},createEntry:function(t,e){var i=u.getCustom(t);if(i){var n=new i.plugin(this);i={key:e,plugin:n,active:!0,mapping:i.mapping,data:i.data},this.plugins.push(i),n.init(i.data),n.start()}return i},stop:function(t){var e=this.getEntry(t);return e&&e.active&&(e.active=!1,e.plugin.stop()),this},get:function(t,e){void 0===e&&(e=!0);var i=this.getEntry(t);if(i)return i.plugin;var n=this.getClass(t);return n&&e?(i=this.createEntry(t,t))?i.plugin:null:n||null},getClass:function(t){return u.getCustomClass(t)},removeGlobalPlugin:function(t){var e=this.getEntry(t);e&&c(this.plugins,e),u.removeCustom(t)},removeScenePlugin:function(t){c(this.scenePlugins,t),u.remove(t)},registerGameObject:function(t,e,i){return e&&h.register(t,e),i&&a.register(t,i),this},removeGameObject:function(t,e,i){return void 0===e&&(e=!0),void 0===i&&(i=!0),e&&h.remove(t),i&&a.remove(t),this},registerFileType:function(t,e,i){o.register(t,e),i&&i.sys.load&&(i.sys.load[t]=e)},destroy:function(){for(var t=0;t<this.plugins.length;t++)this.plugins[t].plugin.destroy();u.destroyCustomPlugins(),this.game.noReturn&&u.destroyCorePlugins(),this.game=null,this.plugins=[],this.scenePlugins=[]}});t.exports=d},
+var n=i(/*! ../utils/Class */0),s=i(/*! ../core/events */22),r=i(/*! eventemitter3 */10),o=i(/*! ../loader/FileTypesManager */9),a=i(/*! ../gameobjects/GameObjectCreator */17),h=i(/*! ../gameobjects/GameObjectFactory */6),l=i(/*! ../utils/object/GetFastValue */2),u=i(/*! ./PluginCache */23),c=i(/*! ../utils/array/Remove */135),d=new n({Extends:r,initialize:function(t){r.call(this),this.game=t,this.plugins=[],this.scenePlugins=[],this._pendingGlobal=[],this._pendingScene=[],t.isBooted?this.boot():t.events.once(s.BOOT,this.boot,this)},boot:function(){var t,e,i,n,r,o,a,h=this.game.config,u=h.installGlobalPlugins;for(u=u.concat(this._pendingGlobal),t=0;t<u.length;t++)e=u[t],i=l(e,"key",null),n=l(e,"plugin",null),r=l(e,"start",!1),o=l(e,"mapping",null),a=l(e,"data",null),i&&(n?this.install(i,n,r,o,a):console.warn("Missing `plugin` for key: "+i));for(u=(u=h.installScenePlugins).concat(this._pendingScene),t=0;t<u.length;t++)e=u[t],i=l(e,"key",null),n=l(e,"plugin",null),o=l(e,"mapping",null),i&&(n?this.installScenePlugin(i,n,o):console.warn("Missing `plugin` for key: "+i));this._pendingGlobal=[],this._pendingScene=[],this.game.events.once(s.DESTROY,this.destroy,this)},addToScene:function(t,e,i){var n,s,r,o=this.game,a=t.scene,h=t.settings.map,l=t.settings.isBooted;for(n=0;n<e.length;n++)o[s=e[n]]?(t[s]=o[s],h.hasOwnProperty(s)&&(a[h[s]]=t[s])):"game"===s&&h.hasOwnProperty(s)&&(a[h[s]]=o);for(var c=0;c<i.length;c++)for(r=i[c],n=0;n<r.length;n++)if(s=r[n],u.hasCore(s)){var d=u.getCore(s),f=new d.plugin(a,this);t[d.mapping]=f,d.custom?a[d.mapping]=f:h.hasOwnProperty(d.mapping)&&(a[h[d.mapping]]=f),l&&f.boot()}for(r=this.plugins,n=0;n<r.length;n++){var p=r[n];p.mapping&&(a[p.mapping]=p.plugin)}},getDefaultScenePlugins:function(){var t=this.game.config.defaultPlugins;return t=t.concat(this.scenePlugins)},installScenePlugin:function(t,e,i,n,s){if(void 0===s&&(s=!1),"function"==typeof e){if(u.hasCore(t)){if(!s&&u.hasCore(t))return void console.warn("Scene Plugin key in use: "+t)}else u.register(t,e,i,!0),this.scenePlugins.push(t);if(n){var r=new e(n,this);n.sys[t]=r,i&&""!==i&&(n[i]=r),r.boot()}}else console.warn("Invalid Scene Plugin: "+t)},install:function(t,e,i,n,s){if(void 0===i&&(i=!1),void 0===n&&(n=null),void 0===s&&(s=null),"function"!=typeof e)return console.warn("Invalid Plugin: "+t),null;if(u.hasCustom(t))return console.warn("Plugin key in use: "+t),null;if(null!==n&&(i=!0),this.game.isBooted){if(u.registerCustom(t,e,n,s),i)return this.start(t)}else this._pendingGlobal.push({key:t,plugin:e,start:i,mapping:n,data:s});return null},getIndex:function(t){for(var e=this.plugins,i=0;i<e.length;i++){if(e[i].key===t)return i}return-1},getEntry:function(t){var e=this.getIndex(t);if(-1!==e)return this.plugins[e]},isActive:function(t){var e=this.getEntry(t);return e&&e.active},start:function(t,e){void 0===e&&(e=t);var i=this.getEntry(e);return i&&!i.active?(i.active=!0,i.plugin.start()):i||(i=this.createEntry(t,e)),i?i.plugin:null},createEntry:function(t,e){var i=u.getCustom(t);if(i){var n=new i.plugin(this);i={key:e,plugin:n,active:!0,mapping:i.mapping,data:i.data},this.plugins.push(i),n.init(i.data),n.start()}return i},stop:function(t){var e=this.getEntry(t);return e&&e.active&&(e.active=!1,e.plugin.stop()),this},get:function(t,e){void 0===e&&(e=!0);var i=this.getEntry(t);if(i)return i.plugin;var n=this.getClass(t);return n&&e?(i=this.createEntry(t,t))?i.plugin:null:n||null},getClass:function(t){return u.getCustomClass(t)},removeGlobalPlugin:function(t){var e=this.getEntry(t);e&&c(this.plugins,e),u.removeCustom(t)},removeScenePlugin:function(t){c(this.scenePlugins,t),u.remove(t)},registerGameObject:function(t,e,i){return e&&h.register(t,e),i&&a.register(t,i),this},removeGameObject:function(t,e,i){return void 0===e&&(e=!0),void 0===i&&(i=!0),e&&h.remove(t),i&&a.remove(t),this},registerFileType:function(t,e,i){o.register(t,e),i&&i.sys.load&&(i.sys.load[t]=e)},destroy:function(){for(var t=0;t<this.plugins.length;t++)this.plugins[t].plugin.destroy();u.destroyCustomPlugins(),this.game.noReturn&&u.destroyCorePlugins(),this.game=null,this.plugins=[],this.scenePlugins=[]}});t.exports=d},
 /*!*******************************************************!*\
   !*** ./node_modules/phaser/src/scale/ScaleManager.js ***!
   \*******************************************************/
@@ -4372,7 +4372,7 @@ var n=i(/*! ../../utils/Class */0),s=i(/*! ../components */13),r=i(/*! ../GameOb
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./CircumferencePoint */211),s=i(/*! ../../math/FromPercent */97),r=i(/*! ../../math/const */16),o=i(/*! ../point/Point */4);t.exports=function(t,e,i){void 0===i&&(i=new o);var a=s(e,0,r.PI2);return n(t,a,i)}},
+var n=i(/*! ./CircumferencePoint */211),s=i(/*! ../../math/FromPercent */97),r=i(/*! ../../math/const */16),o=i(/*! ../point/Point */5);t.exports=function(t,e,i){void 0===i&&(i=new o);var a=s(e,0,r.PI2);return n(t,a,i)}},
 /*!***********************************************************!*\
   !*** ./node_modules/phaser/src/geom/ellipse/GetPoints.js ***!
   \***********************************************************/
@@ -4685,7 +4685,7 @@ var n=i(/*! ../../../utils/Class */0),s=i(/*! ../Shape */34),r=i(/*! ../../../ge
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4),s=i(/*! ../line/Length */63);t.exports=function(t,e,i){void 0===i&&(i=new n);var r=t.getLineA(),o=t.getLineB(),a=t.getLineC();if(e<=0||e>=1)return i.x=r.x1,i.y=r.y1,i;var h=s(r),l=s(o),u=s(a),c=(h+l+u)*e,d=0;return c<h?(d=c/h,i.x=r.x1+(r.x2-r.x1)*d,i.y=r.y1+(r.y2-r.y1)*d):c>h+l?(d=(c-=h+l)/u,i.x=a.x1+(a.x2-a.x1)*d,i.y=a.y1+(a.y2-a.y1)*d):(d=(c-=h)/l,i.x=o.x1+(o.x2-o.x1)*d,i.y=o.y1+(o.y2-o.y1)*d),i}},
+var n=i(/*! ../point/Point */5),s=i(/*! ../line/Length */63);t.exports=function(t,e,i){void 0===i&&(i=new n);var r=t.getLineA(),o=t.getLineB(),a=t.getLineC();if(e<=0||e>=1)return i.x=r.x1,i.y=r.y1,i;var h=s(r),l=s(o),u=s(a),c=(h+l+u)*e,d=0;return c<h?(d=c/h,i.x=r.x1+(r.x2-r.x1)*d,i.y=r.y1+(r.y2-r.y1)*d):c>h+l?(d=(c-=h+l)/u,i.x=a.x1+(a.x2-a.x1)*d,i.y=a.y1+(a.y2-a.y1)*d):(d=(c-=h)/l,i.x=o.x1+(o.x2-o.x1)*d,i.y=o.y1+(o.y2-o.y1)*d),i}},
 /*!************************************************************!*\
   !*** ./node_modules/phaser/src/geom/triangle/GetPoints.js ***!
   \************************************************************/
@@ -4697,7 +4697,7 @@ var n=i(/*! ../point/Point */4),s=i(/*! ../line/Length */63);t.exports=function(
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../line/Length */63),s=i(/*! ../point/Point */4);t.exports=function(t,e,i,r){void 0===r&&(r=[]);var o=t.getLineA(),a=t.getLineB(),h=t.getLineC(),l=n(o),u=n(a),c=n(h),d=l+u+c;!e&&i>0&&(e=d/i);for(var f=0;f<e;f++){var p=d*(f/e),g=0,v=new s;p<l?(g=p/l,v.x=o.x1+(o.x2-o.x1)*g,v.y=o.y1+(o.y2-o.y1)*g):p>l+u?(g=(p-=l+u)/c,v.x=h.x1+(h.x2-h.x1)*g,v.y=h.y1+(h.y2-h.y1)*g):(g=(p-=l)/u,v.x=a.x1+(a.x2-a.x1)*g,v.y=a.y1+(a.y2-a.y1)*g),r.push(v)}return r}},
+var n=i(/*! ../line/Length */63),s=i(/*! ../point/Point */5);t.exports=function(t,e,i,r){void 0===r&&(r=[]);var o=t.getLineA(),a=t.getLineB(),h=t.getLineC(),l=n(o),u=n(a),c=n(h),d=l+u+c;!e&&i>0&&(e=d/i);for(var f=0;f<e;f++){var p=d*(f/e),g=0,v=new s;p<l?(g=p/l,v.x=o.x1+(o.x2-o.x1)*g,v.y=o.y1+(o.y2-o.y1)*g):p>l+u?(g=(p-=l+u)/c,v.x=h.x1+(h.x2-h.x1)*g,v.y=h.y1+(h.y2-h.y1)*g):(g=(p-=l)/u,v.x=a.x1+(a.x2-a.x1)*g,v.y=a.y1+(a.y2-a.y1)*g),r.push(v)}return r}},
 /*!**********************************************************!*\
   !*** ./node_modules/phaser/src/utils/object/SetValue.js ***!
   \**********************************************************/
@@ -4800,7 +4800,7 @@ var n=i(/*! ./LineToCircle */226),s=i(/*! ../triangle/Contains */91);t.exports=f
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4),s=i(/*! ./TriangleToLine */470),r=i(/*! ./LineToLine */92);t.exports=function(t,e,i){if(void 0===i&&(i=[]),s(t,e))for(var o=t.getLineA(),a=t.getLineB(),h=t.getLineC(),l=[new n,new n,new n],u=[r(o,e,l[0]),r(a,e,l[1]),r(h,e,l[2])],c=0;c<3;c++)u[c]&&i.push(l[c]);return i}},
+var n=i(/*! ../point/Point */5),s=i(/*! ./TriangleToLine */470),r=i(/*! ./LineToLine */92);t.exports=function(t,e,i){if(void 0===i&&(i=[]),s(t,e))for(var o=t.getLineA(),a=t.getLineB(),h=t.getLineC(),l=[new n,new n,new n],u=[r(o,e,l[0]),r(a,e,l[1]),r(h,e,l[2])],c=0;c<3;c++)u[c]&&i.push(l[c]);return i}},
 /*!*******************************************************************!*\
   !*** ./node_modules/phaser/src/geom/intersects/TriangleToLine.js ***!
   \*******************************************************************/
@@ -4890,7 +4890,7 @@ var n=i(/*! ./Rectangle */12);n.Area=i(/*! ./Area */1191),n.Ceil=i(/*! ./Ceil */
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=(t.x1+t.x2+t.x3)/3,e.y=(t.y1+t.y2+t.y3)/3,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=(t.x1+t.x2+t.x3)/3,e.y=(t.y1+t.y2+t.y3)/3,e}},
 /*!*********************************************************!*\
   !*** ./node_modules/phaser/src/geom/triangle/Offset.js ***!
   \*********************************************************/
@@ -4908,7 +4908,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=ne
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);function s(t,e,i,n){var s=t-i,r=e-n,o=s*s+r*r;return Math.sqrt(o)}t.exports=function(t,e){void 0===e&&(e=new n);var i=t.x1,r=t.y1,o=t.x2,a=t.y2,h=t.x3,l=t.y3,u=s(h,l,o,a),c=s(i,r,h,l),d=s(o,a,i,r),f=u+c+d;return e.x=(i*u+o*c+h*d)/f,e.y=(r*u+a*c+l*d)/f,e}},
+var n=i(/*! ../point/Point */5);function s(t,e,i,n){var s=t-i,r=e-n,o=s*s+r*r;return Math.sqrt(o)}t.exports=function(t,e){void 0===e&&(e=new n);var i=t.x1,r=t.y1,o=t.x2,a=t.y2,h=t.x3,l=t.y3,u=s(h,l,o,a),c=s(i,r,h,l),d=s(o,a,i,r),f=u+c+d;return e.x=(i*u+o*c+h*d)/f,e.y=(r*u+a*c+l*d)/f,e}},
 /*!******************************************************************!*\
   !*** ./node_modules/phaser/src/input/CreateInteractiveObject.js ***!
   \******************************************************************/
@@ -8470,7 +8470,7 @@ t.exports={Path:i(/*! ./path/Path */823),CubicBezier:i(/*! ./CubicBezierCurve */
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../utils/Class */0),s=i(/*! ../CubicBezierCurve */381),r=i(/*! ../EllipseCurve */382),o=i(/*! ../../gameobjects/GameObjectFactory */5),a=i(/*! ../LineCurve */383),h=i(/*! ./MoveTo */824),l=i(/*! ../QuadraticBezierCurve */384),u=i(/*! ../../geom/rectangle/Rectangle */12),c=i(/*! ../SplineCurve */385),d=i(/*! ../../math/Vector2 */3),f=i(/*! ../../math/const */16),p=new n({initialize:function(t,e){void 0===t&&(t=0),void 0===e&&(e=0),this.name="",this.curves=[],this.cacheLengths=[],this.autoClose=!1,this.startPoint=new d,this._tmpVec2A=new d,this._tmpVec2B=new d,"object"==typeof t?this.fromJSON(t):this.startPoint.set(t,e)},add:function(t){return this.curves.push(t),this},circleTo:function(t,e,i){return void 0===e&&(e=!1),this.ellipseTo(t,t,0,360,e,i)},closePath:function(){var t=this.curves[0].getPoint(0),e=this.curves[this.curves.length-1].getPoint(1);return t.equals(e)||this.curves.push(new a(e,t)),this},cubicBezierTo:function(t,e,i,n,r,o){var a,h,l,u=this.getEndPoint();return t instanceof d?(a=t,h=e,l=i):(a=new d(i,n),h=new d(r,o),l=new d(t,e)),this.add(new s(u,a,h,l))},quadraticBezierTo:function(t,e,i,n){var s,r,o=this.getEndPoint();return t instanceof d?(s=t,r=e):(s=new d(i,n),r=new d(t,e)),this.add(new l(o,s,r))},draw:function(t,e){for(var i=0;i<this.curves.length;i++){var n=this.curves[i];n.active&&n.draw(t,e)}return t},ellipseTo:function(t,e,i,n,s,o){var a=new r(0,0,t,e,i,n,s,o),h=this.getEndPoint(this._tmpVec2A),l=a.getStartPoint(this._tmpVec2B);return h.subtract(l),a.x=h.x,a.y=h.y,this.add(a)},fromJSON:function(t){this.curves=[],this.cacheLengths=[],this.startPoint.set(t.x,t.y),this.autoClose=t.autoClose;for(var e=0;e<t.curves.length;e++){var i=t.curves[e];switch(i.type){case"LineCurve":this.add(a.fromJSON(i));break;case"EllipseCurve":this.add(r.fromJSON(i));break;case"SplineCurve":this.add(c.fromJSON(i));break;case"CubicBezierCurve":this.add(s.fromJSON(i));break;case"QuadraticBezierCurve":this.add(l.fromJSON(i))}}return this},getBounds:function(t,e){void 0===t&&(t=new u),void 0===e&&(e=16),t.x=Number.MAX_VALUE,t.y=Number.MAX_VALUE;for(var i=new u,n=f.MIN_SAFE_INTEGER,s=f.MIN_SAFE_INTEGER,r=0;r<this.curves.length;r++){var o=this.curves[r];o.active&&(o.getBounds(i,e),t.x=Math.min(t.x,i.x),t.y=Math.min(t.y,i.y),n=Math.max(n,i.right),s=Math.max(s,i.bottom))}return t.right=n,t.bottom=s,t},getCurveLengths:function(){if(this.cacheLengths.length===this.curves.length)return this.cacheLengths;for(var t=[],e=0,i=0;i<this.curves.length;i++)e+=this.curves[i].getLength(),t.push(e);return this.cacheLengths=t,t},getEndPoint:function(t){return void 0===t&&(t=new d),this.curves.length>0?this.curves[this.curves.length-1].getPoint(1,t):t.copy(this.startPoint),t},getLength:function(){var t=this.getCurveLengths();return t[t.length-1]},getPoint:function(t,e){void 0===e&&(e=new d);for(var i=t*this.getLength(),n=this.getCurveLengths(),s=0;s<n.length;){if(n[s]>=i){var r=n[s]-i,o=this.curves[s],a=o.getLength(),h=0===a?0:1-r/a;return o.getPointAt(h,e)}s++}return null},getPoints:function(t){void 0===t&&(t=12);for(var e,i=[],n=0;n<this.curves.length;n++){var s=this.curves[n];if(s.active)for(var r=s.getResolution(t),o=s.getPoints(r),a=0;a<o.length;a++){var h=o[a];e&&e.equals(h)||(i.push(h),e=h)}}return this.autoClose&&i.length>1&&!i[i.length-1].equals(i[0])&&i.push(i[0]),i},getRandomPoint:function(t){return void 0===t&&(t=new d),this.getPoint(Math.random(),t)},getSpacedPoints:function(t){void 0===t&&(t=40);for(var e=[],i=0;i<=t;i++)e.push(this.getPoint(i/t));return this.autoClose&&e.push(e[0]),e},getStartPoint:function(t){return void 0===t&&(t=new d),t.copy(this.startPoint)},getTangent:function(t,e){void 0===e&&(e=new d);for(var i=t*this.getLength(),n=this.getCurveLengths(),s=0;s<n.length;){if(n[s]>=i){var r=n[s]-i,o=this.curves[s],a=o.getLength(),h=0===a?0:1-r/a;return o.getTangentAt(h,e)}s++}return null},lineTo:function(t,e){t instanceof d?this._tmpVec2B.copy(t):this._tmpVec2B.set(t,e);var i=this.getEndPoint(this._tmpVec2A);return this.add(new a([i.x,i.y,this._tmpVec2B.x,this._tmpVec2B.y]))},splineTo:function(t){return t.unshift(this.getEndPoint()),this.add(new c(t))},moveTo:function(t,e){return t instanceof d?this.add(new h(t.x,t.y)):this.add(new h(t,e))},toJSON:function(){for(var t=[],e=0;e<this.curves.length;e++)t.push(this.curves[e].toJSON());return{type:"Path",x:this.startPoint.x,y:this.startPoint.y,autoClose:this.autoClose,curves:t}},updateArcLengths:function(){this.cacheLengths=[],this.getCurveLengths()},destroy:function(){this.curves.length=0,this.cacheLengths.length=0,this.startPoint=void 0}});o.register("path",(function(t,e){return new p(t,e)})),t.exports=p},
+var n=i(/*! ../../utils/Class */0),s=i(/*! ../CubicBezierCurve */381),r=i(/*! ../EllipseCurve */382),o=i(/*! ../../gameobjects/GameObjectFactory */6),a=i(/*! ../LineCurve */383),h=i(/*! ./MoveTo */824),l=i(/*! ../QuadraticBezierCurve */384),u=i(/*! ../../geom/rectangle/Rectangle */12),c=i(/*! ../SplineCurve */385),d=i(/*! ../../math/Vector2 */3),f=i(/*! ../../math/const */16),p=new n({initialize:function(t,e){void 0===t&&(t=0),void 0===e&&(e=0),this.name="",this.curves=[],this.cacheLengths=[],this.autoClose=!1,this.startPoint=new d,this._tmpVec2A=new d,this._tmpVec2B=new d,"object"==typeof t?this.fromJSON(t):this.startPoint.set(t,e)},add:function(t){return this.curves.push(t),this},circleTo:function(t,e,i){return void 0===e&&(e=!1),this.ellipseTo(t,t,0,360,e,i)},closePath:function(){var t=this.curves[0].getPoint(0),e=this.curves[this.curves.length-1].getPoint(1);return t.equals(e)||this.curves.push(new a(e,t)),this},cubicBezierTo:function(t,e,i,n,r,o){var a,h,l,u=this.getEndPoint();return t instanceof d?(a=t,h=e,l=i):(a=new d(i,n),h=new d(r,o),l=new d(t,e)),this.add(new s(u,a,h,l))},quadraticBezierTo:function(t,e,i,n){var s,r,o=this.getEndPoint();return t instanceof d?(s=t,r=e):(s=new d(i,n),r=new d(t,e)),this.add(new l(o,s,r))},draw:function(t,e){for(var i=0;i<this.curves.length;i++){var n=this.curves[i];n.active&&n.draw(t,e)}return t},ellipseTo:function(t,e,i,n,s,o){var a=new r(0,0,t,e,i,n,s,o),h=this.getEndPoint(this._tmpVec2A),l=a.getStartPoint(this._tmpVec2B);return h.subtract(l),a.x=h.x,a.y=h.y,this.add(a)},fromJSON:function(t){this.curves=[],this.cacheLengths=[],this.startPoint.set(t.x,t.y),this.autoClose=t.autoClose;for(var e=0;e<t.curves.length;e++){var i=t.curves[e];switch(i.type){case"LineCurve":this.add(a.fromJSON(i));break;case"EllipseCurve":this.add(r.fromJSON(i));break;case"SplineCurve":this.add(c.fromJSON(i));break;case"CubicBezierCurve":this.add(s.fromJSON(i));break;case"QuadraticBezierCurve":this.add(l.fromJSON(i))}}return this},getBounds:function(t,e){void 0===t&&(t=new u),void 0===e&&(e=16),t.x=Number.MAX_VALUE,t.y=Number.MAX_VALUE;for(var i=new u,n=f.MIN_SAFE_INTEGER,s=f.MIN_SAFE_INTEGER,r=0;r<this.curves.length;r++){var o=this.curves[r];o.active&&(o.getBounds(i,e),t.x=Math.min(t.x,i.x),t.y=Math.min(t.y,i.y),n=Math.max(n,i.right),s=Math.max(s,i.bottom))}return t.right=n,t.bottom=s,t},getCurveLengths:function(){if(this.cacheLengths.length===this.curves.length)return this.cacheLengths;for(var t=[],e=0,i=0;i<this.curves.length;i++)e+=this.curves[i].getLength(),t.push(e);return this.cacheLengths=t,t},getEndPoint:function(t){return void 0===t&&(t=new d),this.curves.length>0?this.curves[this.curves.length-1].getPoint(1,t):t.copy(this.startPoint),t},getLength:function(){var t=this.getCurveLengths();return t[t.length-1]},getPoint:function(t,e){void 0===e&&(e=new d);for(var i=t*this.getLength(),n=this.getCurveLengths(),s=0;s<n.length;){if(n[s]>=i){var r=n[s]-i,o=this.curves[s],a=o.getLength(),h=0===a?0:1-r/a;return o.getPointAt(h,e)}s++}return null},getPoints:function(t){void 0===t&&(t=12);for(var e,i=[],n=0;n<this.curves.length;n++){var s=this.curves[n];if(s.active)for(var r=s.getResolution(t),o=s.getPoints(r),a=0;a<o.length;a++){var h=o[a];e&&e.equals(h)||(i.push(h),e=h)}}return this.autoClose&&i.length>1&&!i[i.length-1].equals(i[0])&&i.push(i[0]),i},getRandomPoint:function(t){return void 0===t&&(t=new d),this.getPoint(Math.random(),t)},getSpacedPoints:function(t){void 0===t&&(t=40);for(var e=[],i=0;i<=t;i++)e.push(this.getPoint(i/t));return this.autoClose&&e.push(e[0]),e},getStartPoint:function(t){return void 0===t&&(t=new d),t.copy(this.startPoint)},getTangent:function(t,e){void 0===e&&(e=new d);for(var i=t*this.getLength(),n=this.getCurveLengths(),s=0;s<n.length;){if(n[s]>=i){var r=n[s]-i,o=this.curves[s],a=o.getLength(),h=0===a?0:1-r/a;return o.getTangentAt(h,e)}s++}return null},lineTo:function(t,e){t instanceof d?this._tmpVec2B.copy(t):this._tmpVec2B.set(t,e);var i=this.getEndPoint(this._tmpVec2A);return this.add(new a([i.x,i.y,this._tmpVec2B.x,this._tmpVec2B.y]))},splineTo:function(t){return t.unshift(this.getEndPoint()),this.add(new c(t))},moveTo:function(t,e){return t instanceof d?this.add(new h(t.x,t.y)):this.add(new h(t,e))},toJSON:function(){for(var t=[],e=0;e<this.curves.length;e++)t.push(this.curves[e].toJSON());return{type:"Path",x:this.startPoint.x,y:this.startPoint.y,autoClose:this.autoClose,curves:t}},updateArcLengths:function(){this.cacheLengths=[],this.getCurveLengths()},destroy:function(){this.curves.length=0,this.cacheLengths.length=0,this.startPoint=void 0}});o.register("path",(function(t,e){return new p(t,e)})),t.exports=p},
 /*!*******************************************************!*\
   !*** ./node_modules/phaser/src/curves/path/MoveTo.js ***!
   \*******************************************************/
@@ -9868,7 +9868,7 @@ var n=i(/*! ../../../src/utils/object/GetFastValue */2);t.exports=function(t){re
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n={Events:i(/*! ./events */102),DisplayList:i(/*! ./DisplayList */946),GameObjectCreator:i(/*! ./GameObjectCreator */17),GameObjectFactory:i(/*! ./GameObjectFactory */5),UpdateList:i(/*! ./UpdateList */972),Components:i(/*! ./components */13),BuildGameObject:i(/*! ./BuildGameObject */29),BuildGameObjectAnimation:i(/*! ./BuildGameObjectAnimation */204),GameObject:i(/*! ./GameObject */14),BitmapText:i(/*! ./bitmaptext/static/BitmapText */143),Blitter:i(/*! ./blitter/Blitter */206),Container:i(/*! ./container/Container */207),DOMElement:i(/*! ./domelement/DOMElement */428),DynamicBitmapText:i(/*! ./bitmaptext/dynamic/DynamicBitmapText */208),Extern:i(/*! ./extern/Extern.js */430),Graphics:i(/*! ./graphics/Graphics.js */209),Group:i(/*! ./group/Group */110),Image:i(/*! ./image/Image */112),Particles:i(/*! ./particles */1004),PathFollower:i(/*! ./pathfollower/PathFollower */442),RenderTexture:i(/*! ./rendertexture/RenderTexture */213),RetroFont:i(/*! ./bitmaptext/RetroFont */1013),Rope:i(/*! ./rope/Rope */215),Sprite:i(/*! ./sprite/Sprite */66),Text:i(/*! ./text/static/Text */216),TileSprite:i(/*! ./tilesprite/TileSprite */217),Zone:i(/*! ./zone/Zone */120),Video:i(/*! ./video/Video */218),Shape:i(/*! ./shape/Shape */34),Arc:i(/*! ./shape/arc/Arc */443),Curve:i(/*! ./shape/curve/Curve */444),Ellipse:i(/*! ./shape/ellipse/Ellipse */445),Grid:i(/*! ./shape/grid/Grid */446),IsoBox:i(/*! ./shape/isobox/IsoBox */447),IsoTriangle:i(/*! ./shape/isotriangle/IsoTriangle */448),Line:i(/*! ./shape/line/Line */449),Polygon:i(/*! ./shape/polygon/Polygon */450),Rectangle:i(/*! ./shape/rectangle/Rectangle */455),Star:i(/*! ./shape/star/Star */456),Triangle:i(/*! ./shape/triangle/Triangle */457),Factories:{Blitter:i(/*! ./blitter/BlitterFactory */1064),Container:i(/*! ./container/ContainerFactory */1065),DOMElement:i(/*! ./domelement/DOMElementFactory */1066),DynamicBitmapText:i(/*! ./bitmaptext/dynamic/DynamicBitmapTextFactory */1067),Extern:i(/*! ./extern/ExternFactory */1068),Graphics:i(/*! ./graphics/GraphicsFactory */1069),Group:i(/*! ./group/GroupFactory */1070),Image:i(/*! ./image/ImageFactory */1071),Particles:i(/*! ./particles/ParticleManagerFactory */1072),PathFollower:i(/*! ./pathfollower/PathFollowerFactory */1073),RenderTexture:i(/*! ./rendertexture/RenderTextureFactory */1074),Rope:i(/*! ./rope/RopeFactory */1075),Sprite:i(/*! ./sprite/SpriteFactory */1076),StaticBitmapText:i(/*! ./bitmaptext/static/BitmapTextFactory */1077),Text:i(/*! ./text/static/TextFactory */1078),TileSprite:i(/*! ./tilesprite/TileSpriteFactory */1079),Zone:i(/*! ./zone/ZoneFactory */1080),Video:i(/*! ./video/VideoFactory */1081),Arc:i(/*! ./shape/arc/ArcFactory */1082),Curve:i(/*! ./shape/curve/CurveFactory */1083),Ellipse:i(/*! ./shape/ellipse/EllipseFactory */1084),Grid:i(/*! ./shape/grid/GridFactory */1085),IsoBox:i(/*! ./shape/isobox/IsoBoxFactory */1086),IsoTriangle:i(/*! ./shape/isotriangle/IsoTriangleFactory */1087),Line:i(/*! ./shape/line/LineFactory */1088),Polygon:i(/*! ./shape/polygon/PolygonFactory */1089),Rectangle:i(/*! ./shape/rectangle/RectangleFactory */1090),Star:i(/*! ./shape/star/StarFactory */1091),Triangle:i(/*! ./shape/triangle/TriangleFactory */1092)},Creators:{Blitter:i(/*! ./blitter/BlitterCreator */1093),Container:i(/*! ./container/ContainerCreator */1094),DynamicBitmapText:i(/*! ./bitmaptext/dynamic/DynamicBitmapTextCreator */1095),Graphics:i(/*! ./graphics/GraphicsCreator */1096),Group:i(/*! ./group/GroupCreator */1097),Image:i(/*! ./image/ImageCreator */1098),Particles:i(/*! ./particles/ParticleManagerCreator */1099),RenderTexture:i(/*! ./rendertexture/RenderTextureCreator */1100),Rope:i(/*! ./rope/RopeCreator */1101),Sprite:i(/*! ./sprite/SpriteCreator */1102),StaticBitmapText:i(/*! ./bitmaptext/static/BitmapTextCreator */1103),Text:i(/*! ./text/static/TextCreator */1104),TileSprite:i(/*! ./tilesprite/TileSpriteCreator */1105),Zone:i(/*! ./zone/ZoneCreator */1106),Video:i(/*! ./video/VideoCreator */1107)}};n.Mesh=i(/*! ./mesh/Mesh */144),n.Quad=i(/*! ./quad/Quad */221),n.Shader=i(/*! ./shader/Shader */222),n.Factories.Mesh=i(/*! ./mesh/MeshFactory */1114),n.Factories.Quad=i(/*! ./quad/QuadFactory */1115),n.Factories.Shader=i(/*! ./shader/ShaderFactory */1116),n.Creators.Mesh=i(/*! ./mesh/MeshCreator */1117),n.Creators.Quad=i(/*! ./quad/QuadCreator */1118),n.Creators.Shader=i(/*! ./shader/ShaderCreator */1119),n.Light=i(/*! ./lights/Light */461),i(/*! ./lights/LightsManager */462),i(/*! ./lights/LightsPlugin */1120),t.exports=n},
+var n={Events:i(/*! ./events */102),DisplayList:i(/*! ./DisplayList */946),GameObjectCreator:i(/*! ./GameObjectCreator */17),GameObjectFactory:i(/*! ./GameObjectFactory */6),UpdateList:i(/*! ./UpdateList */972),Components:i(/*! ./components */13),BuildGameObject:i(/*! ./BuildGameObject */29),BuildGameObjectAnimation:i(/*! ./BuildGameObjectAnimation */204),GameObject:i(/*! ./GameObject */14),BitmapText:i(/*! ./bitmaptext/static/BitmapText */143),Blitter:i(/*! ./blitter/Blitter */206),Container:i(/*! ./container/Container */207),DOMElement:i(/*! ./domelement/DOMElement */428),DynamicBitmapText:i(/*! ./bitmaptext/dynamic/DynamicBitmapText */208),Extern:i(/*! ./extern/Extern.js */430),Graphics:i(/*! ./graphics/Graphics.js */209),Group:i(/*! ./group/Group */110),Image:i(/*! ./image/Image */112),Particles:i(/*! ./particles */1004),PathFollower:i(/*! ./pathfollower/PathFollower */442),RenderTexture:i(/*! ./rendertexture/RenderTexture */213),RetroFont:i(/*! ./bitmaptext/RetroFont */1013),Rope:i(/*! ./rope/Rope */215),Sprite:i(/*! ./sprite/Sprite */66),Text:i(/*! ./text/static/Text */216),TileSprite:i(/*! ./tilesprite/TileSprite */217),Zone:i(/*! ./zone/Zone */120),Video:i(/*! ./video/Video */218),Shape:i(/*! ./shape/Shape */34),Arc:i(/*! ./shape/arc/Arc */443),Curve:i(/*! ./shape/curve/Curve */444),Ellipse:i(/*! ./shape/ellipse/Ellipse */445),Grid:i(/*! ./shape/grid/Grid */446),IsoBox:i(/*! ./shape/isobox/IsoBox */447),IsoTriangle:i(/*! ./shape/isotriangle/IsoTriangle */448),Line:i(/*! ./shape/line/Line */449),Polygon:i(/*! ./shape/polygon/Polygon */450),Rectangle:i(/*! ./shape/rectangle/Rectangle */455),Star:i(/*! ./shape/star/Star */456),Triangle:i(/*! ./shape/triangle/Triangle */457),Factories:{Blitter:i(/*! ./blitter/BlitterFactory */1064),Container:i(/*! ./container/ContainerFactory */1065),DOMElement:i(/*! ./domelement/DOMElementFactory */1066),DynamicBitmapText:i(/*! ./bitmaptext/dynamic/DynamicBitmapTextFactory */1067),Extern:i(/*! ./extern/ExternFactory */1068),Graphics:i(/*! ./graphics/GraphicsFactory */1069),Group:i(/*! ./group/GroupFactory */1070),Image:i(/*! ./image/ImageFactory */1071),Particles:i(/*! ./particles/ParticleManagerFactory */1072),PathFollower:i(/*! ./pathfollower/PathFollowerFactory */1073),RenderTexture:i(/*! ./rendertexture/RenderTextureFactory */1074),Rope:i(/*! ./rope/RopeFactory */1075),Sprite:i(/*! ./sprite/SpriteFactory */1076),StaticBitmapText:i(/*! ./bitmaptext/static/BitmapTextFactory */1077),Text:i(/*! ./text/static/TextFactory */1078),TileSprite:i(/*! ./tilesprite/TileSpriteFactory */1079),Zone:i(/*! ./zone/ZoneFactory */1080),Video:i(/*! ./video/VideoFactory */1081),Arc:i(/*! ./shape/arc/ArcFactory */1082),Curve:i(/*! ./shape/curve/CurveFactory */1083),Ellipse:i(/*! ./shape/ellipse/EllipseFactory */1084),Grid:i(/*! ./shape/grid/GridFactory */1085),IsoBox:i(/*! ./shape/isobox/IsoBoxFactory */1086),IsoTriangle:i(/*! ./shape/isotriangle/IsoTriangleFactory */1087),Line:i(/*! ./shape/line/LineFactory */1088),Polygon:i(/*! ./shape/polygon/PolygonFactory */1089),Rectangle:i(/*! ./shape/rectangle/RectangleFactory */1090),Star:i(/*! ./shape/star/StarFactory */1091),Triangle:i(/*! ./shape/triangle/TriangleFactory */1092)},Creators:{Blitter:i(/*! ./blitter/BlitterCreator */1093),Container:i(/*! ./container/ContainerCreator */1094),DynamicBitmapText:i(/*! ./bitmaptext/dynamic/DynamicBitmapTextCreator */1095),Graphics:i(/*! ./graphics/GraphicsCreator */1096),Group:i(/*! ./group/GroupCreator */1097),Image:i(/*! ./image/ImageCreator */1098),Particles:i(/*! ./particles/ParticleManagerCreator */1099),RenderTexture:i(/*! ./rendertexture/RenderTextureCreator */1100),Rope:i(/*! ./rope/RopeCreator */1101),Sprite:i(/*! ./sprite/SpriteCreator */1102),StaticBitmapText:i(/*! ./bitmaptext/static/BitmapTextCreator */1103),Text:i(/*! ./text/static/TextCreator */1104),TileSprite:i(/*! ./tilesprite/TileSpriteCreator */1105),Zone:i(/*! ./zone/ZoneCreator */1106),Video:i(/*! ./video/VideoCreator */1107)}};n.Mesh=i(/*! ./mesh/Mesh */144),n.Quad=i(/*! ./quad/Quad */221),n.Shader=i(/*! ./shader/Shader */222),n.Factories.Mesh=i(/*! ./mesh/MeshFactory */1114),n.Factories.Quad=i(/*! ./quad/QuadFactory */1115),n.Factories.Shader=i(/*! ./shader/ShaderFactory */1116),n.Creators.Mesh=i(/*! ./mesh/MeshCreator */1117),n.Creators.Quad=i(/*! ./quad/QuadCreator */1118),n.Creators.Shader=i(/*! ./shader/ShaderCreator */1119),n.Light=i(/*! ./lights/Light */461),i(/*! ./lights/LightsManager */462),i(/*! ./lights/LightsPlugin */1120),t.exports=n},
 /*!************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/DisplayList.js ***!
   \************************************************************/
@@ -11105,7 +11105,7 @@ var n=i(/*! ../FillStyleCanvas */43),s=i(/*! ../LineStyleCanvas */58),r=i(/*! ..
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Blitter */206);i(/*! ../GameObjectFactory */5).register("blitter",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
+var n=i(/*! ./Blitter */206);i(/*! ../GameObjectFactory */6).register("blitter",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
 /*!***************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/container/ContainerFactory.js ***!
   \***************************************************************************/
@@ -11118,7 +11118,7 @@ var n=i(/*! ./Blitter */206);i(/*! ../GameObjectFactory */5).register("blitter",
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Container */207);i(/*! ../GameObjectFactory */5).register("container",(function(t,e,i){return this.displayList.add(new n(this.scene,t,e,i))}))},
+var n=i(/*! ./Container */207);i(/*! ../GameObjectFactory */6).register("container",(function(t,e,i){return this.displayList.add(new n(this.scene,t,e,i))}))},
 /*!*****************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/domelement/DOMElementFactory.js ***!
   \*****************************************************************************/
@@ -11130,7 +11130,7 @@ var n=i(/*! ./Container */207);i(/*! ../GameObjectFactory */5).register("contain
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./DOMElement */428);i(/*! ../GameObjectFactory */5).register("dom",(function(t,e,i,s,r){var o=new n(this.scene,t,e,i,s,r);return this.displayList.add(o),this.updateList.add(o),o}))},
+var n=i(/*! ./DOMElement */428);i(/*! ../GameObjectFactory */6).register("dom",(function(t,e,i,s,r){var o=new n(this.scene,t,e,i,s,r);return this.displayList.add(o),this.updateList.add(o),o}))},
 /*!********************************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/bitmaptext/dynamic/DynamicBitmapTextFactory.js ***!
   \********************************************************************************************/
@@ -11142,7 +11142,7 @@ var n=i(/*! ./DOMElement */428);i(/*! ../GameObjectFactory */5).register("dom",(
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./DynamicBitmapText */208);i(/*! ../../GameObjectFactory */5).register("dynamicBitmapText",(function(t,e,i,s,r){return this.displayList.add(new n(this.scene,t,e,i,s,r))}))},
+var n=i(/*! ./DynamicBitmapText */208);i(/*! ../../GameObjectFactory */6).register("dynamicBitmapText",(function(t,e,i,s,r){return this.displayList.add(new n(this.scene,t,e,i,s,r))}))},
 /*!*********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/extern/ExternFactory.js ***!
   \*********************************************************************/
@@ -11154,7 +11154,7 @@ var n=i(/*! ./DynamicBitmapText */208);i(/*! ../../GameObjectFactory */5).regist
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Extern */430);i(/*! ../GameObjectFactory */5).register("extern",(function(){var t=new n(this.scene);return this.displayList.add(t),this.updateList.add(t),t}))},
+var n=i(/*! ./Extern */430);i(/*! ../GameObjectFactory */6).register("extern",(function(){var t=new n(this.scene);return this.displayList.add(t),this.updateList.add(t),t}))},
 /*!*************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/graphics/GraphicsFactory.js ***!
   \*************************************************************************/
@@ -11166,7 +11166,7 @@ var n=i(/*! ./Extern */430);i(/*! ../GameObjectFactory */5).register("extern",(f
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Graphics */209);i(/*! ../GameObjectFactory */5).register("graphics",(function(t){return this.displayList.add(new n(this.scene,t))}))},
+var n=i(/*! ./Graphics */209);i(/*! ../GameObjectFactory */6).register("graphics",(function(t){return this.displayList.add(new n(this.scene,t))}))},
 /*!*******************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/group/GroupFactory.js ***!
   \*******************************************************************/
@@ -11178,7 +11178,7 @@ var n=i(/*! ./Graphics */209);i(/*! ../GameObjectFactory */5).register("graphics
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Group */110);i(/*! ../GameObjectFactory */5).register("group",(function(t,e){return this.updateList.add(new n(this.scene,t,e))}))},
+var n=i(/*! ./Group */110);i(/*! ../GameObjectFactory */6).register("group",(function(t,e){return this.updateList.add(new n(this.scene,t,e))}))},
 /*!*******************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/image/ImageFactory.js ***!
   \*******************************************************************/
@@ -11190,7 +11190,7 @@ var n=i(/*! ./Group */110);i(/*! ../GameObjectFactory */5).register("group",(fun
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Image */112);i(/*! ../GameObjectFactory */5).register("image",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
+var n=i(/*! ./Image */112);i(/*! ../GameObjectFactory */6).register("image",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
 /*!*********************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/particles/ParticleManagerFactory.js ***!
   \*********************************************************************************/
@@ -11202,7 +11202,7 @@ var n=i(/*! ./Image */112);i(/*! ../GameObjectFactory */5).register("image",(fun
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./ParticleEmitterManager */212);n.register("particles",(function(t,e,i){var n=new s(this.scene,t,e,i);return this.displayList.add(n),this.updateList.add(n),n}))},
+var n=i(/*! ../GameObjectFactory */6),s=i(/*! ./ParticleEmitterManager */212);n.register("particles",(function(t,e,i){var n=new s(this.scene,t,e,i);return this.displayList.add(n),this.updateList.add(n),n}))},
 /*!*********************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/pathfollower/PathFollowerFactory.js ***!
   \*********************************************************************************/
@@ -11214,7 +11214,7 @@ var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./ParticleEmitterManager */212);n.
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./PathFollower */442);n.register("follower",(function(t,e,i,n,r){var o=new s(this.scene,t,e,i,n,r);return this.displayList.add(o),this.updateList.add(o),o}))},
+var n=i(/*! ../GameObjectFactory */6),s=i(/*! ./PathFollower */442);n.register("follower",(function(t,e,i,n,r){var o=new s(this.scene,t,e,i,n,r);return this.displayList.add(o),this.updateList.add(o),o}))},
 /*!***********************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/rendertexture/RenderTextureFactory.js ***!
   \***********************************************************************************/
@@ -11226,7 +11226,7 @@ var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./PathFollower */442);n.register("
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./RenderTexture */213);n.register("renderTexture",(function(t,e,i,n,r,o){return this.displayList.add(new s(this.scene,t,e,i,n,r,o))}))},
+var n=i(/*! ../GameObjectFactory */6),s=i(/*! ./RenderTexture */213);n.register("renderTexture",(function(t,e,i,n,r,o){return this.displayList.add(new s(this.scene,t,e,i,n,r,o))}))},
 /*!*****************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/rope/RopeFactory.js ***!
   \*****************************************************************/
@@ -11238,7 +11238,7 @@ var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./RenderTexture */213);n.register(
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Rope */215);i(/*! ../GameObjectFactory */5).register("rope",(function(t,e,i,s,r,o,a,h){var l=new n(this.scene,t,e,i,s,r,o,a,h);return this.displayList.add(l),this.updateList.add(l)}))},
+var n=i(/*! ./Rope */215);i(/*! ../GameObjectFactory */6).register("rope",(function(t,e,i,s,r,o,a,h){var l=new n(this.scene,t,e,i,s,r,o,a,h);return this.displayList.add(l),this.updateList.add(l)}))},
 /*!*********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/sprite/SpriteFactory.js ***!
   \*********************************************************************/
@@ -11250,7 +11250,7 @@ var n=i(/*! ./Rope */215);i(/*! ../GameObjectFactory */5).register("rope",(funct
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./Sprite */66);n.register("sprite",(function(t,e,i,n){var r=new s(this.scene,t,e,i,n);return this.displayList.add(r),this.updateList.add(r),r}))},
+var n=i(/*! ../GameObjectFactory */6),s=i(/*! ./Sprite */66);n.register("sprite",(function(t,e,i,n){var r=new s(this.scene,t,e,i,n);return this.displayList.add(r),this.updateList.add(r),r}))},
 /*!************************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/bitmaptext/static/BitmapTextFactory.js ***!
   \************************************************************************************/
@@ -11262,7 +11262,7 @@ var n=i(/*! ../GameObjectFactory */5),s=i(/*! ./Sprite */66);n.register("sprite"
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./BitmapText */143);i(/*! ../../GameObjectFactory */5).register("bitmapText",(function(t,e,i,s,r,o){return this.displayList.add(new n(this.scene,t,e,i,s,r,o))}))},
+var n=i(/*! ./BitmapText */143);i(/*! ../../GameObjectFactory */6).register("bitmapText",(function(t,e,i,s,r,o){return this.displayList.add(new n(this.scene,t,e,i,s,r,o))}))},
 /*!************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/text/static/TextFactory.js ***!
   \************************************************************************/
@@ -11274,7 +11274,7 @@ var n=i(/*! ./BitmapText */143);i(/*! ../../GameObjectFactory */5).register("bit
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Text */216);i(/*! ../../GameObjectFactory */5).register("text",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
+var n=i(/*! ./Text */216);i(/*! ../../GameObjectFactory */6).register("text",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
 /*!*****************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/tilesprite/TileSpriteFactory.js ***!
   \*****************************************************************************/
@@ -11286,7 +11286,7 @@ var n=i(/*! ./Text */216);i(/*! ../../GameObjectFactory */5).register("text",(fu
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./TileSprite */217);i(/*! ../GameObjectFactory */5).register("tileSprite",(function(t,e,i,s,r,o){return this.displayList.add(new n(this.scene,t,e,i,s,r,o))}))},
+var n=i(/*! ./TileSprite */217);i(/*! ../GameObjectFactory */6).register("tileSprite",(function(t,e,i,s,r,o){return this.displayList.add(new n(this.scene,t,e,i,s,r,o))}))},
 /*!*****************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/zone/ZoneFactory.js ***!
   \*****************************************************************/
@@ -11298,7 +11298,7 @@ var n=i(/*! ./TileSprite */217);i(/*! ../GameObjectFactory */5).register("tileSp
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Zone */120);i(/*! ../GameObjectFactory */5).register("zone",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
+var n=i(/*! ./Zone */120);i(/*! ../GameObjectFactory */6).register("zone",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
 /*!*******************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/video/VideoFactory.js ***!
   \*******************************************************************/
@@ -11310,7 +11310,7 @@ var n=i(/*! ./Zone */120);i(/*! ../GameObjectFactory */5).register("zone",(funct
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Video */218);i(/*! ../GameObjectFactory */5).register("video",(function(t,e,i){var s=new n(this.scene,t,e,i);return this.displayList.add(s),this.updateList.add(s),s}))},
+var n=i(/*! ./Video */218);i(/*! ../GameObjectFactory */6).register("video",(function(t,e,i){var s=new n(this.scene,t,e,i);return this.displayList.add(s),this.updateList.add(s),s}))},
 /*!*********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/arc/ArcFactory.js ***!
   \*********************************************************************/
@@ -11322,7 +11322,7 @@ var n=i(/*! ./Video */218);i(/*! ../GameObjectFactory */5).register("video",(fun
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Arc */443),s=i(/*! ../../GameObjectFactory */5);s.register("arc",(function(t,e,i,s,r,o,a,h){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a,h))})),s.register("circle",(function(t,e,i,s,r){return this.displayList.add(new n(this.scene,t,e,i,0,360,!1,s,r))}))},
+var n=i(/*! ./Arc */443),s=i(/*! ../../GameObjectFactory */6);s.register("arc",(function(t,e,i,s,r,o,a,h){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a,h))})),s.register("circle",(function(t,e,i,s,r){return this.displayList.add(new n(this.scene,t,e,i,0,360,!1,s,r))}))},
 /*!*************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/curve/CurveFactory.js ***!
   \*************************************************************************/
@@ -11334,7 +11334,7 @@ var n=i(/*! ./Arc */443),s=i(/*! ../../GameObjectFactory */5);s.register("arc",(
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Curve */444);n.register("curve",(function(t,e,i,n,r){return this.displayList.add(new s(this.scene,t,e,i,n,r))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./Curve */444);n.register("curve",(function(t,e,i,n,r){return this.displayList.add(new s(this.scene,t,e,i,n,r))}))},
 /*!*****************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/ellipse/EllipseFactory.js ***!
   \*****************************************************************************/
@@ -11346,7 +11346,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Curve */444);n.register("curv
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Ellipse */445);i(/*! ../../GameObjectFactory */5).register("ellipse",(function(t,e,i,s,r,o){return this.displayList.add(new n(this.scene,t,e,i,s,r,o))}))},
+var n=i(/*! ./Ellipse */445);i(/*! ../../GameObjectFactory */6).register("ellipse",(function(t,e,i,s,r,o){return this.displayList.add(new n(this.scene,t,e,i,s,r,o))}))},
 /*!***********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/grid/GridFactory.js ***!
   \***********************************************************************/
@@ -11358,7 +11358,7 @@ var n=i(/*! ./Ellipse */445);i(/*! ../../GameObjectFactory */5).register("ellips
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Grid */446);n.register("grid",(function(t,e,i,n,r,o,a,h,l,u){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h,l,u))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./Grid */446);n.register("grid",(function(t,e,i,n,r,o,a,h,l,u){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h,l,u))}))},
 /*!***************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/isobox/IsoBoxFactory.js ***!
   \***************************************************************************/
@@ -11370,7 +11370,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Grid */446);n.register("grid"
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./IsoBox */447);n.register("isobox",(function(t,e,i,n,r,o,a){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./IsoBox */447);n.register("isobox",(function(t,e,i,n,r,o,a){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a))}))},
 /*!*************************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/isotriangle/IsoTriangleFactory.js ***!
   \*************************************************************************************/
@@ -11382,7 +11382,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./IsoBox */447);n.register("iso
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./IsoTriangle */448);n.register("isotriangle",(function(t,e,i,n,r,o,a,h){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./IsoTriangle */448);n.register("isotriangle",(function(t,e,i,n,r,o,a,h){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h))}))},
 /*!***********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/line/LineFactory.js ***!
   \***********************************************************************/
@@ -11394,7 +11394,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./IsoTriangle */448);n.register
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Line */449);n.register("line",(function(t,e,i,n,r,o,a,h){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./Line */449);n.register("line",(function(t,e,i,n,r,o,a,h){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h))}))},
 /*!*****************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/polygon/PolygonFactory.js ***!
   \*****************************************************************************/
@@ -11406,7 +11406,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Line */449);n.register("line"
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Polygon */450);n.register("polygon",(function(t,e,i,n,r){return this.displayList.add(new s(this.scene,t,e,i,n,r))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./Polygon */450);n.register("polygon",(function(t,e,i,n,r){return this.displayList.add(new s(this.scene,t,e,i,n,r))}))},
 /*!*********************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/rectangle/RectangleFactory.js ***!
   \*********************************************************************************/
@@ -11418,7 +11418,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Polygon */450);n.register("po
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Rectangle */455);n.register("rectangle",(function(t,e,i,n,r,o){return this.displayList.add(new s(this.scene,t,e,i,n,r,o))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./Rectangle */455);n.register("rectangle",(function(t,e,i,n,r,o){return this.displayList.add(new s(this.scene,t,e,i,n,r,o))}))},
 /*!***********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/star/StarFactory.js ***!
   \***********************************************************************/
@@ -11430,7 +11430,7 @@ var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Rectangle */455);n.register("
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Star */456);i(/*! ../../GameObjectFactory */5).register("star",(function(t,e,i,s,r,o,a){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a))}))},
+var n=i(/*! ./Star */456);i(/*! ../../GameObjectFactory */6).register("star",(function(t,e,i,s,r,o,a){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a))}))},
 /*!*******************************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shape/triangle/TriangleFactory.js ***!
   \*******************************************************************************/
@@ -11442,7 +11442,7 @@ var n=i(/*! ./Star */456);i(/*! ../../GameObjectFactory */5).register("star",(fu
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../GameObjectFactory */5),s=i(/*! ./Triangle */457);n.register("triangle",(function(t,e,i,n,r,o,a,h,l,u){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h,l,u))}))},
+var n=i(/*! ../../GameObjectFactory */6),s=i(/*! ./Triangle */457);n.register("triangle",(function(t,e,i,n,r,o,a,h,l,u){return this.displayList.add(new s(this.scene,t,e,i,n,r,o,a,h,l,u))}))},
 /*!***********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/blitter/BlitterCreator.js ***!
   \***********************************************************************/
@@ -11689,7 +11689,7 @@ var n=i(/*! ../../utils/NOOP */1),s=i(/*! ../../utils/NOOP */1);n=i(/*! ./Shader
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Mesh */144);i(/*! ../GameObjectFactory */5).register("mesh",(function(t,e,i,s,r,o,a,h){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a,h))}))},
+var n=i(/*! ./Mesh */144);i(/*! ../GameObjectFactory */6).register("mesh",(function(t,e,i,s,r,o,a,h){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a,h))}))},
 /*!*****************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/quad/QuadFactory.js ***!
   \*****************************************************************/
@@ -11701,7 +11701,7 @@ var n=i(/*! ./Mesh */144);i(/*! ../GameObjectFactory */5).register("mesh",(funct
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Quad */221);i(/*! ../GameObjectFactory */5).register("quad",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
+var n=i(/*! ./Quad */221);i(/*! ../GameObjectFactory */6).register("quad",(function(t,e,i,s){return this.displayList.add(new n(this.scene,t,e,i,s))}))},
 /*!*********************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/shader/ShaderFactory.js ***!
   \*********************************************************************/
@@ -11713,7 +11713,7 @@ var n=i(/*! ./Quad */221);i(/*! ../GameObjectFactory */5).register("quad",(funct
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Shader */222);i(/*! ../GameObjectFactory */5).register("shader",(function(t,e,i,s,r,o,a){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a))}))},
+var n=i(/*! ./Shader */222);i(/*! ../GameObjectFactory */6).register("shader",(function(t,e,i,s,r,o,a){return this.displayList.add(new n(this.scene,t,e,i,s,r,o,a))}))},
 /*!*****************************************************************!*\
   !*** ./node_modules/phaser/src/gameobjects/mesh/MeshCreator.js ***!
   \*****************************************************************/
@@ -11954,7 +11954,7 @@ var n=i(/*! ../rectangle/Rectangle */12);t.exports=function(t,e){return void 0==
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4),s=i(/*! ./CircleToCircle */223);t.exports=function(t,e,i){if(void 0===i&&(i=[]),s(t,e)){var r,o,a,h,l=t.x,u=t.y,c=t.radius,d=e.x,f=e.y,p=e.radius;if(u===f)0===(a=(o=-2*f)*o-4*(r=1)*(d*d+(h=(p*p-c*c-d*d+l*l)/(2*(l-d)))*h-2*d*h+f*f-p*p))?i.push(new n(h,-o/(2*r))):a>0&&(i.push(new n(h,(-o+Math.sqrt(a))/(2*r))),i.push(new n(h,(-o-Math.sqrt(a))/(2*r))));else{var g=(l-d)/(u-f),v=(p*p-c*c-d*d+l*l-f*f+u*u)/(2*(u-f));0===(a=(o=2*u*g-2*v*g-2*l)*o-4*(r=g*g+1)*(l*l+u*u+v*v-c*c-2*u*v))?(h=-o/(2*r),i.push(new n(h,v-h*g))):a>0&&(h=(-o+Math.sqrt(a))/(2*r),i.push(new n(h,v-h*g)),h=(-o-Math.sqrt(a))/(2*r),i.push(new n(h,v-h*g)))}}return i}},
+var n=i(/*! ../point/Point */5),s=i(/*! ./CircleToCircle */223);t.exports=function(t,e,i){if(void 0===i&&(i=[]),s(t,e)){var r,o,a,h,l=t.x,u=t.y,c=t.radius,d=e.x,f=e.y,p=e.radius;if(u===f)0===(a=(o=-2*f)*o-4*(r=1)*(d*d+(h=(p*p-c*c-d*d+l*l)/(2*(l-d)))*h-2*d*h+f*f-p*p))?i.push(new n(h,-o/(2*r))):a>0&&(i.push(new n(h,(-o+Math.sqrt(a))/(2*r))),i.push(new n(h,(-o-Math.sqrt(a))/(2*r))));else{var g=(l-d)/(u-f),v=(p*p-c*c-d*d+l*l-f*f+u*u)/(2*(u-f));0===(a=(o=2*u*g-2*v*g-2*l)*o-4*(r=g*g+1)*(l*l+u*u+v*v-c*c-2*u*v))?(h=-o/(2*r),i.push(new n(h,v-h*g))):a>0&&(h=(-o+Math.sqrt(a))/(2*r),i.push(new n(h,v-h*g)),h=(-o-Math.sqrt(a))/(2*r),i.push(new n(h,v-h*g)))}}return i}},
 /*!*************************************************************************!*\
   !*** ./node_modules/phaser/src/geom/intersects/GetCircleToRectangle.js ***!
   \*************************************************************************/
@@ -12115,7 +12115,7 @@ var n=i(/*! ./Length */63);t.exports=function(t,e,i){void 0===i&&(i=e);var s=n(t
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../math/distance/DistanceBetweenPoints */344),s=i(/*! ../../tweens/builders/GetEaseFunction */76),r=i(/*! ../point/Point */4);t.exports=function(t,e,i,o,a){void 0===o&&(o=0),void 0===a&&(a=[]);var h,l,u=[],c=t.x1,d=t.y1,f=t.x2-c,p=t.y2-d,g=s(e,a),v=i-1;for(h=0;h<v;h++)l=g(h/v),u.push(new r(c+f*l,d+p*l));if(l=g(1),u.push(new r(c+f*l,d+p*l)),o>0){var m=u[0],y=[m];for(h=1;h<u.length-1;h++){var x=u[h];n(m,x)>=o&&(y.push(x),m=x)}var T=u[u.length-1];return n(m,T)<o&&y.pop(),y.push(T),y}return u}},
+var n=i(/*! ../../math/distance/DistanceBetweenPoints */344),s=i(/*! ../../tweens/builders/GetEaseFunction */76),r=i(/*! ../point/Point */5);t.exports=function(t,e,i,o,a){void 0===o&&(o=0),void 0===a&&(a=[]);var h,l,u=[],c=t.x1,d=t.y1,f=t.x2-c,p=t.y2-d,g=s(e,a),v=i-1;for(h=0;h<v;h++)l=g(h/v),u.push(new r(c+f*l,d+p*l));if(l=g(1),u.push(new r(c+f*l,d+p*l)),o>0){var m=u[0],y=[m];for(h=1;h<u.length-1;h++){var x=u[h];n(m,x)>=o&&(y.push(x),m=x)}var T=u[u.length-1];return n(m,T)<o&&y.pop(),y.push(T),y}return u}},
 /*!**********************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/GetMidPoint.js ***!
   \**********************************************************/
@@ -12127,7 +12127,7 @@ var n=i(/*! ../../math/distance/DistanceBetweenPoints */344),s=i(/*! ../../tween
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=(t.x1+t.x2)/2,e.y=(t.y1+t.y2)/2,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=(t.x1+t.x2)/2,e.y=(t.y1+t.y2)/2,e}},
 /*!**************************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/GetNearestPoint.js ***!
   \**************************************************************/
@@ -12140,7 +12140,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=ne
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.x1,r=t.y1,o=t.x2,a=t.y2,h=(o-s)*(o-s)+(a-r)*(a-r);if(0===h)return i;var l=((e.x-s)*(o-s)+(e.y-r)*(a-r))/h;return i.x=s+l*(o-s),i.y=r+l*(a-r),i}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.x1,r=t.y1,o=t.x2,a=t.y2,h=(o-s)*(o-s)+(a-r)*(a-r);if(0===h)return i;var l=((e.x-s)*(o-s)+(e.y-r)*(a-r))/h;return i.x=s+l*(o-s),i.y=r+l*(a-r),i}},
 /*!********************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/GetNormal.js ***!
   \********************************************************/
@@ -12152,7 +12152,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e,i){void 0===i&&(i=new n);
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../math/const */16),s=i(/*! ./Angle */93),r=i(/*! ../point/Point */4);t.exports=function(t,e){void 0===e&&(e=new r);var i=s(t)-n.TAU;return e.x=Math.cos(i),e.y=Math.sin(i),e}},
+var n=i(/*! ../../math/const */16),s=i(/*! ./Angle */93),r=i(/*! ../point/Point */5);t.exports=function(t,e){void 0===e&&(e=new r);var i=s(t)-n.TAU;return e.x=Math.cos(i),e.y=Math.sin(i),e}},
 /*!******************************************************************!*\
   !*** ./node_modules/phaser/src/geom/line/GetShortestDistance.js ***!
   \******************************************************************/
@@ -12266,7 +12266,7 @@ var n=i(/*! ./RotateAroundXY */229);t.exports=function(t,e,i){return n(t,e.x,e.y
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4);n.Ceil=i(/*! ./Ceil */1173),n.Clone=i(/*! ./Clone */1174),n.CopyFrom=i(/*! ./CopyFrom */1175),n.Equals=i(/*! ./Equals */1176),n.Floor=i(/*! ./Floor */1177),n.GetCentroid=i(/*! ./GetCentroid */1178),n.GetMagnitude=i(/*! ./GetMagnitude */475),n.GetMagnitudeSq=i(/*! ./GetMagnitudeSq */476),n.GetRectangleFromPoints=i(/*! ./GetRectangleFromPoints */1179),n.Interpolate=i(/*! ./Interpolate */1180),n.Invert=i(/*! ./Invert */1181),n.Negative=i(/*! ./Negative */1182),n.Project=i(/*! ./Project */1183),n.ProjectUnit=i(/*! ./ProjectUnit */1184),n.SetMagnitude=i(/*! ./SetMagnitude */1185),t.exports=n},
+var n=i(/*! ./Point */5);n.Ceil=i(/*! ./Ceil */1173),n.Clone=i(/*! ./Clone */1174),n.CopyFrom=i(/*! ./CopyFrom */1175),n.Equals=i(/*! ./Equals */1176),n.Floor=i(/*! ./Floor */1177),n.GetCentroid=i(/*! ./GetCentroid */1178),n.GetMagnitude=i(/*! ./GetMagnitude */475),n.GetMagnitudeSq=i(/*! ./GetMagnitudeSq */476),n.GetRectangleFromPoints=i(/*! ./GetRectangleFromPoints */1179),n.Interpolate=i(/*! ./Interpolate */1180),n.Invert=i(/*! ./Invert */1181),n.Negative=i(/*! ./Negative */1182),n.Project=i(/*! ./Project */1183),n.ProjectUnit=i(/*! ./ProjectUnit */1184),n.SetMagnitude=i(/*! ./SetMagnitude */1185),t.exports=n},
 /*!****************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/Ceil.js ***!
   \****************************************************/
@@ -12284,7 +12284,7 @@ var n=i(/*! ./Point */4);n.Ceil=i(/*! ./Ceil */1173),n.Clone=i(/*! ./Clone */117
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4);t.exports=function(t){return new n(t.x,t.y)}},
+var n=i(/*! ./Point */5);t.exports=function(t){return new n(t.x,t.y)}},
 /*!********************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/CopyFrom.js ***!
   \********************************************************/
@@ -12314,7 +12314,7 @@ var n=i(/*! ./Point */4);t.exports=function(t){return new n(t.x,t.y)}},
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4);t.exports=function(t,e){if(void 0===e&&(e=new n),!Array.isArray(t))throw new Error("GetCentroid points argument must be an array");var i=t.length;if(i<1)throw new Error("GetCentroid points array must not be empty");if(1===i)e.x=t[0].x,e.y=t[0].y;else{for(var s=0;s<i;s++)e.x+=t[s].x,e.y+=t[s].y;e.x/=i,e.y/=i}return e}},
+var n=i(/*! ./Point */5);t.exports=function(t,e){if(void 0===e&&(e=new n),!Array.isArray(t))throw new Error("GetCentroid points argument must be an array");var i=t.length;if(i<1)throw new Error("GetCentroid points array must not be empty");if(1===i)e.x=t[0].x,e.y=t[0].y;else{for(var s=0;s<i;s++)e.x+=t[s].x,e.y+=t[s].y;e.x/=i,e.y/=i}return e}},
 /*!**********************************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/GetRectangleFromPoints.js ***!
   \**********************************************************************/
@@ -12338,7 +12338,7 @@ var n=i(/*! ../rectangle/Rectangle */12);t.exports=function(t,e){void 0===e&&(e=
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4);t.exports=function(t,e,i,s){return void 0===i&&(i=0),void 0===s&&(s=new n),s.x=t.x+(e.x-t.x)*i,s.y=t.y+(e.y-t.y)*i,s}},
+var n=i(/*! ./Point */5);t.exports=function(t,e,i,s){return void 0===i&&(i=0),void 0===s&&(s=new n),s.x=t.x+(e.x-t.x)*i,s.y=t.y+(e.y-t.y)*i,s}},
 /*!******************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/Invert.js ***!
   \******************************************************/
@@ -12356,7 +12356,7 @@ var n=i(/*! ./Point */4);t.exports=function(t,e,i,s){return void 0===i&&(i=0),vo
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.setTo(-t.x,-t.y)}},
+var n=i(/*! ./Point */5);t.exports=function(t,e){return void 0===e&&(e=new n),e.setTo(-t.x,-t.y)}},
 /*!*******************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/Project.js ***!
   \*******************************************************/
@@ -12368,7 +12368,7 @@ var n=i(/*! ./Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4),s=i(/*! ./GetMagnitudeSq */476);t.exports=function(t,e,i){void 0===i&&(i=new n);var r=(t.x*e.x+t.y*e.y)/s(e);return 0!==r&&(i.x=r*e.x,i.y=r*e.y),i}},
+var n=i(/*! ./Point */5),s=i(/*! ./GetMagnitudeSq */476);t.exports=function(t,e,i){void 0===i&&(i=new n);var r=(t.x*e.x+t.y*e.y)/s(e);return 0!==r&&(i.x=r*e.x,i.y=r*e.y),i}},
 /*!***********************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/ProjectUnit.js ***!
   \***********************************************************/
@@ -12380,7 +12380,7 @@ var n=i(/*! ./Point */4),s=i(/*! ./GetMagnitudeSq */476);t.exports=function(t,e,
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ./Point */4);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.x*e.x+t.y*e.y;return 0!==s&&(i.x=s*e.x,i.y=s*e.y),i}},
+var n=i(/*! ./Point */5);t.exports=function(t,e,i){void 0===i&&(i=new n);var s=t.x*e.x+t.y*e.y;return 0!==s&&(i.x=s*e.x,i.y=s*e.y),i}},
 /*!************************************************************!*\
   !*** ./node_modules/phaser/src/geom/point/SetMagnitude.js ***!
   \************************************************************/
@@ -12554,7 +12554,7 @@ var n=i(/*! ./Rectangle */12);t.exports=function(t,e,i,s,r){return void 0===r&&(
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=t.centerX,e.y=t.centerY,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=t.centerX,e.y=t.centerY,e}},
 /*!***********************************************************!*\
   !*** ./node_modules/phaser/src/geom/rectangle/GetSize.js ***!
   \***********************************************************/
@@ -12566,7 +12566,7 @@ var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=ne
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=t.width,e.y=t.height,e}},
+var n=i(/*! ../point/Point */5);t.exports=function(t,e){return void 0===e&&(e=new n),e.x=t.width,e.y=t.height,e}},
 /*!***********************************************************!*\
   !*** ./node_modules/phaser/src/geom/rectangle/Inflate.js ***!
   \***********************************************************/
@@ -12638,7 +12638,7 @@ var n=i(/*! ./Rectangle */12),s=i(/*! ../intersects/RectangleToRectangle */145);
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../point/Point */4),s=i(/*! ../../math/DegToRad */41);t.exports=function(t,e,i){void 0===i&&(i=new n),e=s(e);var r=Math.sin(e),o=Math.cos(e),a=o>0?t.width/2:t.width/-2,h=r>0?t.height/2:t.height/-2;return Math.abs(a*r)<Math.abs(h*o)?h=a*r/o:a=h*o/r,i.x=a+t.centerX,i.y=h+t.centerY,i}},
+var n=i(/*! ../point/Point */5),s=i(/*! ../../math/DegToRad */41);t.exports=function(t,e,i){void 0===i&&(i=new n),e=s(e);var r=Math.sin(e),o=Math.cos(e),a=o>0?t.width/2:t.width/-2,h=r>0?t.height/2:t.height/-2;return Math.abs(a*r)<Math.abs(h*o)?h=a*r/o:a=h*o/r,i.x=a+t.centerX,i.y=h+t.centerY,i}},
 /*!*****************************************************************!*\
   !*** ./node_modules/phaser/src/geom/rectangle/RandomOutside.js ***!
   \*****************************************************************/
@@ -12650,7 +12650,7 @@ var n=i(/*! ../point/Point */4),s=i(/*! ../../math/DegToRad */41);t.exports=func
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../../math/Between */187),s=i(/*! ./ContainsRect */478),r=i(/*! ../point/Point */4);t.exports=function(t,e,i){if(void 0===i&&(i=new r),s(t,e))switch(n(0,3)){case 0:i.x=t.x+Math.random()*(e.right-t.x),i.y=t.y+Math.random()*(e.top-t.y);break;case 1:i.x=e.x+Math.random()*(t.right-e.x),i.y=e.bottom+Math.random()*(t.bottom-e.bottom);break;case 2:i.x=t.x+Math.random()*(e.x-t.x),i.y=e.y+Math.random()*(t.bottom-e.y);break;case 3:i.x=e.right+Math.random()*(t.right-e.right),i.y=t.y+Math.random()*(e.bottom-t.y)}return i}},
+var n=i(/*! ../../math/Between */187),s=i(/*! ./ContainsRect */478),r=i(/*! ../point/Point */5);t.exports=function(t,e,i){if(void 0===i&&(i=new r),s(t,e))switch(n(0,3)){case 0:i.x=t.x+Math.random()*(e.right-t.x),i.y=t.y+Math.random()*(e.top-t.y);break;case 1:i.x=e.x+Math.random()*(t.right-e.x),i.y=e.bottom+Math.random()*(t.bottom-e.bottom);break;case 2:i.x=t.x+Math.random()*(e.x-t.x),i.y=e.y+Math.random()*(t.bottom-e.y);break;case 3:i.x=e.right+Math.random()*(t.right-e.right),i.y=t.y+Math.random()*(e.bottom-t.y)}return i}},
 /*!******************************************************************!*\
   !*** ./node_modules/phaser/src/geom/rectangle/SameDimensions.js ***!
   \******************************************************************/
@@ -14804,7 +14804,7 @@ var n=i(/*! ../gameobjects/GameObjectCreator */17),s=i(/*! ./ParseToTilemap */25
  * @copyright    2020 Photon Storm Ltd.
  * @license      {@link https://opensource.org/licenses/MIT|MIT License}
  */
-var n=i(/*! ../gameobjects/GameObjectFactory */5),s=i(/*! ./ParseToTilemap */256);n.register("tilemap",(function(t,e,i,n,r,o,a){return null===t&&(t=void 0),null===e&&(e=void 0),null===i&&(i=void 0),null===n&&(n=void 0),null===r&&(r=void 0),s(this.scene,t,e,i,n,r,o,a)}))},
+var n=i(/*! ../gameobjects/GameObjectFactory */6),s=i(/*! ./ParseToTilemap */256);n.register("tilemap",(function(t,e,i,n,r,o,a){return null===t&&(t=void 0),null===e&&(e=void 0),null===i&&(i=void 0),null===n&&(n=void 0),null===r&&(r=void 0),s(this.scene,t,e,i,n,r,o,a)}))},
 /*!***********************************************!*\
   !*** ./node_modules/phaser/src/time/index.js ***!
   \***********************************************/
@@ -15184,7 +15184,7 @@ var n=i(/*! ../../../src/utils/Class */0),s=i(/*! ./OrthographicCamera */545),r=
  * @copyright    2018 Photon Storm Ltd.
  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
  */
-var n=i(/*! ./Sprite3D */161);i(/*! ../../../../src/gameobjects/GameObjectFactory */5).register("sprite3D",(function(t,e,i,s,r){var o=new n(this.scene,t,e,i,s,r);return this.displayList.add(o.gameObject),this.updateList.add(o.gameObject),o}))},
+var n=i(/*! ./Sprite3D */161);i(/*! ../../../../src/gameobjects/GameObjectFactory */6).register("sprite3D",(function(t,e,i,s,r){var o=new n(this.scene,t,e,i,s,r);return this.displayList.add(o.gameObject),this.updateList.add(o.gameObject),o}))},
 /*!******************************************************************************!*\
   !*** ./node_modules/phaser/plugins/camera3d/src/sprite3d/Sprite3DCreator.js ***!
   \******************************************************************************/
@@ -15202,4 +15202,4 @@ var n=i(/*! ../../../../src/gameobjects/BuildGameObject */29),s=i(/*! ../../../.
   \**********************************/
 /*! no static exports found */
 /*! all exports used */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */,function(t,e,i){i(/*! phaser */6),t.exports=i(/*! webfontloader */264)}]]);
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */,function(t,e,i){i(/*! phaser */4),t.exports=i(/*! webfontloader */264)}]]);
