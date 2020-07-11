@@ -26,10 +26,9 @@ class Hero extends GameObjects.Sprite {
                 key: `${assetKey}_idle`,
                 frames: this.scene.anims.generateFrameNames(assetKey, {
                     frames: [
-                        'idle_01',
-                        'idle_02',
-                        'idle_03',
-                        'idle_04',
+                        'hero_idle_01',
+                        'hero_idle_02',
+                        'hero_idle_03',
                     ],
                 }),
                 frameRate: 6,
@@ -43,10 +42,28 @@ class Hero extends GameObjects.Sprite {
                 key: `${assetKey}_walk`,
                 frames: this.scene.anims.generateFrameNames(assetKey, {
                     frames: [
-                        'walking_01',
-                        'walking_02',
-                        'walking_03',
-                        'walking_04',
+                        'hero_walking_01',
+                        'hero_walking_02',
+                        'hero_walking_03',
+                    ],
+                }),
+                frameRate: 7,
+                // yoyo: true,
+                repeat: -1,
+            });
+        }
+
+        if (!this.scene.anims.exists(`${assetKey}_action`)) {
+            this.scene.anims.create({
+                key: `${assetKey}_action`,
+                frames: this.scene.anims.generateFrameNames(assetKey, {
+                    frames: [
+                        'hero_action_01',
+                        'hero_action_02',
+                        'hero_action_03',
+                        'hero_action_04',
+                        'hero_action_05',
+                        'hero_action_06',
                     ],
                 }),
                 frameRate: 10,
@@ -55,25 +72,25 @@ class Hero extends GameObjects.Sprite {
             });
         }
 
-        if (!this.scene.anims.exists(`${assetKey}_jump`)) {
-            this.scene.anims.create({
-                key: `${assetKey}_jump`,
-                frames: this.scene.anims.generateFrameNames(assetKey, {
-                    frames: [
-                        'jumping_01',
-                        'jumping_02',
-                        'jumping_03',
-                        'jumping_04',
-                        'jumping_05',
-                        'jumping_06',
-                        'jumping_07',
-                    ],
-                }),
-                frameRate: 12,
-                // yoyo: true,
-                repeat: -1,
-            });
-        }
+        // if (!this.scene.anims.exists(`${assetKey}_jump`)) {
+        //     this.scene.anims.create({
+        //         key: `${assetKey}_jump`,
+        //         frames: this.scene.anims.generateFrameNames(assetKey, {
+        //             frames: [
+        //                 'jumping_01',
+        //                 'jumping_02',
+        //                 'jumping_03',
+        //                 'jumping_04',
+        //                 'jumping_05',
+        //                 'jumping_06',
+        //                 'jumping_07',
+        //             ],
+        //         }),
+        //         frameRate: 12,
+        //         // yoyo: true,
+        //         repeat: -1,
+        //     });
+        // }
     };
 
     setAnimation = (animationName) => {
