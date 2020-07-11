@@ -76,19 +76,19 @@ export function handleSpriteMovement() {
     const velocity = 200;
 
     if (cursors.left.isDown) {
-        this.body.setVelocityX(-velocity)
-        this.body.setVelocityY(0)
+        this.body.setVelocityX(-velocity);
+        this.body.setVelocityY(0);
     } else if (cursors.right.isDown) {
-        this.body.setVelocityX(velocity)
-        this.body.setVelocityY(0)
+        this.body.setVelocityX(velocity);
+        this.body.setVelocityY(0);
     } else if (cursors.up.isDown) {
-        this.body.setVelocityY(-velocity)
-        this.body.setVelocityX(0)
+        this.body.setVelocityY(-velocity);
+        this.body.setVelocityX(0);
     } else if (cursors.down.isDown) {
-        this.body.setVelocityY(velocity)
-        this.body.setVelocityX(0)
+        this.body.setVelocityY(velocity);
+        this.body.setVelocityX(0);
     } else {
-        this.body.setVelocity(0,0)
+        this.body.setVelocity(0, 0);
     }
 }
 
