@@ -1,0 +1,89 @@
+{
+    "frames": [
+        {
+            "filename": "red_button_01",
+            "frame": {
+                "x": 0,
+                "y": 25,
+                "w": 35,
+                "h": 16
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_button_02",
+            "frame": {
+                "x": 36,
+                "y": 0,
+                "w": 35,
+                "h": 15
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_button_03",
+            "frame": {
+                "x": 0,
+                "y": 42,
+                "w": 35,
+                "h": 14
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_button_04",
+            "frame": {
+                "x": 0,
+                "y": 57,
+                "w": 35,
+                "h": 13
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_button_05",
+            "frame": {
+                "x": 0,
+                "y": 12,
+                "w": 35,
+                "h": 12
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_button_06",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 35,
+                "h": 11
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 72,
+            "h": 71
+        },
+        "scale": "1"
+    }
+}

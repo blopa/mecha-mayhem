@@ -1,0 +1,167 @@
+{
+    "frames": [
+        {
+            "filename": "red_wire_01",
+            "frame": {
+                "x": 301,
+                "y": 0,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_02",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_03",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_04",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_05",
+            "frame": {
+                "x": 291,
+                "y": 251,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_06",
+            "frame": {
+                "x": 291,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_07",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 300,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_08",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_09",
+            "frame": {
+                "x": 0,
+                "y": 251,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_10",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_11",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "red_wire_12",
+            "frame": {
+                "x": 0,
+                "y": 502,
+                "w": 290,
+                "h": 250
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 592,
+            "h": 753
+        },
+        "scale": "1"
+    }
+}
