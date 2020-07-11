@@ -56,11 +56,10 @@ class ControlRoomScene extends Scene {
         this.physics.add.collider(this.hero, this.wall);
 
         // TODO pablo tests
-        // TODO pablo tests
-        const tilemap = this.make.tilemap({ key: 'tilemap' });
-        const tileset = tilemap.addTilesetImage('stage_01', 'tileset');
-        tilemap.createStaticLayer('background', tileset, 0, 0);
-        tilemap.createStaticLayer('details', tileset, 0, 0);
+        const tilemap = this.make.tilemap({ key: 'stage_01' });
+        const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
+        tilemap.createStaticLayer('background', tileset, 0, 150);
+        tilemap.createStaticLayer('details', tileset, 0, 150);
     }
 
     update(time, delta) {
