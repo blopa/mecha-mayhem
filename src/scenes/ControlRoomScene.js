@@ -35,9 +35,11 @@ class ControlRoomScene extends Scene {
         this.controlRoom = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
         this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x741B47 } });
         this.controlRoomFill.fillRectShape(this.controlRoom);
-        // this.laserRoom = new Phaser.Geom.Rectangle(250, 200, 50, 50);
-        // this.laserRoomFill = this.add.graphics({ fillStyle: { color: 0xC27BA0 } });
-        // this.laserRoomFill.fillRectShape(this.laserRoom);
+
+        this.physics.world.enable(this.hero);
+        this.physics.world.enable(this.laserRoom);
+
+        this.physics.add.overlap(this.hero, this.laserRoom, this.inLaserRoom);
     }
 
     update(time, delta) {
@@ -45,8 +47,13 @@ class ControlRoomScene extends Scene {
         if (this.chargeLaserButton.isDown) {
             console.log('Charging...');
         }
-        this.dummy = this.hero.getBounds();
+
     }
+
+    inLaserRoom() {
+        console.log('In room!')
+    }
+
 }
 
 export default ControlRoomScene;
