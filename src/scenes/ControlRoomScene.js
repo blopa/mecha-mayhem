@@ -44,14 +44,14 @@ class ControlRoomScene extends Scene {
         this.chargePunchButton = this.input.keyboard.addKey('S');
 
         this.controlRoom = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
-        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x4C1130 } });
+        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x2c1e31 } });
         this.controlRoomFill.fillRectShape(this.controlRoom);
 
         // TODO pablo tests
         const tilemap = this.make.tilemap({ key: 'stage_01' });
         const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
-        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 150);
-        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 150);
+        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 160);
+        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 160);
         layer1.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.hero, layer1);
         layer2.setCollisionByProperty({ collides: true });
