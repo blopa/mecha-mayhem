@@ -78,10 +78,11 @@ class RobotStageScene extends Scene {
         this.robot = new Robot({
             scene: this,
             x: 0,
-            y: 6,
-            asset: 'robot',
+            y: 30,
+            asset: 'robot_sprite',
         }).setOrigin(0, 0);
         this.add.existing(this.robot);
+        this.robot.setAnimation('idle');
 
         this::renderStageEnemies();
         this::startRobotMovement();

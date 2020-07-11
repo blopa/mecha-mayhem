@@ -20,6 +20,7 @@ class LoadingScene extends Scene {
 
         // Atlas
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');
+        this.load.atlas('robot_sprite', 'assets/images/robot_sprite.png', 'assets/atlas/robot_sprite.json');
         // this.load.atlas('robot', `assets/images/hero.png`, `assets/atlas/robot_atlas.json`);
     }
 

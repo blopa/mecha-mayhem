@@ -142,6 +142,7 @@ export function startRobotMovement() {
         console.log('Incoming enemy...');
         this::handleActionQueue(currentPosition + ROBOT_OCCUPATION_SIZE + 1);
     }
+    this.robot.setAnimation('walk');
 
     this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, currentPosition + 1);
 
@@ -157,6 +158,7 @@ export function startRobotMovement() {
         ROBOT_MOVEMENT_TIME,
         () => {
             const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
+            this.robot.setAnimation('idle');
 
             // TODO the robot occupies 3 positions
             if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE)) {
