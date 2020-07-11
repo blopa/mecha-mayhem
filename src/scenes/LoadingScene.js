@@ -21,8 +21,10 @@ class LoadingScene extends Scene {
 
         // Atlas
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');
+        this.load.atlas('green_wire', 'assets/images/green_wire.png', 'assets/atlas/green_wire.json');
+        this.load.atlas('red_wire', 'assets/images/red_wire.png', 'assets/atlas/red_wire.json');
         this.load.atlas('robot_sprite', 'assets/images/robot_sprite.png', 'assets/atlas/robot_sprite.json');
-        // this.load.atlas('robot', `assets/images/hero.png`, `assets/atlas/robot_atlas.json`);
+        this.load.atlas('red_button', 'assets/images/red_button.png', 'assets/atlas/red_button.json');
 
         // Map
         this.load.tilemapTiledJSON('stage_01', 'assets/images/stage_01.json');
