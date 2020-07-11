@@ -89,8 +89,20 @@ export function handleSpriteMovement() {
 /**
  * @this RobotStageScene
  */
-export function moveRobot() {
+function containsEnemyAtPosition(position) {
+    const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
+
+    return [JET, BUILDING, MISSILE].includes(stageLayoutData[position]);
+}
+
+/**
+ * @this RobotStageScene
+ */
+export function startRobotMovement() {
     // this.robot.setAnimation(''); // TODO
+    const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
+    this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, currentPosition + 1);
+
     this.buildingsBackground.forEach((parallaxBackground, index) => {
         this::moveRobotRelatedSprite(parallaxBackground, true);
     });
@@ -98,6 +110,28 @@ export function moveRobot() {
     this.enemies.forEach((enemy, index) => {
         this::moveRobotRelatedSprite(enemy);
     });
+
+    this.time.delayedCall(
+        ROBOT_MOVEMENT_TIME,
+        () => {
+            const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
+
+            if (this::containsEnemyAtPosition(currentPosition + 3)) {
+                console.log('Game over...');
+                return;
+            }
+
+            if (currentPosition >= stageLayoutData.length) {
+                console.log('You won yay');
+                return;
+            }
+
+            this.time.delayedCall(
+                ROBOT_MOVEMENT_TIME,
+                this::startRobotMovement
+            );
+        }
+    );
 }
 
 /**
@@ -122,14 +156,6 @@ function moveRobotRelatedSprite(robotRelatedSprite, loop = false) {
             }
 
             tween.stop();
-            const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
-            this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, currentPosition + 1);
-            this.time.delayedCall(
-                ROBOT_MOVEMENT_TIME,
-                () => {
-                    this::moveRobotRelatedSprite(robotRelatedSprite, loop);
-                }
-            );
         },
     });
 }

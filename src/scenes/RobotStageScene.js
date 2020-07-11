@@ -11,7 +11,7 @@ import {
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from '../constants';
 import ParallaxBackground from '../sprites/ParallaxBackground';
-import { moveRobot, renderStageEnemies } from '../utils';
+import { startRobotMovement, renderStageEnemies } from '../utils';
 
 class RobotStageScene extends Scene {
     constructor() {
@@ -84,7 +84,7 @@ class RobotStageScene extends Scene {
         this.add.existing(this.robot);
 
         this::renderStageEnemies();
-        this::moveRobot();
+        this::startRobotMovement();
     }
 
     update(time, delta) {
