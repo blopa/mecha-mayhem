@@ -1,8 +1,31 @@
+import { ROBOT_MOVEMENT_TIME } from './constants';
+
+export const isObjectEmpty = (obj) =>
+    obj !== null
+    && typeof obj === 'object'
+    // https://stackoverflow.com/a/32108184/4307769
+    && Object.keys(obj).length === 0
+    && obj.constructor === Object;
+
+export const isset = (...args) => {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const arg of args) {
+        if (
+            isObjectEmpty(arg)
+            || arg === undefined
+            || arg === null
+            || (Array.isArray(arg) && !arg.length)
+        ) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
 /**
  * @this Phaser.GameObject.Sprite
  */
-import {ROBOT_MOVEMENT_TIME} from "./constants";
-
 function onDragEvent(pointer, x, y) {
     this.setX(x);
     this.setY(y);

@@ -15,4 +15,5 @@ export const BACKGROUND_DEPTH = 0;
 export const PARALLAX_BACKGROUND_DEPTH = 10;
 export const BUILDINGS_BACKGROUND_DEPTH = 20;
 export const ROBOT_DEPTH = 30;
+export const ROOM_DEPTH = 10;
 export const HERO_DEPTH = 30;

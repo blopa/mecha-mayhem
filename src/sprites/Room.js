@@ -1,9 +1,10 @@
 import { GameObjects } from 'phaser';
+import { ROOM_DEPTH } from '../constants';
 
 class Room extends GameObjects.Sprite {
     constructor({ scene, x, y, asset, frame }) {
         super(scene, x, y, asset, frame);
-        this.setDepth(1);
+        this.setDepth(ROOM_DEPTH);
     }
 }
 

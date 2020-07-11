@@ -49,13 +49,11 @@ class RobotStageScene extends Scene {
         }).setOrigin(0, 0);
         this.add.existing(this.background);
 
-        this.buildingsBackground = new Background({
+        this.buildingsBackground = new ParallaxBackground({
             scene: this,
-            x: 0,
-            y: 0,
-            asset: 'background_buildings',
+            asset: ['background_buildings'],
             depth: BUILDINGS_BACKGROUND_DEPTH,
-        }).setOrigin(0, 0);
+        });
         this.add.existing(this.buildingsBackground);
 
         this.parallaxBackground = new ParallaxBackground({

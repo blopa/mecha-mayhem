@@ -1,4 +1,4 @@
-import { Scene } from 'phaser';
+import Phaser, { Scene } from 'phaser';
 import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
 
@@ -30,7 +30,7 @@ class ControlRoomScene extends Scene {
 
         this.scene.launch('RobotStageScene');
 
-        //Shen stuff
+        // Shen stuff
         this.chargeLaserButton = this.input.keyboard.addKey('A');
         this.controlRoom = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
         this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x741B47 } });
@@ -47,13 +47,11 @@ class ControlRoomScene extends Scene {
         if (this.chargeLaserButton.isDown) {
             console.log('Charging...');
         }
-
     }
 
     inLaserRoom() {
-        console.log('In room!')
+        console.log('In room!');
     }
-
 }
 
 export default ControlRoomScene;

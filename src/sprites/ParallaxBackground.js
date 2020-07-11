@@ -1,4 +1,5 @@
 import { GameObjects } from 'phaser';
+import { isset } from '../utils';
 
 class ParallaxBackground extends GameObjects.Group {
     constructor({
@@ -42,6 +43,10 @@ class ParallaxBackground extends GameObjects.Group {
     }
 
     update = (time, delta) => {
+        if (!isset(this.speeds)) {
+            return;
+        }
+
         this.getChildren().forEach((child, index) => {
             const { width } = child.getBounds();
             if (child.x >= width) {
