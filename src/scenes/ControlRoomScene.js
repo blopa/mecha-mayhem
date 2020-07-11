@@ -14,15 +14,15 @@ class ControlRoomScene extends Scene {
     create() {
         this.laserRoom = new Room({
             scene: this,
-            x: 600,
-            y: 350,
+            x: 700,
+            y: 200,
             asset: 'room',
         });
 
         this.punchRoom = new Room({
             scene: this,
-            x: 400,
-            y: 200,
+            x: 650,
+            y: 350,
             asset: 'room',
         });
 
@@ -47,6 +47,16 @@ class ControlRoomScene extends Scene {
         this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x4C1130 } });
         this.controlRoomFill.fillRectShape(this.controlRoom);
 
+        // TODO pablo tests
+        const tilemap = this.make.tilemap({ key: 'stage_01' });
+        const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
+        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 150);
+        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 150);
+        layer1.setCollisionByProperty({ collides: true });
+        this.physics.add.collider(this.hero, layer1);
+        layer2.setCollisionByProperty({ collides: true });
+        this.physics.add.collider(this.hero, layer2);
+
         this.physics.world.enable(this.hero);
         this.physics.world.enable(this.laserRoom);
         this.physics.world.enable(this.punchRoom);
@@ -63,21 +73,11 @@ class ControlRoomScene extends Scene {
 
         this.text = this.add.text(275, 300, '');
 
-        this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5 + 10, 50, 10).setFillStyle(0x741B47);
+        // this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5 + 10, 50, 10).setFillStyle(0x741B47);
 
-        this.physics.world.enable(this.wall, 1);
+        // this.physics.world.enable(this.wall, 1);
 
-        this.physics.add.collider(this.hero, this.wall);
-
-        // TODO pablo tests
-        const tilemap = this.make.tilemap({ key: 'stage_01' });
-        const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
-        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 150);
-        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 150);
-        layer1.setCollisionByProperty({ collides: true });
-        this.physics.add.collider(this.hero, layer1);
-        layer2.setCollisionByProperty({ collides: true });
-        this.physics.add.collider(this.hero, layer2);
+        // this.physics.add.collider(this.hero, this.wall);
     }
 
     update(time, delta) {
