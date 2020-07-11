@@ -22,7 +22,12 @@ class Robot extends GameObjects.Sprite {
                 key: `${assetKey}_idle`,
                 frames: this.scene.anims.generateFrameNames(assetKey, {
                     frames: [
-                        'robot_walking_01',
+                        'robot_idle_01',
+                        'robot_idle_02',
+                        'robot_idle_03',
+                        'robot_idle_04',
+                        'robot_idle_05',
+                        'robot_idle_06',
                     ],
                 }),
                 frameRate: 6,
