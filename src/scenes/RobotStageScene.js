@@ -22,8 +22,8 @@ class RobotStageScene extends Scene {
 
     init() {
         const data = [
-            NOTHING,
-            NOTHING,
+            // NOTHING,
+            // NOTHING,
             NOTHING,
             NOTHING,
             NOTHING,

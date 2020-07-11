@@ -1,8 +1,8 @@
 import {
     BUILDING,
-    JET, MISSILE, NOTHING,
+    JET, METEOR, MISSILE, NOTHING,
     ROBOT_MOVEMENT_SIZE,
-    ROBOT_MOVEMENT_TIME,
+    ROBOT_MOVEMENT_TIME, ROBOT_OCCUPATION_SIZE,
     ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from './constants';
@@ -98,9 +98,51 @@ function containsEnemyAtPosition(position) {
 /**
  * @this RobotStageScene
  */
+function handleActionQueue(position) {
+    const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
+    const enemyType = stageLayoutData[position];
+    const { inGameActions } = window;
+    const {
+        willDuck,
+        willShootLaser,
+        willShield,
+        willDestroyBuilding,
+    } = inGameActions;
+
+    if (willDuck && enemyType === METEOR) {
+        // TODO
+    }
+
+    if (willShootLaser && enemyType === JET) {
+        // TODO
+    }
+
+    if (willShield && enemyType === MISSILE) {
+        // TODO
+    }
+
+    if (willDestroyBuilding && enemyType === BUILDING) {
+        // TODO
+    }
+
+    // TODO OMG
+    stageLayoutData[position] = NOTHING;
+    this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, stageLayoutData);
+}
+
+/**
+ * @this RobotStageScene
+ */
 export function startRobotMovement() {
     // this.robot.setAnimation(''); // TODO
     const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
+
+    // does the next block contains an enemy? If yes we need to check our actions
+    if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE + 1)) {
+        console.log('Incoming enemy...');
+        this::handleActionQueue(currentPosition + ROBOT_OCCUPATION_SIZE + 1);
+    }
+
     this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, currentPosition + 1);
 
     this.buildingsBackground.forEach((parallaxBackground, index) => {
@@ -116,7 +158,8 @@ export function startRobotMovement() {
         () => {
             const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
 
-            if (this::containsEnemyAtPosition(currentPosition + 3)) {
+            // TODO the robot occupies 3 positions
+            if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE)) {
                 console.log('Game over...');
                 return;
             }
