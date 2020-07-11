@@ -1,4 +1,4 @@
-import { ROBOT_MOVEMENT_TIME } from './constants';
+import {ROBOT_MOVEMENT_SIZE, ROBOT_MOVEMENT_TIME} from './constants';
 
 export const isObjectEmpty = (obj) =>
     obj !== null
@@ -81,24 +81,29 @@ export function handleSpriteMovement() {
  */
 export function moveRobot() {
     // this.robot.setAnimation(''); // TODO
+    this.buildingsBackground.forEach((parallaxBackground, index) => {
+        this.tweens.add({
+            x: parallaxBackground.x - ROBOT_MOVEMENT_SIZE,
+            y: 0,
+            targets: parallaxBackground,
+            t: 1,
+            ease: 'Linear',
+            duration: ROBOT_MOVEMENT_TIME,
+            repeat: 0,
+            yoyo: false,
+            onComplete: (tween) => {
+                const { width } = parallaxBackground.getBounds();
+                if (parallaxBackground.x + width <= 0) {
+                    parallaxBackground.setX(width);
+                }
+
+                tween.stop();
+            },
+        });
+    });
 
     this.time.delayedCall(
-        ROBOT_MOVEMENT_TIME,
-        () => {
-            this.tweens.add({
-                x: this.buildingsBackground.x - 50,
-                y: 0,
-                targets: this.buildingsBackground,
-                t: 1,
-                ease: 'Linear',
-                duration: ROBOT_MOVEMENT_TIME,
-                repeat: 0,
-                yoyo: false,
-                onComplete: (tween) => {
-                    tween.stop();
-                    this::moveRobot();
-                },
-            });
-        }
+        ROBOT_MOVEMENT_TIME * 2,
+        this::moveRobot
     );
 }

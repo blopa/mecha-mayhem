@@ -9,6 +9,7 @@ export const ROBOT_STAGE_LAYOUT_DATA_KEY = 'robotStateLayoutDataKey';
 
 // GAME STUFF
 export const ROBOT_MOVEMENT_TIME = 1000;
+export const ROBOT_MOVEMENT_SIZE = 64;
 
 // DEPTHS
 export const BACKGROUND_DEPTH = 0;

@@ -27,7 +27,7 @@ class ParallaxBackground extends GameObjects.Group {
             const { width } = parallaxBackground.getBounds();
             const parallaxBackgroundClone = new GameObjects.Image(
                 scene,
-                x - width,
+                x + width,
                 y,
                 asset
             )
@@ -49,8 +49,8 @@ class ParallaxBackground extends GameObjects.Group {
 
         this.getChildren().forEach((child, index) => {
             const { width } = child.getBounds();
-            if (child.x >= width) {
-                child.setX(0 - width);
+            if (child.x + width <= 0) {
+                child.setX(width);
             }
 
             child.setX(child.x - this.speeds[Math.floor(index / 2)]);
