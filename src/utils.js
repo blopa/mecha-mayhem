@@ -6,9 +6,9 @@ import {
     ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from './constants';
-import Missile from "./sprites/Missile";
-import Jet from "./sprites/Jet";
-import Building from "./sprites/Building";
+import Missile from './sprites/Missile';
+import Jet from './sprites/Jet';
+import Building from './sprites/Building';
 
 export const isObjectEmpty = (obj) =>
     obj !== null
@@ -92,27 +92,33 @@ export function handleSpriteMovement() {
 export function moveRobot() {
     // this.robot.setAnimation(''); // TODO
     this.buildingsBackground.forEach((parallaxBackground, index) => {
-        this::moveRobotBackgroundBuildings(parallaxBackground);
+        this::moveRobotRelatedSprite(parallaxBackground, true);
+    });
+
+    this.enemies.forEach((enemy, index) => {
+        this::moveRobotRelatedSprite(enemy);
     });
 }
 
 /**
  * @this RobotStageScene
  */
-function moveRobotBackgroundBuildings(parallaxBackground) {
+function moveRobotRelatedSprite(robotRelatedSprite, loop = false) {
     this.tweens.add({
-        x: parallaxBackground.x - ROBOT_MOVEMENT_SIZE,
-        y: 0,
-        targets: parallaxBackground,
+        x: robotRelatedSprite.x - ROBOT_MOVEMENT_SIZE,
+        y: robotRelatedSprite.y,
+        targets: robotRelatedSprite,
         t: 1,
         ease: 'Linear',
         duration: ROBOT_MOVEMENT_TIME,
         repeat: 0,
         yoyo: false,
         onComplete: (tween) => {
-            const { width } = parallaxBackground.getBounds();
-            if (parallaxBackground.x + width <= 0) {
-                parallaxBackground.setX(width);
+            if (loop) {
+                const { width } = robotRelatedSprite.getBounds();
+                if (robotRelatedSprite.x + width <= 0) {
+                    robotRelatedSprite.setX(width);
+                }
             }
 
             tween.stop();
@@ -121,7 +127,7 @@ function moveRobotBackgroundBuildings(parallaxBackground) {
             this.time.delayedCall(
                 ROBOT_MOVEMENT_TIME,
                 () => {
-                    this::moveRobotBackgroundBuildings(parallaxBackground);
+                    this::moveRobotRelatedSprite(robotRelatedSprite, loop);
                 }
             );
         },
@@ -139,6 +145,7 @@ export function renderStageEnemies() {
         const enemy = this::createEnemyByType(enemyType, x);
         if (enemy) {
             this.add.existing(enemy);
+            this.enemies.push(enemy);
         }
 
         x += ROBOT_MOVEMENT_SIZE;

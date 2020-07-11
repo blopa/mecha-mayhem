@@ -18,6 +18,8 @@ class RobotStageScene extends Scene {
         super('RobotStageScene');
     }
 
+    enemies = [];
+
     init() {
         const data = [
             // NOTHING,
@@ -81,8 +83,8 @@ class RobotStageScene extends Scene {
         }).setOrigin(0, 0);
         this.add.existing(this.robot);
 
-        this::moveRobot();
         this::renderStageEnemies();
+        this::moveRobot();
     }
 
     update(time, delta) {
