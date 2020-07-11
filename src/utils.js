@@ -1,7 +1,10 @@
 import Phaser from 'phaser';
 import {
-    BUILDING,
-    JET, LASER_BEAM_DEPTH, METEOR, MISSILE, NOTHING,
+    BUILDING, DINO,
+    JET,
+    LASER_BEAM_DEPTH,
+    MISSILE,
+    NOTHING,
     ROBOT_MOVEMENT_SIZE,
     ROBOT_MOVEMENT_TIME, ROBOT_OCCUPATION_SIZE,
     ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
@@ -10,6 +13,7 @@ import {
 import Missile from './sprites/Missile';
 import Jet from './sprites/Jet';
 import Building from './sprites/Building';
+import Dino from "./sprites/Dino";
 
 export const isObjectEmpty = (obj) =>
     obj !== null
@@ -192,7 +196,13 @@ function handleActionQueue(position) {
         actionTaken = true;
     }
 
-    if (willShield && enemyType === MISSILE) {
+    // if (willShield && enemyType === MISSILE) {
+    //     this::handleShieldAction(enemy);
+    //     window.inGameActions.willShield = false;
+    //     actionTaken = true;
+    // }
+
+    if (willShield && enemyType === DINO) {
         this::handleShieldAction(enemy);
         window.inGameActions.willShield = false;
         actionTaken = true;
@@ -329,29 +339,37 @@ function createEnemyByType(enemyType, index, x) {
             }).setOrigin(0, 0);
         }
 
-        case MISSILE: {
-            const missile = new Missile({
+        // case MISSILE: {
+        //     const missile = new Missile({
+        //         scene: this,
+        //         x,
+        //         y: 50,
+        //     }).setOrigin(0, 0);
+        //
+        //     const totalTravelTime = (index + 1) * 1000;
+        //     this.tweens.add({
+        //         x: (ROBOT_OCCUPATION_SIZE) * ROBOT_MOVEMENT_SIZE,
+        //         y: missile.y,
+        //         targets: missile,
+        //         t: 1,
+        //         ease: 'Linear',
+        //         duration: totalTravelTime,
+        //         repeat: 0,
+        //         yoyo: false,
+        //         onComplete: (tween) => {
+        //             tween.stop();
+        //         },
+        //     });
+        //
+        //     return missile;
+        // }
+
+        case DINO: {
+            return new Dino({
                 scene: this,
                 x,
-                y: 50,
+                y: 10,
             }).setOrigin(0, 0);
-
-            const totalTravelTime = (index + 1) * 1000;
-            this.tweens.add({
-                x: (ROBOT_OCCUPATION_SIZE + 1) * ROBOT_MOVEMENT_SIZE,
-                y: missile.y,
-                targets: missile,
-                t: 1,
-                ease: 'Linear',
-                duration: totalTravelTime,
-                repeat: 0,
-                yoyo: false,
-                onComplete: (tween) => {
-                    tween.stop();
-                },
-            });
-
-            return missile;
         }
 
         case BUILDING: {

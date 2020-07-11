@@ -3,7 +3,7 @@ export const NOTHING = 0;
 export const JET = 1;
 export const BUILDING = 2;
 export const MISSILE = 3;
-export const METEOR = 4;
+export const DINO = 4;
 
 // DATA KEYS
 export const ROBOT_STAGE_LAYOUT_DATA_KEY = 'robotStateLayoutDataKey';
@@ -23,6 +23,7 @@ export const ROBOT_DEPTH = 30;
 export const MISSILE_DEPTH = 30;
 export const JET_DEPTH = 30;
 export const BUILDING_DEPTH = 30;
+export const DINO_DEPTH = 30;
 export const LASER_BEAM_DEPTH = 100;
 
 export const ROOM_DEPTH = 10;

@@ -3,7 +3,7 @@ import Background from '../sprites/Background';
 import Robot from '../sprites/Robot';
 import {
     BACKGROUND_DEPTH,
-    BUILDING, BUILDINGS_BACKGROUND_DEPTH,
+    BUILDING, BUILDINGS_BACKGROUND_DEPTH, DINO,
     JET,
     MISSILE,
     NOTHING, PARALLAX_BACKGROUND_DEPTH,
@@ -33,7 +33,8 @@ class RobotStageScene extends Scene {
             JET,
             NOTHING,
             NOTHING,
-            MISSILE,
+            // MISSILE,
+            DINO,
             NOTHING,
             NOTHING,
             BUILDING,
