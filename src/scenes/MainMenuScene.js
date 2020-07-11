@@ -10,7 +10,7 @@ class MainMenuScene extends Scene {
     }
 
     create() {
-        this.scene.start('GameScene');
+        this.scene.start('ControlRoomScene');
     }
 
     update() {

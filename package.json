@@ -5,8 +5,8 @@
     "author": "Pablo Pirata",
     "main": "index.js",
     "scripts": {
-        "dev": "npm install && webpack",
-        "start": "webpack",
+        "dev": "webpack",
+        "start": "npm install && webpack",
         "build": "webpack --config webpack.production.config.js",
         "build-mobile": "webpack --config webpack.production.config.js --env=mobile",
         "test": "jest"
