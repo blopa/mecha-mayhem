@@ -128,7 +128,12 @@ function handleShootingAction(enemy) {
                 () => {
                     laserBeam.destroy();
                     enemy.destroy();
-                    this::startRobotMovement();
+                    this.time.delayedCall(
+                        ROBOT_MOVEMENT_TIME / 2,
+                        () => {
+                            this::startRobotMovement();
+                        }
+                    );
                 }
             );
         }

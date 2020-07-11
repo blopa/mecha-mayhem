@@ -1,6 +1,7 @@
 import Phaser, { Scene } from 'phaser';
 import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
+import DecorationWire from '../sprites/DecorationWire';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -50,24 +51,40 @@ class ControlRoomScene extends Scene {
         // Shen stuff
         this.chargeLaserButton = this.input.keyboard.addKey('SPACE');
         this.chargePunchButton = this.input.keyboard.addKey('SPACE');
-        this.shieldSequenceButtons = this.input.keyboard.addKeys('q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m');
-        this.shieldSequenceLetters = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
+        this.shieldSequenceButtons = this.input.keyboard.addKeys('q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm');
+        this.shieldSequenceLetters = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
         this.shieldSequence = this.pickLetters();
         this.shieldSequenceIndex = 0;
 
         this.controlRoom = new Phaser.Geom.Rectangle(0, 0, 1000, 1000);
-        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x4C1130 } });
+        this.controlRoomFill = this.add.graphics({ fillStyle: { color: 0x2c1e31 } });
         this.controlRoomFill.fillRectShape(this.controlRoom);
 
         // TODO pablo tests
         const tilemap = this.make.tilemap({ key: 'stage_01' });
         const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
-        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 150);
-        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 150);
+        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 160);
+        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 160);
         layer1.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.hero, layer1);
         layer2.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.hero, layer2);
+        const redWire = new DecorationWire({
+            scene: this,
+            x: 739,
+            y: 408,
+            type: 'red',
+            frame: 'red_wire_01',
+        });
+        this.add.existing(redWire);
+        const greenWire = new DecorationWire({
+            scene: this,
+            x: 0,
+            y: 402,
+            type: 'green',
+            frame: 'green_wire_01',
+        });
+        this.add.existing(greenWire);
 
         this.physics.world.enable(this.hero);
         this.physics.world.enable(this.laserRoom);
@@ -91,16 +108,21 @@ class ControlRoomScene extends Scene {
 
         this.text = this.add.text(275, 300, '');
         this.shieldRoomText = this.add.text(this.shieldRoom.x, this.shieldRoom.y, '').setDepth(10);
-        this.counter = 0
+        this.counter = 0;
     }
 
     update(time, delta) {
         this.counter += 1;
         this.hero.update(time, delta);
         this.text.text = '';
-        //laser
+        // laser
         if ((this.laserChargeCounter >= this.laserChargeLimit) && this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Laser ready!';
+            const { inGameActions } = window;
+            const { willShootLaser } = inGameActions;
+            if (!willShootLaser) {
+                window.inGameActions.willShootLaser = true;
+            }
         } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
             this.laserChargeCounter += 0.01;
             this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
@@ -108,7 +130,7 @@ class ControlRoomScene extends Scene {
         } else if (this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Hold SPACE to charge laser';
         }
-        //punch
+        // punch
         if ((this.punchChargeCounter >= this.punchChargeLimit) && this.physics.overlap(this.hero, this.punchRoom)) {
             this.text.text = 'Punch ready!';
         } else if (this.physics.overlap(this.hero, this.punchRoom) && (Phaser.Input.Keyboard.JustDown(this.chargePunchButton))) {
@@ -118,7 +140,7 @@ class ControlRoomScene extends Scene {
         } else if (this.physics.overlap(this.hero, this.punchRoom)) {
             this.text.text = 'Mash SPACE to charge punch';
         }
-        //shield
+        // shield
         if ((this.shieldChargeCounter >= this.shieldChargeLimit) && this.physics.overlap(this.hero, this.shieldRoom)) {
             this.text.text = 'shield ready!';
         } else if (this.physics.overlap(this.hero, this.shieldRoom) && (this.shieldSequenceKeyIsDown())) {
@@ -142,31 +164,32 @@ class ControlRoomScene extends Scene {
     displayShieldSequence() {
         this.shieldRoomText.text = this.shieldSequence[this.shieldSequenceIndex];
         if (this.counter % 20 == 0) {
-            this.shieldSequenceIndex +=1    
+            this.shieldSequenceIndex += 1;
         }
         if (this.shieldSequenceIndex > this.shieldSequence.length) {
-            this.shieldSequenceIndex = 0
-        }    
+            this.shieldSequenceIndex = 0;
+        }
     }
 
     pickLetters() {
-        var times = 4;
-        var tempArray = [];
-        for(var i=0; i < times; i++){
+        const times = 4;
+        const tempArray = [];
+        for (let i = 0; i < times; i++) {
             tempArray.push(this.shieldSequenceLetters[Math.floor(Math.random() * this.shieldSequenceLetters.length)]);
         }
         return tempArray;
     }
+
     shieldSequenceKeyIsDown() {
-        var check = false;
-        for(let i = 0; i < this.shieldSequence.length; i++){
-            var key = this.input.keyboard.addKey(this.shieldSequence[i])
+        let check = false;
+        for (let i = 0; i < this.shieldSequence.length; i++) {
+            const key = this.input.keyboard.addKey(this.shieldSequence[i]);
             if (key.isDown) {
-                this.shieldSequence.splice(i,1)
-                check = true
+                this.shieldSequence.splice(i, 1);
+                check = true;
             }
         }
-        return check
+        return check;
     }
 }
 
