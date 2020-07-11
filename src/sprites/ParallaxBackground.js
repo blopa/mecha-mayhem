@@ -8,9 +8,10 @@ class ParallaxBackground extends GameObjects.Group {
         y = 0,
         name = 'parallax-background',
         assets = [
-            'background_clouds',
+            'background_clouds_01',
+            'background_clouds_02',
         ],
-        speeds = [0.02, 0.1],
+        speeds = [0.01, 0.25],
         depth = 0,
     }) {
         super(scene, [], { name });

@@ -9,7 +9,8 @@ class LoadingScene extends Scene {
         // Images
         this.load.image('background', 'assets/images/background.png');
         this.load.image('background_buildings', 'assets/images/background_buildings.png');
-        this.load.image('background_clouds', 'assets/images/background_clouds.png');
+        this.load.image('background_clouds_01', 'assets/images/background_clouds_01.png');
+        this.load.image('background_clouds_02', 'assets/images/background_clouds_02.png');
         this.load.image('control_room', 'assets/images/control_room.png');
         this.load.image('robot', 'assets/images/robot.png');
         this.load.image('room', 'assets/images/room.png');
