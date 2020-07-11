@@ -305,8 +305,8 @@ export function renderStageEnemies() {
     const data = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
     const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
     let x = currentPosition * ROBOT_MOVEMENT_SIZE;
-    data.forEach((enemyType) => {
-        const enemy = this::createEnemyByType(enemyType, x);
+    data.forEach((enemyType, index) => {
+        const enemy = this::createEnemyByType(enemyType, index, x);
         this.enemies.push(enemy);
         if (enemy) {
             this.add.existing(enemy);
@@ -319,7 +319,7 @@ export function renderStageEnemies() {
 /**
  * @this RobotStageScene
  */
-function createEnemyByType(enemyType, x) {
+function createEnemyByType(enemyType, index, x) {
     switch (enemyType) {
         case JET: {
             return new Jet({
@@ -335,6 +335,7 @@ function createEnemyByType(enemyType, x) {
                 x,
                 y: 50,
             }).setOrigin(0, 0);
+            const totalTravelTime = (index + 1) * 1000
         }
 
         case BUILDING: {

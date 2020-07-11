@@ -153,7 +153,7 @@ class ControlRoomScene extends Scene {
             this.text.text = 'Enter letters to charge shield';
         }
         this.displayShieldSequence();
-        console.log(window.inGameActions.willShootLaser);
+        console.log(JSON.stringify(window.inGameActions.willShootLaser));
     }
 
     shuffle(a) {
