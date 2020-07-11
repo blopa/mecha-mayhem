@@ -17,11 +17,15 @@ class LoadingScene extends Scene {
         this.load.image('missile', 'assets/images/missile.png');
         this.load.image('jet', 'assets/images/jet.png');
         this.load.image('building', 'assets/images/building.png');
+        this.load.image('tileset', 'assets/images/tileset.png');
 
         // Atlas
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');
         this.load.atlas('robot_sprite', 'assets/images/robot_sprite.png', 'assets/atlas/robot_sprite.json');
         // this.load.atlas('robot', `assets/images/hero.png`, `assets/atlas/robot_atlas.json`);
+
+        // Map
+        this.load.tilemapTiledJSON('stage_01', 'assets/atlas/stage_01.json');
     }
 
     create() {

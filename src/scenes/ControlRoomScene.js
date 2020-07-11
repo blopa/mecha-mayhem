@@ -48,12 +48,19 @@ class ControlRoomScene extends Scene {
         this.laserChargeBar.setFillStyle(0x00FF00);
 
         this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5 + 10, 50, 10).setFillStyle(0x741B47);
-        
+
         this.physics.world.enable(this.wall, 1);
 
         // this.wallGroup = this.physics.add.staticGroup(); - if we need a group for later
 
         this.physics.add.collider(this.hero, this.wall);
+
+        // TODO pablo tests
+        // TODO pablo tests
+        const tilemap = this.make.tilemap({ key: 'tilemap' });
+        const tileset = tilemap.addTilesetImage('stage_01', 'tileset');
+        tilemap.createStaticLayer('background', tileset, 0, 0);
+        tilemap.createStaticLayer('details', tileset, 0, 0);
     }
 
     update(time, delta) {
