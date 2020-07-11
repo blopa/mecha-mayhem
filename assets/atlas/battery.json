@@ -1,0 +1,154 @@
+{
+    "frames": [
+        {
+            "filename": "battery_01",
+            "frame": {
+                "x": 49,
+                "y": 66,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_02",
+            "frame": {
+                "x": 49,
+                "y": 44,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_03",
+            "frame": {
+                "x": 49,
+                "y": 22,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_04",
+            "frame": {
+                "x": 49,
+                "y": 0,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_05",
+            "frame": {
+                "x": 49,
+                "y": 88,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_06",
+            "frame": {
+                "x": 0,
+                "y": 88,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_07",
+            "frame": {
+                "x": 0,
+                "y": 66,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_08",
+            "frame": {
+                "x": 0,
+                "y": 44,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_09",
+            "frame": {
+                "x": 0,
+                "y": 22,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_10",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "battery_11",
+            "frame": {
+                "x": 0,
+                "y": 110,
+                "w": 48,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 98,
+            "h": 132
+        },
+        "scale": "1"
+    }
+}

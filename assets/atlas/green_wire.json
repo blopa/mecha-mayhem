@@ -1,0 +1,167 @@
+{
+    "frames": [
+        {
+            "filename": "green_wires_01",
+            "frame": {
+                "x": 351,
+                "y": 0,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_02",
+            "frame": {
+                "x": 351,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_03",
+            "frame": {
+                "x": 351,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_04",
+            "frame": {
+                "x": 351,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_05",
+            "frame": {
+                "x": 351,
+                "y": 301,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_06",
+            "frame": {
+                "x": 702,
+                "y": 0,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_07",
+            "frame": {
+                "x": 0,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_08",
+            "frame": {
+                "x": 351,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_09",
+            "frame": {
+                "x": 0,
+                "y": 301,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_10",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_11",
+            "frame": {
+                "x": 351,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "green_wires_12",
+            "frame": {
+                "x": 351,
+                "y": 602,
+                "w": 350,
+                "h": 300
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 1053,
+            "h": 903
+        },
+        "scale": "1"
+    }
+}
