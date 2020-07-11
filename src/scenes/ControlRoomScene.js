@@ -14,16 +14,16 @@ class ControlRoomScene extends Scene {
     create() {
         this.laserRoom = new Room({
             scene: this,
-            x: 250,
-            y: 200,
+            x: 450,
+            y: 250,
             asset: 'room',
         });
         this.add.existing(this.laserRoom);
 
         this.hero = new Hero({
             scene: this,
-            x: 200,
-            y: 200,
+            x: 350,
+            y: 250,
             asset: 'hero',
         });
         this.add.existing(this.hero);
@@ -42,6 +42,8 @@ class ControlRoomScene extends Scene {
 
         this.laserChargeCounter = 0;
         this.laserChargeLimit = 1;
+        this.laserText = this.add.text(350,300);
+
 
         this.laserChargeBar = this.add.rectangle(this.laserRoom.x + 25 + 5, this.laserRoom.y + 25, 10, 0);
         this.laserChargeBar.setFillStyle(0x00FF00);
@@ -49,17 +51,16 @@ class ControlRoomScene extends Scene {
 
     update(time, delta) {
         this.hero.update(time, delta);
+        this.laserText.text = '';
         if (this.laserChargeCounter >= this.laserChargeLimit) {
-            console.log('Laser ready!')
-        } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
+            this.laserText.text = 'Laser ready!'
+        }   else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
             this.laserChargeCounter += 0.01;
             this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter/this.laserChargeLimit) * - 1;
-            console.log('Charging...');
+            this.laserText.text = 'Charging...';
+        } else if (this.physics.overlap(this.hero, this.laserRoom)) {
+            this.laserText.text = 'Hold A to charge laser';
         }
-    }
-
-    foobar() {
-        return this.laserChargeCounter;
     }
 }
 
