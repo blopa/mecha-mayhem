@@ -1,180 +1,323 @@
 {
-  "frames": [
-    {
-      "filename": "robot_hit_01",
-      "frame": {
-        "x": 0,
-        "y": 209,
-        "w": 86,
-        "h": 73
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_hit_02",
-      "frame": {
-        "x": 0,
-        "y": 139,
-        "w": 100,
-        "h": 69
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_hit_03",
-      "frame": {
-        "x": 0,
-        "y": 77,
-        "w": 115,
-        "h": 61
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_hit_04",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 118,
-        "h": 76
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_01",
-      "frame": {
-        "x": 101,
-        "y": 139,
-        "w": 85,
-        "h": 60
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_02",
-      "frame": {
-        "x": 87,
-        "y": 209,
-        "w": 85,
-        "h": 60
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_03",
-      "frame": {
-        "x": 119,
-        "y": 0,
-        "w": 84,
-        "h": 60
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_04",
-      "frame": {
-        "x": 173,
-        "y": 200,
-        "w": 83,
-        "h": 60
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_05",
-      "frame": {
-        "x": 201,
-        "y": 61,
-        "w": 82,
-        "h": 61
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_06",
-      "frame": {
-        "x": 187,
-        "y": 138,
-        "w": 82,
-        "h": 61
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_07",
-      "frame": {
-        "x": 173,
-        "y": 261,
-        "w": 82,
-        "h": 61
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_08",
-      "frame": {
-        "x": 116,
-        "y": 77,
-        "w": 84,
-        "h": 60
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    {
-      "filename": "robot_walking_09",
-      "frame": {
-        "x": 87,
-        "y": 270,
-        "w": 85,
-        "h": 60
-      },
-      "anchor": {
-        "x": 0,
-        "y": 0
-      }
+    "frames": [
+        {
+            "filename": "robot_hit_01",
+            "frame": {
+                "x": 0,
+                "y": 209,
+                "w": 86,
+                "h": 73
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_hit_02",
+            "frame": {
+                "x": 0,
+                "y": 139,
+                "w": 100,
+                "h": 69
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_hit_03",
+            "frame": {
+                "x": 0,
+                "y": 77,
+                "w": 115,
+                "h": 61
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_hit_04",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 118,
+                "h": 76
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_01",
+            "frame": {
+                "x": 116,
+                "y": 77,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_02",
+            "frame": {
+                "x": 172,
+                "y": 270,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_03",
+            "frame": {
+                "x": 0,
+                "y": 283,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_04",
+            "frame": {
+                "x": 119,
+                "y": 0,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_05",
+            "frame": {
+                "x": 205,
+                "y": 0,
+                "w": 76,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_06",
+            "frame": {
+                "x": 282,
+                "y": 0,
+                "w": 73,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_07",
+            "frame": {
+                "x": 258,
+                "y": 261,
+                "w": 75,
+                "h": 64
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_08",
+            "frame": {
+                "x": 271,
+                "y": 123,
+                "w": 70,
+                "h": 68
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_09",
+            "frame": {
+                "x": 334,
+                "y": 261,
+                "w": 65,
+                "h": 65
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_10",
+            "frame": {
+                "x": 0,
+                "y": 344,
+                "w": 67,
+                "h": 59
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_shooting_11",
+            "frame": {
+                "x": 285,
+                "y": 61,
+                "w": 67,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_01",
+            "frame": {
+                "x": 87,
+                "y": 209,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_02",
+            "frame": {
+                "x": 86,
+                "y": 283,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_03",
+            "frame": {
+                "x": 173,
+                "y": 200,
+                "w": 84,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_04",
+            "frame": {
+                "x": 187,
+                "y": 138,
+                "w": 83,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_05",
+            "frame": {
+                "x": 257,
+                "y": 331,
+                "w": 82,
+                "h": 61
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_06",
+            "frame": {
+                "x": 258,
+                "y": 199,
+                "w": 82,
+                "h": 61
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_07",
+            "frame": {
+                "x": 202,
+                "y": 61,
+                "w": 82,
+                "h": 61
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_08",
+            "frame": {
+                "x": 172,
+                "y": 331,
+                "w": 84,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_walking_09",
+            "frame": {
+                "x": 101,
+                "y": 139,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 400,
+            "h": 404
+        },
+        "scale": "1"
     }
-  ],
-  "meta": {
-    "size": {
-      "w": 284,
-      "h": 331
-    },
-    "scale": "1"
-  }
 }
