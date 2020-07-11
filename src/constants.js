@@ -27,3 +27,4 @@ export const LASER_BEAM_DEPTH = 100;
 
 export const ROOM_DEPTH = 10;
 export const HERO_DEPTH = 30;
+export const DECORATION_WIRE_DEPTH = 40;

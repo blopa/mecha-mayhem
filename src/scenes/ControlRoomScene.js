@@ -1,6 +1,7 @@
 import Phaser, { Scene } from 'phaser';
 import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
+import DecorationWire from '../sprites/DecorationWire';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -56,6 +57,22 @@ class ControlRoomScene extends Scene {
         this.physics.add.collider(this.hero, layer1);
         layer2.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.hero, layer2);
+        const redWire = new DecorationWire({
+            scene: this,
+            x: 739,
+            y: 408,
+            type: 'red',
+            frame: 'red_wire_01',
+        });
+        this.add.existing(redWire);
+        const greenWire = new DecorationWire({
+            scene: this,
+            x: 0,
+            y: 402,
+            type: 'green',
+            frame: 'green_wire_01',
+        });
+        this.add.existing(greenWire);
 
         this.physics.world.enable(this.hero);
         this.physics.world.enable(this.laserRoom);
