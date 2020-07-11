@@ -49,9 +49,10 @@ class ControlRoomScene extends Scene {
 
         this.wall = this.add.rectangle(this.laserRoom.x - 25 + 25, this.laserRoom.y + 25 + 5, 50, 10).setFillStyle(0x741B47);
         this.physics.world.enable(this.wall);
-        
-        this.physics.add.collider(this.hero, this.wall)
-        
+
+        this.physics.add.collider(this.hero, this.wall, () => {
+            console.log('Im colliding');
+        });
     }
 
     update(time, delta) {
