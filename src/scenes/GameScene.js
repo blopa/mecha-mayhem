@@ -28,7 +28,7 @@ class GameScene extends Scene {
             scene: this,
             x: 400,
             y: 200,
-            asset: 'christmas_tree',
+            asset: 'robot',
         }).setScale(3);
 
         this.add.existing(this.background);

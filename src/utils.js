@@ -1,4 +1,14 @@
-import {ROBOT_MOVEMENT_SIZE, ROBOT_MOVEMENT_TIME} from './constants';
+import {
+    BUILDING,
+    JET, MISSILE, NOTHING,
+    ROBOT_MOVEMENT_SIZE,
+    ROBOT_MOVEMENT_TIME,
+    ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
+    ROBOT_STAGE_LAYOUT_DATA_KEY,
+} from './constants';
+import Missile from "./sprites/Missile";
+import Jet from "./sprites/Jet";
+import Building from "./sprites/Building";
 
 export const isObjectEmpty = (obj) =>
     obj !== null
@@ -106,6 +116,8 @@ function moveRobotBackgroundBuildings(parallaxBackground) {
             }
 
             tween.stop();
+            const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
+            this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, currentPosition + 1);
             this.time.delayedCall(
                 ROBOT_MOVEMENT_TIME,
                 () => {
@@ -114,4 +126,57 @@ function moveRobotBackgroundBuildings(parallaxBackground) {
             );
         },
     });
+}
+
+/**
+ * @this RobotStageScene
+ */
+export function renderStageEnemies() {
+    const data = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
+    const currentPosition = this.data.get(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY);
+    let x = currentPosition * ROBOT_MOVEMENT_SIZE;
+    data.forEach((enemyType) => {
+        const enemy = this::createEnemyByType(enemyType, x);
+        if (enemy) {
+            this.add.existing(enemy);
+        }
+
+        x += ROBOT_MOVEMENT_SIZE;
+    });
+}
+
+/**
+ * @this RobotStageScene
+ */
+function createEnemyByType(enemyType, x) {
+    switch (enemyType) {
+        case JET: {
+            return new Jet({
+                scene: this,
+                x,
+                y: 50,
+            }).setOrigin(0, 0);
+        }
+
+        case MISSILE: {
+            return new Missile({
+                scene: this,
+                x,
+                y: 50,
+            }).setOrigin(0, 0);
+        }
+
+        case BUILDING: {
+            return new Building({
+                scene: this,
+                x,
+                y: 10,
+            }).setOrigin(0, 0);
+        }
+
+        case NOTHING:
+        default: {
+            return null;
+        }
+    }
 }

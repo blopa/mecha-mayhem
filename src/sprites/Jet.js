@@ -1,17 +1,17 @@
 import { GameObjects } from 'phaser';
-import { ROBOT_DEPTH } from '../constants';
+import { JET_DEPTH } from '../constants';
 
-class Robot extends GameObjects.Sprite {
+class Jet extends GameObjects.Sprite {
     constructor({
         scene,
         x,
         y,
-        asset = 'robot',
+        asset = 'jet',
         frame,
     }) {
         super(scene, x, y, asset, frame);
-        this.setDepth(ROBOT_DEPTH);
+        this.setDepth(JET_DEPTH);
     }
 }
 
-export default Robot;
+export default Jet;

@@ -7,11 +7,11 @@ import {
     JET,
     MISSILE,
     NOTHING, PARALLAX_BACKGROUND_DEPTH,
-    ROBOT_MOVEMENT_TIME,
+    ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from '../constants';
 import ParallaxBackground from '../sprites/ParallaxBackground';
-import { moveRobot } from '../utils';
+import { moveRobot, renderStageEnemies } from '../utils';
 
 class RobotStageScene extends Scene {
     constructor() {
@@ -20,6 +20,12 @@ class RobotStageScene extends Scene {
 
     init() {
         const data = [
+            // NOTHING,
+            // NOTHING,
+            // NOTHING,
+            // NOTHING,
+            // NOTHING,
+            // NOTHING,
             NOTHING,
             NOTHING,
             NOTHING,
@@ -33,6 +39,7 @@ class RobotStageScene extends Scene {
         ];
 
         this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
+        this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, 0);
     }
 
     preload() {
@@ -75,6 +82,7 @@ class RobotStageScene extends Scene {
         this.add.existing(this.robot);
 
         this::moveRobot();
+        this::renderStageEnemies();
     }
 
     update(time, delta) {
