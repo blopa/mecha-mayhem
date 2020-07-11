@@ -107,8 +107,8 @@ class ControlRoomScene extends Scene {
         this.shieldChargeBar.setFillStyle(0x00FF00);
 
         this.text = this.add.text(275, 300, '');
-        this.shieldRoomText = this.add.text(this.shieldRoom.x, this.shieldRoom.y, '').setDepth(10);
-        this.counter = 0;
+        this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 20, '').setDepth(10);
+        this.counter = 0
     }
 
     update(time, delta) {
