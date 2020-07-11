@@ -95,6 +95,7 @@ class ControlRoomScene extends Scene {
         this.laserChargeLimit = 1;
         this.laserChargeBar = this.add.rectangle(this.laserRoom.x + 25 + 5, this.laserRoom.y + 25, 10, 0);
         this.laserChargeBar.setFillStyle(0x00FF00);
+        this.readyToResetLaser = false;
 
         this.punchChargeCounter = 0;
         this.punchChargeLimit = 1;
@@ -123,6 +124,7 @@ class ControlRoomScene extends Scene {
             if (!willShootLaser) {
                 window.inGameActions.willShootLaser = true;
             }
+            this.readyToResetLaser = true;
         } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
             this.laserChargeCounter += 0.01;
             this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
@@ -151,6 +153,7 @@ class ControlRoomScene extends Scene {
             this.text.text = 'Enter letters to charge shield';
         }
         this.displayShieldSequence();
+        console.log(window.inGameActions.willShootLaser);
     }
 
     shuffle(a) {
