@@ -8,9 +8,11 @@ class Building extends GameObjects.Sprite {
         y,
         asset = 'building',
         frame,
+        spriteKey = 'building',
     }) {
         super(scene, x, y, asset, frame);
         this.setDepth(BUILDING_DEPTH);
+        this.spriteKey = spriteKey;
     }
 }
 

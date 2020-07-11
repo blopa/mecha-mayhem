@@ -24,9 +24,8 @@ class RobotStageScene extends Scene {
         const data = [
             // NOTHING,
             // NOTHING,
-            NOTHING,
-            NOTHING,
-            NOTHING,
+            // NOTHING,
+            // NOTHING,
             NOTHING,
             NOTHING,
             NOTHING,
@@ -34,9 +33,10 @@ class RobotStageScene extends Scene {
             JET,
             NOTHING,
             NOTHING,
-            BUILDING,
-            NOTHING,
             MISSILE,
+            NOTHING,
+            NOTHING,
+            BUILDING,
             NOTHING,
         ];
 

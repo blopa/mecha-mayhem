@@ -8,9 +8,11 @@ class Jet extends GameObjects.Sprite {
         y,
         asset = 'jet',
         frame,
+        spriteKey = 'jet',
     }) {
         super(scene, x, y, asset, frame);
         this.setDepth(JET_DEPTH);
+        this.spriteKey = spriteKey;
     }
 }
 

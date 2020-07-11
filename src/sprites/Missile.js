@@ -8,9 +8,11 @@ class Missile extends GameObjects.Sprite {
         y,
         asset = 'missile',
         frame,
+        spriteKey = 'missile',
     }) {
         super(scene, x, y, asset, frame);
         this.setDepth(MISSILE_DEPTH);
+        this.spriteKey = spriteKey;
     }
 }
 

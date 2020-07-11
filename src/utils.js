@@ -105,6 +105,36 @@ function containsEnemyAtPosition(position) {
 /**
  * @this RobotStageScene
  */
+function handlePunchAction(enemy) {
+    console.log('punching');
+
+    this.time.delayedCall(
+        ROBOT_MOVEMENT_TIME,
+        () => {
+            enemy.destroy();
+            this::startRobotMovement();
+        }
+    );
+}
+
+/**
+ * @this RobotStageScene
+ */
+function handleShieldAction(enemy) {
+    console.log('shielding');
+
+    this.time.delayedCall(
+        ROBOT_MOVEMENT_TIME,
+        () => {
+            enemy.destroy();
+            this::startRobotMovement();
+        }
+    );
+}
+
+/**
+ * @this RobotStageScene
+ */
 function handleShootingAction(enemy) {
     console.log('shooting');
     this.robot.setAnimation('shoot');
@@ -163,16 +193,20 @@ function handleActionQueue(position) {
     }
 
     if (willShield && enemyType === MISSILE) {
-        // TODO
+        this::handleShieldAction(enemy);
+        window.inGameActions.willShield = false;
+        actionTaken = true;
     }
 
     if (willDestroyBuilding && enemyType === BUILDING) {
-        // TODO
+        this::handlePunchAction(enemy);
+        window.inGameActions.willDestroyBuilding = false;
+        actionTaken = true;
     }
 
-    if (willDuck && enemyType === METEOR) {
-        // TODO
-    }
+    // if (willDuck && enemyType === METEOR) {
+    //     // TODO
+    // }
 
     if (actionTaken) {
         stageLayoutData[position] = NOTHING;
@@ -198,7 +232,7 @@ export function startRobotMovement() {
     });
 
     this.enemies.forEach((enemy, index) => {
-        if (enemy) {
+        if (enemy && enemy.spriteKey !== 'missile') {
             this::moveRobotRelatedSprite(enemy);
         }
     });
