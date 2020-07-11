@@ -7,6 +7,10 @@ class RobotStageScene extends Scene {
         super('RobotStageScene');
     }
 
+    init(data) {
+        // TODO
+    }
+
     preload() {
         // TODO
     }

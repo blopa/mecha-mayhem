@@ -26,4 +26,11 @@ class Game extends PhaserGame {
     }
 }
 
+window.inGameActions = {
+    willDuck: false,
+    willShootLaser: false,
+    willShield: false,
+    willDestroyBuilding: false,
+};
+
 window.game = new Game();
