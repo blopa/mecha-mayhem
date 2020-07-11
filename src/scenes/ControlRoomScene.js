@@ -72,13 +72,12 @@ class ControlRoomScene extends Scene {
         this.punchChargeBar.setFillStyle(0x00FF00);
 
         this.text = this.add.text(275, 300, '');
-
     }
 
     update(time, delta) {
         this.hero.update(time, delta);
         this.text.text = '';
-        //arm laser
+        // arm laser
         if ((this.laserChargeCounter >= this.laserChargeLimit) && this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Laser ready!';
         } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
@@ -88,7 +87,7 @@ class ControlRoomScene extends Scene {
         } else if (this.physics.overlap(this.hero, this.laserRoom)) {
             this.text.text = 'Hold A to charge laser';
         }
-        //arm punch
+        // arm punch
         if ((this.punchChargeCounter >= this.punchChargeLimit) && this.physics.overlap(this.hero, this.punchRoom)) {
             this.text.text = 'Punch ready!';
         } else if (this.physics.overlap(this.hero, this.punchRoom) && (Phaser.Input.Keyboard.JustDown(this.chargePunchButton))) {
