@@ -1,4 +1,5 @@
-import Phaser from 'phaser';
+/* globals IS_DEV */
+import Phaser, { GameObjects } from 'phaser';
 import {
     BUILDING,
     DINO,
@@ -295,14 +296,68 @@ export function startRobotMovement() {
 
             // TODO the robot occupies 3 positions
             if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE)) {
-                // BIG TODO
                 console.log('Game over...');
                 this.robot.setAnimation('die');
+                this.time.delayedCall(
+                    ROBOT_MOVEMENT_TIME / 2,
+                    () => {
+                        const gameOver = new GameObjects.Image(
+                            this,
+                            0,
+                            0,
+                            'game_over_screen'
+                        ).setOrigin(0, 0).setDepth(1000);
+                        this.add.existing(gameOver);
+
+                        this.time.delayedCall(
+                            ROBOT_MOVEMENT_TIME,
+                            () => {
+                                this.robot.destroy();
+                                this.cameras.main.fadeOut(ROBOT_MOVEMENT_TIME / 2);
+                                this.time.delayedCall(
+                                    ROBOT_MOVEMENT_TIME / 2,
+                                    () => {
+                                        this.scene.stop('ControlRoomScene');
+                                        this.scene.start('MainMenuScene');
+                                    }
+                                );
+                            }
+                        );
+                    }
+                );
+
                 return;
             }
 
             if (currentPosition >= stageLayoutData.length) {
                 console.log('You won yay');
+                this.time.delayedCall(
+                    ROBOT_MOVEMENT_TIME / 2,
+                    () => {
+                        const youWon = new GameObjects.Image(
+                            this,
+                            0,
+                            0,
+                            'you_won_screen'
+                        ).setOrigin(0, 0).setDepth(1000);
+                        this.add.existing(youWon);
+
+                        this.time.delayedCall(
+                            ROBOT_MOVEMENT_TIME,
+                            () => {
+                                this.cameras.main.fadeOut(ROBOT_MOVEMENT_TIME / 2);
+                                this.time.delayedCall(
+                                    ROBOT_MOVEMENT_TIME / 2,
+                                    () => {
+                                        this.scene.stop('ControlRoomScene');
+                                        this.scene.start('MainMenuScene');
+                                    }
+                                );
+                            }
+                        );
+                    }
+                );
+
                 return;
             }
 

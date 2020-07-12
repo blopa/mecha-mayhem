@@ -99,7 +99,7 @@ class Robot extends GameObjects.Sprite {
                         'robot_dying_16',
                     ],
                 }),
-                frameRate: 16,
+                frameRate: 11,
                 // yoyo: true,
                 repeat: 0,
             });

@@ -22,6 +22,8 @@ class LoadingScene extends Scene {
         this.load.image('selection_screen', 'assets/images/selection_screen.png');
         this.load.image('stage', 'assets/images/stage.png');
         this.load.image('game_logo', 'assets/images/game_logo.png');
+        this.load.image('you_won_screen', 'assets/images/you_won_screen.png');
+        this.load.image('game_over_screen', 'assets/images/game_over_screen.png');
 
         // Atlas
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');
@@ -33,7 +35,7 @@ class LoadingScene extends Scene {
         this.load.atlas('ufo', 'assets/images/ufo.png', 'assets/atlas/ufo.json');
         this.load.atlas('enemy_building', 'assets/images/enemy_building.png', 'assets/atlas/enemy_building.json');
 
-        //Spritesheet
+        // Spritesheet
         this.load.spritesheet('battery', 'assets/images/battery_spritesheet.png', { frameWidth: 48, frameHeight: 21 }, 11);
 
         // Map

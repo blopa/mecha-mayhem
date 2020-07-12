@@ -82,6 +82,25 @@ class MainMenuScene extends Scene {
                 DINO,
                 DINO,
             ],
+            [
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+                NOTHING,
+            ],
         ], false);
     }
 
