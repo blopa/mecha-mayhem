@@ -151,7 +151,10 @@ class ControlRoomScene extends Scene {
         // battery
         this.laserBattery = this.add.sprite(this.laserRoom.x, this.laserRoom.y - 21, 'battery').setDepth(15);
         this.laserBatteryIndex = 0;
-        // this.laserBattery.setFrame(5);
+        this.punchBattery = this.add.sprite(this.punchRoom.x, this.punchRoom.y - 21, 'battery').setDepth(15);
+        this.punchBatteryIndex = 0;
+        this.shieldBattery = this.add.sprite(this.shieldRoom.x, this.shieldRoom.y - 21, 'battery').setDepth(15);
+        this.shieldBatteryIndex = 0;
     }
 
     update(time, delta) {
@@ -175,14 +178,13 @@ class ControlRoomScene extends Scene {
                 this.laserChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
                 this.laserChargeCounter += 0.01;
-                // this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
                 if (this.laserChargeSfxReadyToPlay) {
                     this.laserChargeSfxReadyToPlay = false;
                     this.laserChargeSfx.play();
                 }
-                this.laserBatteryIndex = Math.round((this.laserChargeCounter / this.laserChargeLimit) * 11);
+                this.laserBatteryIndex = Math.round((this.laserChargeCounter / this.laserChargeLimit) * 10);
                 if (this.laserBatteryIndex < 11) {
                     this.laserBattery.setFrame(this.laserBatteryIndex);
                 }
@@ -213,6 +215,10 @@ class ControlRoomScene extends Scene {
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
                 this.punchChargeSfx.play();
+                this.punchBatteryIndex = Math.round((this.punchChargeCounter / this.punchChargeLimit) * 10);
+                if (this.punchBatteryIndex < 11) {
+                    this.punchBattery.setFrame(this.punchBatteryIndex);
+                }
             } else if (this.physics.overlap(this.hero, this.punchRoom)) {
                 newText = 'Mash SPACE to \ncharge punch';
             }
@@ -237,6 +243,10 @@ class ControlRoomScene extends Scene {
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
                 this.shieldChargeCorrectKeySfx.play();
+                this.shieldBatteryIndex = Math.round((this.shieldChargeCounter / this.shieldChargeLimit) * 10);
+                if (this.shieldBatteryIndex < 11) {
+                    this.shieldBattery.setFrame(this.shieldBatteryIndex);
+                }
             } else if (this.physics.overlap(this.hero, this.shieldRoom) && (this.shieldIncorrectSequenceKeyIsDown())) {
                 this.shieldChargeWrongKeySfx.play();
             } else if (this.physics.overlap(this.hero, this.shieldRoom)) {
@@ -254,13 +264,13 @@ class ControlRoomScene extends Scene {
         if (this.readyToResetPunch && !window.inGameActions.willDestroyBuilding) {
             this.readyToResetPunch = false;
             this.punchChargeCounter = 0;
-            this.punchChargeBar.height = 0;
+            this.punchBattery.setFrame(0);
         }
 
         if (this.readyToResetShield && !window.inGameActions.willShield) {
             this.readyToResetShield = false;
             this.shieldChargeCounter = 0;
-            this.shieldChargeBar.height = 0;
+            this.shieldBattery.setFrame(0);
         }
 
         if (newText !== this.text.text) {
