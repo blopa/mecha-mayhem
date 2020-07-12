@@ -22,23 +22,23 @@ class RobotStageScene extends Scene {
 
     init() {
         const data = [
-            NOTHING,
-            NOTHING,
-            // NOTHING,
             // JET,
             // DINO,
+            // MISSILE,
             NOTHING,
             NOTHING,
             NOTHING,
-            // NOTHING,
+            NOTHING,
             NOTHING,
             NOTHING,
             JET,
-            // MISSILE,
-            // DINO,
-            // NOTHING,
-            // NOTHING,
-            // BUILDING,
+            NOTHING,
+            NOTHING,
+            DINO,
+            NOTHING,
+            NOTHING,
+            NOTHING,
+            BUILDING,
             NOTHING,
         ];
 
