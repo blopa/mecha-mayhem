@@ -40,8 +40,8 @@ class MainMenuScene extends Scene {
         this.add.existing(this.gameLogo);
         const redWire = new DecorationWire({
             scene: this,
-            x: 739,
-            y: 408,
+            x: 700,
+            y: 357,
             type: 'red',
             frame: 'red_wire_01',
         });
@@ -49,7 +49,7 @@ class MainMenuScene extends Scene {
         const greenWire = new DecorationWire({
             scene: this,
             x: 0,
-            y: 402,
+            y: 345,
             type: 'green',
             frame: 'green_wire_01',
         });

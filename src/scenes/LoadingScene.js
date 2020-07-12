@@ -52,6 +52,7 @@ class LoadingScene extends Scene {
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');
         this.load.audio('laser_charge_sfx', 'assets/audio/laser_charge.mp3');
+        this.load.audio('crank_sfx', 'assets/audio/crank_sfx.mp3');
         this.load.audio('laser_charge_complete_sfx', 'assets/audio/laser_charge_complete.mp3');
         this.load.audio('punch_charge_sfx', 'assets/audio/punch_charge.mp3');
         this.load.audio('punch_charge_complete_sfx', 'assets/audio/punch_charge_complete.mp3');

@@ -16,7 +16,7 @@ class DecorationWire extends GameObjects.Sprite {
         this.setOrigin(0, 0);
         this.createAnimations();
         this.setAnimation('idle');
-        this.setScale(0.1); // TODO why do I need this?
+        this.setScale(0.3); // TODO why do I need this?
     }
 
     createAnimations = () => {

@@ -94,8 +94,8 @@ class ControlRoomScene extends Scene {
         this.physics.add.collider(this.hero, layer2);
         const redWire = new DecorationWire({
             scene: this,
-            x: 739,
-            y: 408,
+            x: 700,
+            y: 357,
             type: 'red',
             frame: 'red_wire_01',
         });
@@ -103,10 +103,10 @@ class ControlRoomScene extends Scene {
         const greenWire = new DecorationWire({
             scene: this,
             x: 0,
-            y: 402,
+            y: 380,
             type: 'green',
             frame: 'green_wire_01',
-        });
+        }).setScale(0.2);
         this.add.existing(greenWire);
 
         const laserRedButton = new RedButton({
@@ -151,7 +151,8 @@ class ControlRoomScene extends Scene {
         this.shieldRoomText = this.add.text(this.shieldRoom.x - 4, this.shieldRoom.y, '').setDepth(10);
         this.counter = 0;
         // SFX
-        this.laserChargeSfx = this.sound.add('laser_charge_sfx');
+        // this.laserChargeSfx = this.sound.add('laser_charge_sfx');
+        this.laserChargeSfx = this.sound.add('crank_sfx');
         this.laserChargeSfxReadyToPlay = true;
         this.laserChargeCompleteSfx = this.sound.add('laser_charge_complete_sfx');
         this.punchChargeSfx = this.sound.add('punch_charge_sfx');
@@ -308,9 +309,9 @@ class ControlRoomScene extends Scene {
 
     displayShieldSequence() {
         if (this.shieldSequence.length > 0) {
-            this.shieldRoomText.text = this.shieldSequence[this.shieldSequenceIndex];    
+            this.shieldRoomText.text = this.shieldSequence[this.shieldSequenceIndex];
         } else {
-            this.shieldRoomText.text = '' 
+            this.shieldRoomText.text = '';
         }
     }
 
@@ -335,7 +336,7 @@ class ControlRoomScene extends Scene {
 
     shieldIncorrectSequenceKeyIsDown() {
         let check = false;
-        let shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0);
+        const shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0);
         const currentLetter = this.shieldSequence[0];
         const letterIndex = shieldSequenceLettersCopy.indexOf(currentLetter);
         shieldSequenceLettersCopy.splice(letterIndex, 1);
