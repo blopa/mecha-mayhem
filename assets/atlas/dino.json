@@ -79,7 +79,7 @@
             }
         },
         {
-            "filename": "dino_walking_01",
+            "filename": "dino_idle_01",
             "frame": {
                 "x": 177,
                 "y": 0,
@@ -92,7 +92,7 @@
             }
         },
         {
-            "filename": "dino_walking_02",
+            "filename": "dino_idle_02",
             "frame": {
                 "x": 175,
                 "y": 52,
@@ -100,12 +100,12 @@
                 "h": 48
             },
             "anchor": {
-                "x": 0,
+                "x": 0.02,
                 "y": 0
             }
         },
         {
-            "filename": "dino_walking_03",
+            "filename": "dino_idle_03",
             "frame": {
                 "x": 171,
                 "y": 168,
@@ -113,12 +113,12 @@
                 "h": 48
             },
             "anchor": {
-                "x": 0,
+                "x": 0.02,
                 "y": 0
             }
         },
         {
-            "filename": "dino_walking_04",
+            "filename": "dino_idle_04",
             "frame": {
                 "x": 174,
                 "y": 109,
@@ -126,12 +126,12 @@
                 "h": 56
             },
             "anchor": {
-                "x": 0,
-                "y": 0
+                "x": -0.04,
+                "y": 0.14
             }
         },
         {
-            "filename": "dino_walking_05",
+            "filename": "dino_idle_05",
             "frame": {
                 "x": 93,
                 "y": 0,
@@ -139,12 +139,12 @@
                 "h": 51
             },
             "anchor": {
-                "x": 0,
-                "y": 0
+                "x": 0.01,
+                "y": 0.06
             }
         },
         {
-            "filename": "dino_walking_06",
+            "filename": "dino_idle_06",
             "frame": {
                 "x": 86,
                 "y": 191,
@@ -152,8 +152,8 @@
                 "h": 47
             },
             "anchor": {
-                "x": 0,
-                "y": 0
+                "x": 0.05,
+                "y": -0.03
             }
         }
     ],
