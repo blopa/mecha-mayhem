@@ -4,7 +4,7 @@ import Hero from '../sprites/Hero';
 import DecorationWire from '../sprites/DecorationWire';
 import RedButton from '../sprites/RedButton';
 import { ROBOT_STAGE_LAYOUT_DATA_KEY, ROBOT_STAGE_MAP_DATA_KEY } from '../constants';
-import Crank from "../sprites/Crank";
+import Crank from '../sprites/Crank';
 
 class ControlRoomScene extends Scene {
     constructor() {

@@ -302,6 +302,7 @@ export function startRobotMovement() {
             if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE)) {
                 console.log('Game over...');
                 this.robot.setAnimation('die');
+                this.robot.robotDying.play();
                 this.time.delayedCall(
                     ROBOT_MOVEMENT_TIME / 2,
                     () => {
