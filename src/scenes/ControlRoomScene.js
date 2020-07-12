@@ -136,6 +136,9 @@ class ControlRoomScene extends Scene {
         this.laserChargeCompleteSfx = this.sound.add('laser_charge_complete_sfx');
         this.punchChargeSfx = this.sound.add('punch_charge_sfx');
         this.punchChargeCompleteSfx = this.sound.add('punch_charge_complete_sfx');
+        this.shieldChargeCorrectKeySfx = this.sound.add('shield_charge_correct_key_sfx');
+        this.shieldChargeWrongKeySfx = this.sound.add('shield_charge_wrong_key_sfx');
+        this.shieldChargeCompleteSfx = this.sound.add('shield_charge_complete_sfx');
     }
 
     update(time, delta) {
@@ -209,14 +212,20 @@ class ControlRoomScene extends Scene {
                 }
                 this.readyToResetShield = true;
                 this.hero.setAnimation('idle');
+                this.shieldChargeCorrectKeySfx.stop();
+                this.shieldChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.shieldRoom) && (this.shieldSequenceKeyIsDown())) {
                 this.shieldChargeCounter += 0.25;
                 this.shieldChargeBar.height = this.shieldRoom.height * (this.shieldChargeCounter / this.shieldChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
+                this.shieldChargeCorrectKeySfx.play();
+            } else if (this.physics.overlap(this.hero, this.shieldRoom) && (this.shieldIncorrectSequenceKeyIsDown())) {
+                this.shieldChargeWrongKeySfx.play();
             } else if (this.physics.overlap(this.hero, this.shieldRoom)) {
                 newText = 'Enter letters to \ncharge shield';
             }
+
         }
 
         // RESET CONTROLLERS
@@ -276,8 +285,21 @@ class ControlRoomScene extends Scene {
         let check = false;
         for (let i = 0; i < this.shieldSequence.length; i++) {
             const key = this.input.keyboard.addKey(this.shieldSequence[i]);
-            if (key.isDown) {
+            if (Phaser.Input.Keyboard.JustDown(key)) {
                 this.shieldSequence.splice(i, 1);
+                check = true;
+            }
+        }
+        return check;
+    }
+
+    shieldIncorrectSequenceKeyIsDown() {
+        let check = false;
+        let shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0)
+        const incorrectLetters = shieldSequenceLettersCopy.filter(n => !this.shieldSequence.includes(n))
+        for (let i = 0; i < incorrectLetters.length; i++) {
+            const key = this.input.keyboard.addKey(incorrectLetters[i]);
+            if (Phaser.Input.Keyboard.JustDown(key)) {
                 check = true;
             }
         }
