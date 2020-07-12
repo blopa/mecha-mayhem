@@ -1,9 +1,11 @@
 /* globals VERSION */
+/* globals IS_DEV */
 import { GameObjects, Scene } from 'phaser';
 import Background from '../sprites/Background';
 import { BUILDING, DINO, JET, NOTHING } from '../constants';
 import DecorationWire from '../sprites/DecorationWire';
 import stages from '../../assets/stages/stages.json';
+import HtmlFileInput from '../HtmlFileInput';
 
 class MainMenuScene extends Scene {
     constructor() {
@@ -76,7 +78,7 @@ class MainMenuScene extends Scene {
         });
         this.add.existing(greenWire);
 
-        this.createStages(stages, false);
+        this.createStages(stages, false, IS_DEV);
     }
 
     addEndlessStage = () => {
@@ -111,15 +113,63 @@ class MainMenuScene extends Scene {
         });
     }
 
-    createStages = (stageData, addEndless) => {
+    addFileInput = () => {
+        const stageSelectionImage = new GameObjects.Image(
+            this,
+            100,
+            180,
+            'stage'
+        );
+        this.add.existing(stageSelectionImage);
+        stageSelectionImage.setInteractive();
+        const text = this.add.text(
+            68,
+            170,
+            'upload\nstages'
+        );
+
+        const fileInput = new HtmlFileInput({
+            scene: this,
+            spriteKey: 'file-input',
+        });
+        stageSelectionImage.on('pointerup', () => {
+            // TODO
+            fileInput.textfield.onchange = (e) => {
+                const reader = new FileReader();
+                reader.addEventListener('load', (event) => {
+                    const result = JSON.parse(reader.result);
+                    debugger;
+                });
+                reader.readAsText(e.target.files[0]);
+            };
+            fileInput.textfield.click();
+        });
+
+        stageSelectionImage.on('pointerover', () => {
+            this.menuSelection.play();
+            stageSelectionImage.setScale(0.98);
+            text.setScale(0.9);
+        });
+
+        stageSelectionImage.on('pointerout', () => {
+            stageSelectionImage.setScale(1);
+            text.setScale(1);
+        });
+    }
+
+    createStages = (stageData, addEndless, addOwnStages) => {
         let posX = 100;
         let posY = 180;
         let max = 4;
 
-        if (addEndless) {
+        if (addEndless || addOwnStages) {
             posX += 140;
             max = 3;
-            this.addEndlessStage();
+            if (addEndless) {
+                this.addEndlessStage();
+            } else if (addOwnStages) {
+                this.addFileInput();
+            }
         }
 
         stageData.forEach((data, index) => {

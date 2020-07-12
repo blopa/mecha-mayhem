@@ -347,7 +347,8 @@ export function startRobotMovement() {
 
             if (currentPosition >= stageLayoutData.length) {
                 console.log('You won yay');
-                this.mainTheme.play();
+                this.scene.get('ControlRoomScene').mainThemeMusic.stop();
+                this.victorySfx.play();
                 this.time.delayedCall(
                     ROBOT_MOVEMENT_TIME,
                     () => {
@@ -366,7 +367,6 @@ export function startRobotMovement() {
                                 this.time.delayedCall(
                                     ROBOT_MOVEMENT_TIME / 2,
                                     () => {
-                                        this.scene.get('ControlRoomScene').mainThemeMusic.stop();
                                         this.scene.start('MainMenuScene');
                                         this.scene.stop('RobotStageScene');
                                         this.scene.stop('ControlRoomScene');
