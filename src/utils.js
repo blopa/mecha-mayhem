@@ -122,7 +122,7 @@ export function handleSpriteMovement() {
 function containsEnemyAtPosition(position) {
     const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
 
-    return [JET, BUILDING, MISSILE].includes(stageLayoutData[position]);
+    return [JET, DINO, BUILDING, MISSILE].includes(stageLayoutData[position]);
 }
 
 /**
@@ -132,6 +132,7 @@ function handlePunchAction(enemy) {
     console.log('punching');
     this::handleShootingAction(enemy);
     return;
+    // TODO
 
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
@@ -147,6 +148,21 @@ function handlePunchAction(enemy) {
  */
 function handleShieldAction(enemy) {
     console.log('shielding');
+    this.robot.setAnimation('shield');
+    this.tweens.add({
+        x: (ROBOT_OCCUPATION_SIZE - 1) * ROBOT_MOVEMENT_SIZE,
+        y: enemy.y,
+        targets: enemy,
+        t: 1,
+        ease: 'Linear',
+        duration: ROBOT_MOVEMENT_TIME / 2,
+        repeat: 0,
+        yoyo: false,
+        onComplete: (tween) => {
+            tween.stop();
+            enemy.setAnimation('die');
+        },
+    });
 
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
@@ -224,7 +240,7 @@ function handleActionQueue(position) {
     //     actionTaken = true;
     // }
 
-    if (willShield && enemyType === DINO) {
+    if (true || willShield && enemyType === DINO) {
         this::handleShieldAction(enemy);
         window.inGameActions.willShield = false;
         actionTaken = true;

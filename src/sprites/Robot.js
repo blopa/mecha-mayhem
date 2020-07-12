@@ -72,7 +72,76 @@ class Robot extends GameObjects.Sprite {
                 }),
                 frameRate: 12,
                 // yoyo: true,
-                repeat: -1,
+                repeat: 0,
+            });
+        }
+
+        if (!this.scene.anims.exists(`${assetKey}_die`)) {
+            this.scene.anims.create({
+                key: `${assetKey}_die`,
+                frames: this.scene.anims.generateFrameNames(assetKey, {
+                    frames: [
+                        'robot_dying_01',
+                        'robot_dying_02',
+                        'robot_dying_03',
+                        'robot_dying_04',
+                        'robot_dying_05',
+                        'robot_dying_06',
+                        'robot_dying_07',
+                        'robot_dying_08',
+                        'robot_dying_09',
+                        'robot_dying_10',
+                        'robot_dying_11',
+                        'robot_dying_12',
+                        'robot_dying_13',
+                        'robot_dying_14',
+                        'robot_dying_15',
+                        'robot_dying_16',
+                    ],
+                }),
+                frameRate: 16,
+                // yoyo: true,
+                repeat: 0,
+            });
+        }
+
+        if (!this.scene.anims.exists(`${assetKey}_shield`)) {
+            this.scene.anims.create({
+                key: `${assetKey}_shield`,
+                frames: this.scene.anims.generateFrameNames(assetKey, {
+                    frames: [
+                        'robot_shield_01',
+                        'robot_shield_02',
+                        'robot_shield_03',
+                        'robot_shield_04',
+                        'robot_shield_05',
+                        'robot_shield_06',
+                        'robot_shield_07',
+                        'robot_shield_08',
+                        'robot_shield_09',
+                        'robot_shield_10',
+                        'robot_shield_11',
+                        'robot_shield_12',
+                        'robot_shield_13',
+                        'robot_shield_09',
+                        'robot_shield_10',
+                        'robot_shield_11',
+                        'robot_shield_12',
+                        'robot_shield_13',
+                        'robot_shield_09',
+                        'robot_shield_10',
+                        'robot_shield_11',
+                        'robot_shield_12',
+                        'robot_shield_13',
+                        'robot_shield_09',
+                        'robot_shield_10',
+                        'robot_shield_11',
+                        'robot_shield_12',
+                    ],
+                }),
+                frameRate: 18,
+                // yoyo: true,
+                repeat: 0,
             });
         }
 
