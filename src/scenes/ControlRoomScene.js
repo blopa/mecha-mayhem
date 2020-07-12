@@ -184,7 +184,7 @@ class ControlRoomScene extends Scene {
 
     update(time, delta) {
         //pause
-        if (Phaser.Input.Keyboard.JustDown(this.pauseButton)) {
+        if ((Phaser.Input.Keyboard.JustDown(this.pauseButton)) && (window.inGameActions.pauseFunctionality)) {
             this.scene.launch('PauseScene');
             this.scene.pause('RobotStageScene');
             this.scene.pause();

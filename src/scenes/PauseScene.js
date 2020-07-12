@@ -12,7 +12,7 @@ class PauseScene extends Scene {
 
     create() {
         this.pauseButton = this.input.keyboard.addKey('P');
-        this.add.sprite(0, 0, 'pause').setDepth(100);
+        this.add.sprite(384, 216, 'pause').setDepth(100);
     }
 
     update() {
