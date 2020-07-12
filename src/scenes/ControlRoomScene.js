@@ -134,6 +134,8 @@ class ControlRoomScene extends Scene {
         this.laserChargeSfx = this.sound.add('laser_charge_sfx');
         this.laserChargeSfxReadyToPlay = true;
         this.laserChargeCompleteSfx = this.sound.add('laser_charge_complete_sfx');
+        this.punchChargeSfx = this.sound.add('punch_charge_sfx');
+        this.punchChargeCompleteSfx = this.sound.add('punch_charge_complete_sfx');
     }
 
     update(time, delta) {
@@ -183,12 +185,14 @@ class ControlRoomScene extends Scene {
                 }
                 this.readyToResetPunch = true;
                 this.hero.setAnimation('idle');
+                this.punchChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.punchRoom) && (Phaser.Input.Keyboard.JustDown(this.chargePunchButton))) {
                 // https://stackoverflow.com/a/11832950/4307769
                 this.punchChargeCounter = Math.round((this.punchChargeCounter + 0.1 + Number.EPSILON) * 100) / 100;
                 this.punchChargeBar.height = this.punchRoom.height * (this.punchChargeCounter / this.punchChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
+                this.punchChargeSfx.play();
             } else if (this.physics.overlap(this.hero, this.punchRoom)) {
                 newText = 'Mash SPACE to \ncharge punch';
             }
