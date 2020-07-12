@@ -13,6 +13,7 @@ class Robot extends GameObjects.Sprite {
         this.setDepth(ROBOT_DEPTH);
         this.setScale(2);
         this.createAnimations();
+        this.addSoundEffects();
     }
 
     createAnimations = () => {
@@ -122,6 +123,10 @@ class Robot extends GameObjects.Sprite {
         this.currentAnimationKey = animationKey;
         this.anims.play(animationKey);
     };
+
+    addSoundEffects = () => {
+        this.robotLaser = this.scene.sound.add('robot_laser_sfx');
+    }
 }
 
 export default Robot;

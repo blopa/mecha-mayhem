@@ -14,6 +14,7 @@ class LoadingScene extends Scene {
         this.load.image('control_room', 'assets/images/control_room.png');
         this.load.image('robot', 'assets/images/robot.png');
         this.load.image('room', 'assets/images/room.png');
+        this.load.image('invisible', 'assets/images/invisible.png');
         // this.load.image('missile', 'assets/images/missile.png');
         this.load.image('jet', 'assets/images/jet.png');
         this.load.image('dino', 'assets/images/dino.png');
@@ -29,6 +30,9 @@ class LoadingScene extends Scene {
 
         // Map
         this.load.tilemapTiledJSON('stage_01', 'assets/images/stage_01.json');
+
+        // Audio
+        this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');
     }
 
     create() {

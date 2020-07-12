@@ -18,21 +18,21 @@ class ControlRoomScene extends Scene {
             scene: this,
             x: 720,
             y: 200,
-            asset: 'room',
+            asset: 'invisible',
         });
 
         this.punchRoom = new Room({
             scene: this,
             x: 680,
             y: 370,
-            asset: 'room',
+            asset: 'invisible',
         });
 
         this.shieldRoom = new Room({
             scene: this,
             x: 110,
             y: 240,
-            asset: 'room',
+            asset: 'invisible',
         });
 
         this.add.existing(this.laserRoom);

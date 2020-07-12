@@ -161,6 +161,7 @@ function handleShieldAction(enemy) {
 function handleShootingAction(enemy) {
     console.log('shooting');
     this.robot.setAnimation('shoot');
+    this.robot.robotLaser.play();
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
         () => {
