@@ -1,4 +1,4 @@
-import Phaser, { Scene } from 'phaser';
+import Phaser, { GameObjects, Scene } from 'phaser';
 import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
 import DecorationWire from '../sprites/DecorationWire';
@@ -24,6 +24,14 @@ class ControlRoomScene extends Scene {
     }
 
     create() {
+        this.roomTerminal = new GameObjects.Image(
+            this,
+            80,
+            220,
+            'terminal'
+        ).setOrigin(0, 0);
+        this.add.existing(this.roomTerminal);
+
         this.laserRoom = new Room({
             scene: this,
             x: 720,

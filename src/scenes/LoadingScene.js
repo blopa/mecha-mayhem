@@ -29,6 +29,7 @@ class LoadingScene extends Scene {
         this.load.image('game_logo', 'assets/images/game_logo.png');
         this.load.image('you_won_screen', 'assets/images/you_won_screen.png');
         this.load.image('game_over_screen', 'assets/images/game_over_screen.png');
+        this.load.image('terminal', 'assets/images/terminal.png');
 
         // Atlas
         this.load.atlas('hero', 'assets/images/hero.png', 'assets/atlas/hero_atlas.json');
