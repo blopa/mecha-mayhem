@@ -296,6 +296,7 @@ class ControlRoomScene extends Scene {
             this.readyToResetShield = false;
             this.shieldChargeCounter = 0;
             this.shieldBattery.setFrame(0);
+            this.shieldSequence = this.pickLetters();
         }
 
         if (newText !== this.text.text) {
