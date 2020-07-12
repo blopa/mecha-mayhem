@@ -40,6 +40,7 @@ class LoadingScene extends Scene {
         this.load.atlas('dino', 'assets/images/dino.png', 'assets/atlas/dino.json');
         this.load.atlas('ufo', 'assets/images/ufo.png', 'assets/atlas/ufo.json');
         this.load.atlas('enemy_building', 'assets/images/enemy_building.png', 'assets/atlas/enemy_building.json');
+        this.load.atlas('crank', 'assets/images/crank.png', 'assets/atlas/crank.json');
 
         // Spritesheet
         this.load.spritesheet('battery', 'assets/images/battery_spritesheet.png', { frameWidth: 48, frameHeight: 21 }, 11);
