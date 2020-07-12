@@ -307,12 +307,10 @@ class ControlRoomScene extends Scene {
     }
 
     displayShieldSequence() {
-        this.shieldRoomText.text = this.shieldSequence[this.shieldSequenceIndex];
-        if (this.counter % 20 === 0) {
-            this.shieldSequenceIndex += 1;
-        }
-        if (this.shieldSequenceIndex > this.shieldSequence.length) {
-            this.shieldSequenceIndex = 0;
+        if (this.shieldSequence.length > 0) {
+            this.shieldRoomText.text = this.shieldSequence[this.shieldSequenceIndex];    
+        } else {
+            this.shieldRoomText.text = '' 
         }
     }
 
@@ -327,22 +325,22 @@ class ControlRoomScene extends Scene {
 
     shieldSequenceKeyIsDown() {
         let check = false;
-        for (let i = 0; i < this.shieldSequence.length; i++) {
-            const key = this.input.keyboard.addKey(this.shieldSequence[i]);
-            if (Phaser.Input.Keyboard.JustDown(key)) {
-                this.shieldSequence.splice(i, 1);
-                check = true;
-            }
+        const key = this.input.keyboard.addKey(this.shieldSequence[0]);
+        if (Phaser.Input.Keyboard.JustDown(key)) {
+            this.shieldSequence.splice(0, 1);
+            check = true;
         }
         return check;
     }
 
     shieldIncorrectSequenceKeyIsDown() {
         let check = false;
-        const shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0);
-        const incorrectLetters = shieldSequenceLettersCopy.filter((n) => !this.shieldSequence.includes(n));
-        for (let i = 0; i < incorrectLetters.length; i++) {
-            const key = this.input.keyboard.addKey(incorrectLetters[i]);
+        let shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0);
+        const currentLetter = this.shieldSequence[0];
+        const letterIndex = shieldSequenceLettersCopy.indexOf(currentLetter);
+        shieldSequenceLettersCopy.splice(letterIndex, 1);
+        for (let i = 0; i < shieldSequenceLettersCopy.length; i++) {
+            const key = this.input.keyboard.addKey(shieldSequenceLettersCopy[i]);
             if (Phaser.Input.Keyboard.JustDown(key)) {
                 check = true;
             }
