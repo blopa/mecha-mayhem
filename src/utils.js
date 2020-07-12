@@ -13,7 +13,7 @@ import {
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from './constants';
 import Missile from './sprites/Missile';
-import Jet from './sprites/Jet';
+import Ufo from './sprites/Ufo';
 import Building from './sprites/Building';
 import Dino from './sprites/Dino';
 
@@ -130,6 +130,8 @@ function containsEnemyAtPosition(position) {
  */
 function handlePunchAction(enemy) {
     console.log('punching');
+    this::handleShootingAction(enemy);
+    return;
 
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
@@ -352,7 +354,7 @@ export function renderStageEnemies() {
 function createEnemyByType(enemyType, index, x) {
     switch (enemyType) {
         case JET: {
-            return new Jet({
+            return new Ufo({
                 scene: this,
                 x,
                 y: 80,
@@ -396,7 +398,7 @@ function createEnemyByType(enemyType, index, x) {
             return new Building({
                 scene: this,
                 x,
-                y: 10,
+                y: 16,
             }).setOrigin(0, 0);
         }
 

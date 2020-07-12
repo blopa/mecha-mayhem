@@ -1,19 +1,18 @@
 import { GameObjects } from 'phaser';
-import { BUILDING_DEPTH } from '../constants';
+import { JET_DEPTH } from '../constants';
 
-class Building extends GameObjects.Sprite {
+class Ufo extends GameObjects.Sprite {
     constructor({
         scene,
         x,
         y,
-        asset = 'enemy_building',
+        asset = 'ufo',
         frame,
-        spriteKey = 'enemy_building',
+        spriteKey = 'ufo',
     }) {
         super(scene, x, y, asset, frame);
-        this.setDepth(BUILDING_DEPTH);
+        this.setDepth(JET_DEPTH);
         this.spriteKey = spriteKey;
-        this.setScale(0.4); // TODO
         this.createAnimations();
         this.setAnimation('idle');
     }
@@ -25,11 +24,19 @@ class Building extends GameObjects.Sprite {
                 key: `${assetKey}_idle`,
                 frames: this.scene.anims.generateFrameNames(assetKey, {
                     frames: [
-                        'enemy_building_idle_01',
-                        'enemy_building_idle_02',
+                        'ufo_idle_01',
+                        'ufo_idle_02',
+                        'ufo_idle_03',
+                        'ufo_idle_04',
+                        'ufo_idle_05',
+                        'ufo_idle_06',
+                        'ufo_idle_07',
+                        'ufo_idle_08',
+                        'ufo_idle_09',
+                        'ufo_idle_10',
                     ],
                 }),
-                frameRate: 2,
+                frameRate: 12,
                 // yoyo: true,
                 repeat: -1,
             });
@@ -40,10 +47,12 @@ class Building extends GameObjects.Sprite {
                 key: `${assetKey}_die`,
                 frames: this.scene.anims.generateFrameNames(assetKey, {
                     frames: [
-                        'enemy_building_dying_01',
-                        'enemy_building_dying_02',
-                        'enemy_building_dying_03',
-                        'enemy_building_dying_04',
+                        'ufo_dying_01',
+                        'ufo_dying_02',
+                        'ufo_dying_03',
+                        'ufo_dying_04',
+                        'ufo_dying_05',
+                        'ufo_dying_06',
                     ],
                 }),
                 frameRate: 8,
@@ -66,4 +75,4 @@ class Building extends GameObjects.Sprite {
     };
 }
 
-export default Building;
+export default Ufo;
