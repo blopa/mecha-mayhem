@@ -1,0 +1,167 @@
+{
+    "frames": [
+        {
+            "filename": "dino_dying_01",
+            "frame": {
+                "x": 90,
+                "y": 61,
+                "w": 84,
+                "h": 47
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_dying_02",
+            "frame": {
+                "x": 89,
+                "y": 119,
+                "w": 84,
+                "h": 48
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_dying_03",
+            "frame": {
+                "x": 0,
+                "y": 119,
+                "w": 88,
+                "h": 71
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_dying_04",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 92,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_dying_05",
+            "frame": {
+                "x": 0,
+                "y": 61,
+                "w": 89,
+                "h": 57
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_dying_06",
+            "frame": {
+                "x": 0,
+                "y": 191,
+                "w": 85,
+                "h": 40
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_walking_01",
+            "frame": {
+                "x": 177,
+                "y": 0,
+                "w": 75,
+                "h": 48
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_walking_02",
+            "frame": {
+                "x": 175,
+                "y": 52,
+                "w": 78,
+                "h": 48
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_walking_03",
+            "frame": {
+                "x": 171,
+                "y": 168,
+                "w": 81,
+                "h": 48
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_walking_04",
+            "frame": {
+                "x": 174,
+                "y": 109,
+                "w": 81,
+                "h": 56
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_walking_05",
+            "frame": {
+                "x": 93,
+                "y": 0,
+                "w": 83,
+                "h": 51
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "dino_walking_06",
+            "frame": {
+                "x": 86,
+                "y": 191,
+                "w": 84,
+                "h": 47
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 256,
+            "h": 239
+        },
+        "scale": "1"
+    }
+}

@@ -17,7 +17,6 @@ class LoadingScene extends Scene {
         this.load.image('invisible', 'assets/images/invisible.png');
         // this.load.image('missile', 'assets/images/missile.png');
         this.load.image('jet', 'assets/images/jet.png');
-        this.load.image('dino', 'assets/images/dino.png');
         this.load.image('building', 'assets/images/building.png');
         this.load.image('tilesetImage', 'assets/images/tileset.png');
 
@@ -27,6 +26,7 @@ class LoadingScene extends Scene {
         this.load.atlas('red_wire', 'assets/images/red_wire.png', 'assets/atlas/red_wire.json');
         this.load.atlas('robot_sprite', 'assets/images/robot_sprite.png', 'assets/atlas/robot_sprite.json');
         this.load.atlas('red_button', 'assets/images/red_button.png', 'assets/atlas/red_button.json');
+        this.load.atlas('dino', 'assets/images/dino.png', 'assets/atlas/dino.json');
 
         // Map
         this.load.tilemapTiledJSON('stage_01', 'assets/images/stage_01.json');
