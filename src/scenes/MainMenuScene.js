@@ -63,6 +63,7 @@ class MainMenuScene extends Scene {
                     NOTHING,
                     NOTHING,
                     NOTHING,
+                    BUILDING,
                     NOTHING,
                     NOTHING,
                     NOTHING,

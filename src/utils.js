@@ -131,15 +131,19 @@ function containsEnemyAtPosition(position) {
  */
 function handlePunchAction(enemy) {
     console.log('punching');
-    this::handleShootingAction(enemy);
-    return;
-    // TODO
+    this.robot.setAnimation('punch');
 
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
         () => {
-            enemy.destroy();
-            this::startRobotMovement();
+            enemy.setAnimation('die');
+            this.time.delayedCall(
+                ROBOT_MOVEMENT_TIME / 2,
+                () => {
+                    enemy.destroy();
+                    this::startRobotMovement();
+                }
+            );
         }
     );
 }

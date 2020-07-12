@@ -145,6 +145,29 @@ class Robot extends GameObjects.Sprite {
             });
         }
 
+        if (!this.scene.anims.exists(`${assetKey}_punch`)) {
+            this.scene.anims.create({
+                key: `${assetKey}_punch`,
+                frames: this.scene.anims.generateFrameNames(assetKey, {
+                    frames: [
+                        'robot_punching_01',
+                        'robot_punching_02',
+                        'robot_punching_03',
+                        'robot_punching_04',
+                        'robot_punching_05',
+                        'robot_punching_06',
+                        'robot_punching_07',
+                        'robot_punching_08',
+                        'robot_punching_09',
+                        'robot_punching_10',
+                    ],
+                }),
+                frameRate: 10,
+                // yoyo: true,
+                repeat: 0,
+            });
+        }
+
         if (!this.scene.anims.exists(`${assetKey}_shoot`)) {
             this.scene.anims.create({
                 key: `${assetKey}_shoot`,

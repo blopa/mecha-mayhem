@@ -48,7 +48,7 @@ class Building extends GameObjects.Sprite {
                 }),
                 frameRate: 8,
                 // yoyo: true,
-                repeat: -1,
+                repeat: 0,
             });
         }
     };
