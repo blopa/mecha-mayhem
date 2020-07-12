@@ -1,0 +1,115 @@
+{
+    "frames": [
+        {
+            "filename": "crank_idle_01",
+            "frame": {
+                "x": 40,
+                "y": 19,
+                "w": 39,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_02",
+            "frame": {
+                "x": 0,
+                "y": 57,
+                "w": 39,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_03",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 40,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_04",
+            "frame": {
+                "x": 0,
+                "y": 19,
+                "w": 39,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_05",
+            "frame": {
+                "x": 0,
+                "y": 38,
+                "w": 39,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_06",
+            "frame": {
+                "x": 40,
+                "y": 57,
+                "w": 35,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_07",
+            "frame": {
+                "x": 41,
+                "y": 0,
+                "w": 35,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "crank_idle_08",
+            "frame": {
+                "x": 40,
+                "y": 38,
+                "w": 35,
+                "h": 18
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 80,
+            "h": 76
+        },
+        "scale": "1"
+    }
+}
