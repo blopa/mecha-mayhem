@@ -3,7 +3,7 @@ import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
 import DecorationWire from '../sprites/DecorationWire';
 import RedButton from '../sprites/RedButton';
-import { ROBOT_STAGE_LAYOUT_DATA_KEY } from '../constants';
+import { ROBOT_STAGE_LAYOUT_DATA_KEY, ROBOT_STAGE_MAP_DATA_KEY } from '../constants';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -11,7 +11,8 @@ class ControlRoomScene extends Scene {
     }
 
     init(data) {
-        this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
+        this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data.data);
+        this.data.set(ROBOT_STAGE_MAP_DATA_KEY, data.map);
     }
 
     preload() {
@@ -72,7 +73,7 @@ class ControlRoomScene extends Scene {
         this.controlRoomFill.fillRectShape(this.controlRoom);
 
         // TODO pablo tests
-        const tilemap = this.make.tilemap({ key: 'stage_01' });
+        const tilemap = this.make.tilemap({ key: this.data.get(ROBOT_STAGE_MAP_DATA_KEY) });
         const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
         const layer1 = tilemap.createStaticLayer('background', tileset, 0, 128);
         const layer2 = tilemap.createStaticLayer('details', tileset, 0, 128);
@@ -183,8 +184,8 @@ class ControlRoomScene extends Scene {
                 }
                 this.laserBatteryIndex = Math.round((this.laserChargeCounter / this.laserChargeLimit) * 11);
                 if (this.laserBatteryIndex < 11) {
-                  this.laserBattery.setFrame(this.laserBatteryIndex);  
-                } 
+                    this.laserBattery.setFrame(this.laserBatteryIndex);
+                }
             } else if (this.physics.overlap(this.hero, this.laserRoom)) {
                 newText = 'Hold SPACE to \ncharge laser';
             }

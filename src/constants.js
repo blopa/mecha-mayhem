@@ -7,6 +7,7 @@ export const DINO = 4;
 
 // DATA KEYS
 export const ROBOT_STAGE_LAYOUT_DATA_KEY = 'robotStateLayoutDataKey';
+export const ROBOT_STAGE_MAP_DATA_KEY = 'robotStateMapDataKey';
 export const ROBOT_STAGE_CURRENT_POSITION_DATA_KEY = 'robotStateCurrentPositionDataKey';
 
 // GAME STUFF
