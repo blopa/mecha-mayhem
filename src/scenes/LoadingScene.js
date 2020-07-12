@@ -33,6 +33,13 @@ class LoadingScene extends Scene {
 
         // Audio
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');
+        this.load.audio('laser_charge_sfx', 'assets/audio/laser_charge.mp3');
+        this.load.audio('laser_charge_complete_sfx', 'assets/audio/laser_charge_complete.mp3');
+        this.load.audio('punch_charge_sfx', 'assets/audio/punch_charge.mp3');
+        this.load.audio('punch_charge_complete_sfx', 'assets/audio/punch_charge_complete.mp3');
+        this.load.audio('shield_charge_correct_key_sfx', 'assets/audio/shield_charge_correct_key.mp3');
+        this.load.audio('shield_charge_wrong_key_sfx', 'assets/audio/shield_charge_wrong_key.mp3');
+        this.load.audio('shield_charge_complete_sfx', 'assets/audio/shield_charge_complete.mp3');
     }
 
     create() {

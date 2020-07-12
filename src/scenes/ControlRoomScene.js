@@ -130,6 +130,9 @@ class ControlRoomScene extends Scene {
         this.text = this.add.text(50, 370, '');
         this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 20, '').setDepth(10);
         this.counter = 0;
+        //SFX
+        this.laserChargeSfx = this.sound.add('laser_charge_sfx');
+        this.laserChargeSfxReadyToPlay = true;
     }
 
     update(time, delta) {
@@ -154,8 +157,15 @@ class ControlRoomScene extends Scene {
                 this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
+                if (this.laserChargeSfxReadyToPlay) {
+                    this.laserChargeSfxReadyToPlay = false;
+                    this.laserChargeSfx.play()
+                }
             } else if (this.physics.overlap(this.hero, this.laserRoom)) {
                 newText = 'Hold SPACE to \ncharge laser';
+            }
+            if (!this.chargeLaserButton.isDown) {
+                this.laserChargeSfxReadyToPlay = true;
             }
         }
 
