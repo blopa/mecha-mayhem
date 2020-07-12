@@ -148,7 +148,9 @@ class ControlRoomScene extends Scene {
         this.shieldChargeWrongKeySfx = this.sound.add('shield_charge_wrong_key_sfx');
         this.shieldChargeCompleteSfx = this.sound.add('shield_charge_complete_sfx');
         // battery
-        this.laserBattery = this.add.sprite(this.laserRoom.x - 24, this.laserRoom.y - 21, 'battery').setDepth(15);
+        this.laserBattery = this.add.sprite(this.laserRoom.x, this.laserRoom.y - 21, 'battery').setDepth(15);
+        this.laserBatteryIndex = 0;
+        // this.laserBattery.setFrame(5);
     }
 
     update(time, delta) {
@@ -172,13 +174,17 @@ class ControlRoomScene extends Scene {
                 this.laserChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
                 this.laserChargeCounter += 0.01;
-                this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
+                // this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
                 if (this.laserChargeSfxReadyToPlay) {
                     this.laserChargeSfxReadyToPlay = false;
                     this.laserChargeSfx.play();
                 }
+                this.laserBatteryIndex = Math.round((this.laserChargeCounter / this.laserChargeLimit) * 11);
+                if (this.laserBatteryIndex < 11) {
+                  this.laserBattery.setFrame(this.laserBatteryIndex);  
+                } 
             } else if (this.physics.overlap(this.hero, this.laserRoom)) {
                 newText = 'Hold SPACE to \ncharge laser';
             }
@@ -241,7 +247,7 @@ class ControlRoomScene extends Scene {
         if (this.readyToResetLaser && !window.inGameActions.willShootLaser) {
             this.readyToResetLaser = false;
             this.laserChargeCounter = 0;
-            this.laserChargeBar.height = 0;
+            this.laserBattery.setFrame(0);
         }
 
         if (this.readyToResetPunch && !window.inGameActions.willDestroyBuilding) {
