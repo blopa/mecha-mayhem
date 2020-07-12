@@ -21,6 +21,7 @@ class MainMenuScene extends Scene {
             willShootLaser: false,
             willShield: false,
             willDestroyBuilding: false,
+            pauseFunctionality: true,
         };
     }
 
