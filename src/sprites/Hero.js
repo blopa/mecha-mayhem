@@ -11,7 +11,7 @@ class Hero extends GameObjects.Sprite {
         });
 
         this.createAnimations();
-        this.setAnimation('walk');
+        this.setAnimation('idle');
         this.setDepth(HERO_DEPTH);
     }
 

@@ -13,7 +13,7 @@ import {
 import Missile from './sprites/Missile';
 import Jet from './sprites/Jet';
 import Building from './sprites/Building';
-import Dino from "./sprites/Dino";
+import Dino from './sprites/Dino';
 
 export const isObjectEmpty = (obj) =>
     obj !== null
@@ -83,17 +83,34 @@ export function handleSpriteMovement() {
     if (cursors.left.isDown) {
         this.body.setVelocityX(-velocity);
         this.body.setVelocityY(0);
+        this.setAnimation('walk');
+        this.scaleX = 1;
+        if (this.body.offset.x !== 0) {
+            this.setX(this.x - 30);
+            this.body.offset.x = 0;
+        }
     } else if (cursors.right.isDown) {
         this.body.setVelocityX(velocity);
         this.body.setVelocityY(0);
+        this.setAnimation('walk');
+        this.scaleX = -1;
+        if (this.body.offset.x !== 30) {
+            this.setX(this.x + 30);
+            this.body.offset.x = 30;
+        }
     } else if (cursors.up.isDown) {
         this.body.setVelocityY(-velocity);
         this.body.setVelocityX(0);
+        this.setAnimation('walk');
     } else if (cursors.down.isDown) {
         this.body.setVelocityY(velocity);
         this.body.setVelocityX(0);
+        this.setAnimation('walk');
     } else {
         this.body.setVelocity(0, 0);
+        if (this.currentAnimationName === 'walk') {
+            this.setAnimation('idle');
+        }
     }
 }
 
