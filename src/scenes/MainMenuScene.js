@@ -140,25 +140,34 @@ class MainMenuScene extends Scene {
             spriteKey: 'file-input',
         });
         stageSelectionImage.on('pointerup', () => {
-            // TODO
             fileInput.textfield.onchange = (e) => {
                 const reader = new FileReader();
                 reader.addEventListener('load', (event) => {
                     const result = JSON.parse(reader.result);
                     let cancel = false;
-                    result.forEach((data) => {
-                        if (!isset(data.data)) {
+                    result.forEach((stageData) => {
+                        const { data, map } = stageData;
+                        if (!isset(data) || !isset(map)) {
+                            cancel = true;
+                        }
+
+                        data.forEach((enemyType) => {
+                            if (![NOTHING, JET, DINO, BUILDING].includes(enemyType)) {
+                                cancel = true;
+                            }
+                        });
+
+                        if (!['stage_01', 'stage_02', 'stage_03'].includes(map)) {
                             cancel = true;
                         }
                     });
 
                     if (!cancel) {
                         this.mainTheme.stop();
-                        this.scene.start('MainMenuScene', result);
-                        return;
+                        this.scene.start('MainMenuScene', result.slice(0, 5));
+                    } else {
+                        window.alert('Sorry, your JSON is not valid');
                     }
-
-                    window.alert('Sorry, your JSON is not valid');
                 });
                 reader.readAsText(e.target.files[0]);
             };
