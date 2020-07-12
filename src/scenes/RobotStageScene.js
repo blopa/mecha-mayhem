@@ -32,6 +32,7 @@ class RobotStageScene extends Scene {
     }
 
     create() {
+        this.enemies = [];
         this.background = new Background({
             scene: this,
             x: 0,

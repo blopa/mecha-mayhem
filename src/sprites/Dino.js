@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { DINO_DEPTH } from '../constants';
+import { isset } from '../utils';
 
 class Dino extends GameObjects.Sprite {
     constructor({
@@ -59,7 +60,7 @@ class Dino extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 

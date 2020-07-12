@@ -1,6 +1,6 @@
 {
     "name": "puppet-master",
-    "version": "0.0.1-alpha.2",
+    "version": "0.0.1-alpha.3",
     "description": "Description here.",
     "author": "Pablo Pirata",
     "main": "index.js",

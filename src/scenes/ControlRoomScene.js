@@ -174,7 +174,7 @@ class ControlRoomScene extends Scene {
         this.mainThemeMusic = this.sound.add(
             'main_theme_music',
             {
-                volume: 0.2,
+                volume: 0.3,
                 loop: true,
             }
         );

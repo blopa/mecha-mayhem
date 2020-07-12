@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { CRANK_DEPTH } from '../constants';
+import { isset } from '../utils';
 
 class Crank extends GameObjects.Sprite {
     constructor({
@@ -56,7 +57,7 @@ class Crank extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 

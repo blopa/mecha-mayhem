@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { DECORATION_WIRE_DEPTH } from '../constants';
+import { isset } from '../utils';
 
 class DecorationWire extends GameObjects.Sprite {
     constructor({
@@ -49,7 +50,7 @@ class DecorationWire extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 

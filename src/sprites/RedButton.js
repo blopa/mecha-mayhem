@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { RED_BUTTON_DEPTH } from '../constants';
+import { isset } from '../utils';
 
 class RedButton extends GameObjects.Sprite {
     constructor({
@@ -39,7 +40,7 @@ class RedButton extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 

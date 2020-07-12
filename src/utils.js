@@ -205,7 +205,8 @@ function handleShootingAction(enemy) {
                 endPointObj.y,
                 0xff0000
             ).setOrigin(0, 0).setDepth(LASER_BEAM_DEPTH);
-            // enemy.setAnimation('die'); // TODO
+            console.log(enemy);
+            enemy.setAnimation('die');
 
             this.time.delayedCall(
                 ROBOT_MOVEMENT_TIME / 2,
@@ -232,6 +233,7 @@ function handleActionQueue(position) {
     const stageLayoutData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY);
     const enemyType = stageLayoutData[position];
     const enemy = this.enemies[position];
+    console.log(this.enemies, position, enemy);
     const { inGameActions } = window;
     const {
         willDuck,
@@ -331,6 +333,8 @@ export function startRobotMovement() {
                                         this.scene.get('ControlRoomScene').mainThemeMusic.stop();
                                         this.scene.stop('ControlRoomScene');
                                         this.scene.start('MainMenuScene');
+                                        this.scene.stop('RobotStageScene');
+                                        console.log('LALALA VER ISSO');
                                     }
                                 );
                             }
@@ -362,8 +366,9 @@ export function startRobotMovement() {
                                     ROBOT_MOVEMENT_TIME / 2,
                                     () => {
                                         this.scene.get('ControlRoomScene').mainThemeMusic.stop();
-                                        this.scene.stop('ControlRoomScene');
                                         this.scene.start('MainMenuScene');
+                                        this.scene.stop('RobotStageScene');
+                                        this.scene.stop('ControlRoomScene');
                                     }
                                 );
                             }

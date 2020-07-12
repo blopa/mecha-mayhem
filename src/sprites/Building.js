@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { BUILDING_DEPTH } from '../constants';
+import { isset } from '../utils';
 
 class Building extends GameObjects.Sprite {
     constructor({
@@ -54,7 +55,7 @@ class Building extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 

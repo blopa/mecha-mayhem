@@ -1,5 +1,6 @@
 import { GameObjects } from 'phaser';
 import { JET_DEPTH } from '../constants';
+import { isset } from '../utils';
 
 class Ufo extends GameObjects.Sprite {
     constructor({
@@ -64,7 +65,7 @@ class Ufo extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 

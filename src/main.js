@@ -1,3 +1,4 @@
+/* globals IS_DEV */
 import { Game as PhaserGame } from 'phaser';
 
 import BootScene from './scenes/BootScene';
@@ -33,4 +34,8 @@ window.inGameActions = {
     willDestroyBuilding: false,
 };
 
-window.game = new Game();
+const game = new Game();
+
+if (IS_DEV) {
+    window.phaserGame = game;
+}

@@ -1,5 +1,5 @@
 import { GameObjects } from 'phaser';
-import { handleSpriteMovement } from '../utils';
+import { handleSpriteMovement, isset } from '../utils';
 import { HERO_DEPTH } from '../constants';
 
 class Hero extends GameObjects.Sprite {
@@ -95,7 +95,7 @@ class Hero extends GameObjects.Sprite {
     };
 
     setAnimation = (animationName) => {
-        if (this.currentAnimationName === animationName) {
+        if (!isset(this.anims) || this.currentAnimationName === animationName) {
             return;
         }
 
@@ -117,7 +117,7 @@ class Hero extends GameObjects.Sprite {
             'hero_walking_sfx',
             {
                 loop: true,
-                volume: 0.5,
+                volume: 0.6,
             }
         );
     }
