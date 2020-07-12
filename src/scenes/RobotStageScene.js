@@ -3,15 +3,13 @@ import Background from '../sprites/Background';
 import Robot from '../sprites/Robot';
 import {
     BACKGROUND_DEPTH,
-    BUILDING, BUILDINGS_BACKGROUND_DEPTH, DINO,
-    JET,
-    MISSILE,
-    NOTHING, PARALLAX_BACKGROUND_DEPTH,
+    BUILDINGS_BACKGROUND_DEPTH,
+    PARALLAX_BACKGROUND_DEPTH,
     ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from '../constants';
 import ParallaxBackground from '../sprites/ParallaxBackground';
-import { startRobotMovement, renderStageEnemies } from '../utils';
+import { startRobotMovement, renderStageEnemies, generateInfiniteData } from '../utils';
 
 class RobotStageScene extends Scene {
     constructor() {
@@ -21,7 +19,11 @@ class RobotStageScene extends Scene {
     enemies = [];
 
     init(data) {
-        this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
+        if (data.length === 0) {
+            this::generateInfiniteData();
+        } else {
+            this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
+        }
         this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, 0);
     }
 

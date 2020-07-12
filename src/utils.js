@@ -427,3 +427,38 @@ function createEnemyByType(enemyType, index, x) {
         }
     }
 }
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+/**
+ * @this RobotStageScene
+ */
+export function generateInfiniteData() {
+    const enemyTypes = [JET, BUILDING, DINO];
+    let random = getRandomArbitrary(3, 6) + 4;
+    const newData = this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY) || [];
+    new Array(20).fill().forEach(() => {
+        if (random > 0) {
+            random -= 1;
+            newData.push(NOTHING);
+            return;
+        }
+
+        newData.push(enemyTypes[
+            Math.round(getRandomArbitrary(0, 2))
+        ]);
+        random = getRandomArbitrary(3, 6);
+    });
+
+    this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, newData);
+
+    this.time.delayedCall(
+        ROBOT_MOVEMENT_TIME * 30,
+        () => {
+            this::generateInfiniteData();
+            this::renderStageEnemies();
+        }
+    );
+}
