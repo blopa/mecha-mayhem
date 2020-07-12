@@ -66,6 +66,7 @@ class LoadingScene extends Scene {
         this.load.audio('menu_selection', 'assets/audio/menu_selection.mp3');
         this.load.audio('hero_walking_sfx', 'assets/audio/hero_walking_sfx.mp3');
         this.load.audio('robot_walking_sfx', 'assets/audio/robot_walking_sfx.mp3');
+        this.load.audio('victory_sfx', 'assets/audio/victory_sfx.mp3');
 
         // Music
         this.load.audio('tutorial_theme_music', 'assets/audio/tutorial_theme_music.mp3');

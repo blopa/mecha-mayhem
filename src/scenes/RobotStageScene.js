@@ -33,6 +33,8 @@ class RobotStageScene extends Scene {
 
     create() {
         this.enemies = [];
+
+        this.mainTheme = this.sound.add('victory_sfx');
         this.background = new Background({
             scene: this,
             x: 0,

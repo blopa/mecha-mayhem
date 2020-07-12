@@ -347,8 +347,9 @@ export function startRobotMovement() {
 
             if (currentPosition >= stageLayoutData.length) {
                 console.log('You won yay');
+                this.mainTheme.play();
                 this.time.delayedCall(
-                    ROBOT_MOVEMENT_TIME / 2,
+                    ROBOT_MOVEMENT_TIME,
                     () => {
                         const youWon = new GameObjects.Image(
                             this,
