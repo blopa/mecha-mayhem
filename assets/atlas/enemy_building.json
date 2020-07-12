@@ -1,0 +1,89 @@
+{
+    "frames": [
+        {
+            "filename": "enemy_building_dying_01",
+            "frame": {
+                "x": 0,
+                "y": 273,
+                "w": 537,
+                "h": 319
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "enemy_building_dying_02",
+            "frame": {
+                "x": 538,
+                "y": 273,
+                "w": 535,
+                "h": 292
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "enemy_building_dying_03",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 570,
+                "h": 272
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "enemy_building_dying_04",
+            "frame": {
+                "x": 571,
+                "y": 0,
+                "w": 535,
+                "h": 218
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "enemy_building_idle_01",
+            "frame": {
+                "x": 536,
+                "y": 593,
+                "w": 535,
+                "h": 335
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "enemy_building_idle_02",
+            "frame": {
+                "x": 0,
+                "y": 593,
+                "w": 535,
+                "h": 335
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 1107,
+            "h": 929
+        },
+        "scale": "1"
+    }
+}
