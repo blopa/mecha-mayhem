@@ -2,11 +2,11 @@
 /* globals IS_DEV */
 import { GameObjects, Scene } from 'phaser';
 import Background from '../sprites/Background';
-import {BUILDING, DINO, GAME_JSON_DATA_KEY, JET, NOTHING} from '../constants';
+import { BUILDING, DINO, GAME_JSON_DATA_KEY, JET, NOTHING } from '../constants';
 import DecorationWire from '../sprites/DecorationWire';
 import stages from '../../assets/stages/stages.json';
 import HtmlFileInput from '../HtmlFileInput';
-import {isset} from "../utils";
+import { isset } from '../utils';
 
 class MainMenuScene extends Scene {
     constructor() {
