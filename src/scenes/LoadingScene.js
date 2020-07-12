@@ -41,7 +41,7 @@ class LoadingScene extends Scene {
         // Map
         this.load.tilemapTiledJSON('stage_01', 'assets/images/stage_01.json');
 
-        // Audio
+        // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');
         this.load.audio('laser_charge_sfx', 'assets/audio/laser_charge.mp3');
         this.load.audio('laser_charge_complete_sfx', 'assets/audio/laser_charge_complete.mp3');
@@ -50,6 +50,11 @@ class LoadingScene extends Scene {
         this.load.audio('shield_charge_correct_key_sfx', 'assets/audio/shield_charge_correct_key.mp3');
         this.load.audio('shield_charge_wrong_key_sfx', 'assets/audio/shield_charge_wrong_key.mp3');
         this.load.audio('shield_charge_complete_sfx', 'assets/audio/shield_charge_complete.mp3');
+        this.load.audio('robot_die_sfx', 'assets/audio/robot_die_sfx.mp3');
+        this.load.audio('robot_shield_hit_sfx', 'assets/audio/robot_shield_hit_sfx.mp3');
+
+        // Music
+        this.load.audio('tutorial_theme_music', 'assets/audio/tutorial_theme_music.mp3');
     }
 
     create() {
