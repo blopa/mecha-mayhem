@@ -32,7 +32,7 @@ class Dino extends GameObjects.Sprite {
                         'dino_idle_06',
                     ],
                 }),
-                frameRate: 1,
+                frameRate: 8,
                 // yoyo: true,
                 repeat: -1,
             });
