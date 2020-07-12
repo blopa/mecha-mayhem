@@ -209,6 +209,12 @@ class Robot extends GameObjects.Sprite {
             return;
         }
 
+        if (animationName === 'walk') {
+            this.robotWalking.play();
+        } else {
+            this.robotWalking.stop();
+        }
+
         const assetKey = this.texture.key;
         const animationKey = `${assetKey}_${animationName}`;
         this.currentAnimationName = animationName;
@@ -218,6 +224,13 @@ class Robot extends GameObjects.Sprite {
 
     addSoundEffects = () => {
         this.robotLaser = this.scene.sound.add('robot_laser_sfx');
+        this.robotWalking = this.scene.sound.add(
+            'robot_walking_sfx',
+            {
+                loop: false,
+                volume: 0.5,
+            }
+        );
     }
 }
 

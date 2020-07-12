@@ -215,6 +215,7 @@ class ControlRoomScene extends Scene {
                 }
             } else if (this.physics.overlap(this.hero, this.laserRoom)) {
                 newText = 'Hold SPACE to \ncharge laser';
+                this.laserCrank.setAnimation('stop');
             }
             if (!this.chargeLaserButton.isDown) {
                 this.laserChargeSfxReadyToPlay = true;
