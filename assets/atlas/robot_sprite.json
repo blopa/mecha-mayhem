@@ -1,23 +1,10 @@
 {
     "frames": [
         {
-            "filename": "robot",
-            "frame": {
-                "x": 209,
-                "y": 69,
-                "w": 86,
-                "h": 73
-            },
-            "anchor": {
-                "x": 0,
-                "y": 0
-            }
-        },
-        {
             "filename": "robot_after_shooting_01",
             "frame": {
-                "x": 471,
-                "y": 382,
+                "x": 548,
+                "y": 182,
                 "w": 67,
                 "h": 60
             },
@@ -30,7 +17,7 @@
             "filename": "robot_after_shooting_02",
             "frame": {
                 "x": 471,
-                "y": 187,
+                "y": 249,
                 "w": 75,
                 "h": 64
             },
@@ -42,7 +29,7 @@
         {
             "filename": "robot_after_shooting_03",
             "frame": {
-                "x": 469,
+                "x": 467,
                 "y": 0,
                 "w": 76,
                 "h": 60
@@ -55,8 +42,8 @@
         {
             "filename": "robot_after_shooting_04",
             "frame": {
-                "x": 298,
-                "y": 0,
+                "x": 295,
+                "y": 364,
                 "w": 85,
                 "h": 60
             },
@@ -69,7 +56,7 @@
             "filename": "robot_dying_01",
             "frame": {
                 "x": 209,
-                "y": 143,
+                "y": 0,
                 "w": 86,
                 "h": 73
             },
@@ -81,8 +68,8 @@
         {
             "filename": "robot_dying_02",
             "frame": {
-                "x": 116,
-                "y": 278,
+                "x": 114,
+                "y": 487,
                 "w": 100,
                 "h": 67
             },
@@ -95,7 +82,7 @@
             "filename": "robot_dying_03",
             "frame": {
                 "x": 0,
-                "y": 272,
+                "y": 304,
                 "w": 115,
                 "h": 68
             },
@@ -108,7 +95,7 @@
             "filename": "robot_dying_04",
             "frame": {
                 "x": 0,
-                "y": 69,
+                "y": 0,
                 "w": 118,
                 "h": 73
             },
@@ -121,7 +108,7 @@
             "filename": "robot_dying_05",
             "frame": {
                 "x": 0,
-                "y": 0,
+                "y": 74,
                 "w": 118,
                 "h": 68
             },
@@ -134,7 +121,7 @@
             "filename": "robot_dying_06",
             "frame": {
                 "x": 0,
-                "y": 220,
+                "y": 373,
                 "w": 115,
                 "h": 51
             },
@@ -146,8 +133,8 @@
         {
             "filename": "robot_dying_07",
             "frame": {
-                "x": 116,
-                "y": 220,
+                "x": 0,
+                "y": 554,
                 "w": 100,
                 "h": 57
             },
@@ -159,8 +146,8 @@
         {
             "filename": "robot_dying_08",
             "frame": {
-                "x": 215,
-                "y": 477,
+                "x": 209,
+                "y": 74,
                 "w": 86,
                 "h": 63
             },
@@ -172,8 +159,8 @@
         {
             "filename": "robot_dying_09",
             "frame": {
-                "x": 213,
-                "y": 398,
+                "x": 208,
+                "y": 141,
                 "w": 86,
                 "h": 78
             },
@@ -185,8 +172,8 @@
         {
             "filename": "robot_dying_10",
             "frame": {
-                "x": 116,
-                "y": 346,
+                "x": 101,
+                "y": 555,
                 "w": 100,
                 "h": 51
             },
@@ -199,7 +186,7 @@
             "filename": "robot_dying_11",
             "frame": {
                 "x": 0,
-                "y": 387,
+                "y": 220,
                 "w": 115,
                 "h": 37
             },
@@ -212,7 +199,7 @@
             "filename": "robot_dying_12",
             "frame": {
                 "x": 0,
-                "y": 341,
+                "y": 258,
                 "w": 115,
                 "h": 45
             },
@@ -224,8 +211,8 @@
         {
             "filename": "robot_dying_13",
             "frame": {
-                "x": 215,
-                "y": 541,
+                "x": 116,
+                "y": 437,
                 "w": 83,
                 "h": 47
             },
@@ -251,7 +238,7 @@
             "filename": "robot_dying_15",
             "frame": {
                 "x": 116,
-                "y": 398,
+                "y": 290,
                 "w": 96,
                 "h": 75
             },
@@ -263,8 +250,8 @@
         {
             "filename": "robot_dying_16",
             "frame": {
-                "x": 217,
-                "y": 339,
+                "x": 301,
+                "y": 486,
                 "w": 50,
                 "h": 36
             },
@@ -276,8 +263,8 @@
         {
             "filename": "robot_hit_01",
             "frame": {
-                "x": 209,
-                "y": 69,
+                "x": 213,
+                "y": 290,
                 "w": 86,
                 "h": 73
             },
@@ -289,8 +276,8 @@
         {
             "filename": "robot_hit_02",
             "frame": {
-                "x": 114,
-                "y": 487,
+                "x": 116,
+                "y": 220,
                 "w": 100,
                 "h": 69
             },
@@ -328,8 +315,8 @@
         {
             "filename": "robot_idle_01",
             "frame": {
-                "x": 217,
-                "y": 278,
+                "x": 296,
+                "y": 0,
                 "w": 85,
                 "h": 60
             },
@@ -341,8 +328,8 @@
         {
             "filename": "robot_idle_02",
             "frame": {
-                "x": 217,
-                "y": 217,
+                "x": 300,
+                "y": 281,
                 "w": 85,
                 "h": 60
             },
@@ -354,8 +341,8 @@
         {
             "filename": "robot_idle_03",
             "frame": {
-                "x": 382,
-                "y": 61,
+                "x": 386,
+                "y": 269,
                 "w": 84,
                 "h": 60
             },
@@ -367,8 +354,8 @@
         {
             "filename": "robot_idle_04",
             "frame": {
-                "x": 387,
-                "y": 522,
+                "x": 388,
+                "y": 188,
                 "w": 83,
                 "h": 60
             },
@@ -380,8 +367,8 @@
         {
             "filename": "robot_idle_05",
             "frame": {
-                "x": 382,
-                "y": 61,
+                "x": 386,
+                "y": 269,
                 "w": 84,
                 "h": 60
             },
@@ -393,8 +380,8 @@
         {
             "filename": "robot_idle_06",
             "frame": {
-                "x": 217,
-                "y": 217,
+                "x": 300,
+                "y": 281,
                 "w": 85,
                 "h": 60
             },
@@ -404,10 +391,140 @@
             }
         },
         {
+            "filename": "robot_punching_01",
+            "frame": {
+                "x": 295,
+                "y": 138,
+                "w": 85,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_02",
+            "frame": {
+                "x": 472,
+                "y": 391,
+                "w": 75,
+                "h": 60
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_03",
+            "frame": {
+                "x": 547,
+                "y": 247,
+                "w": 67,
+                "h": 59
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_04",
+            "frame": {
+                "x": 549,
+                "y": 69,
+                "w": 62,
+                "h": 57
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_05",
+            "frame": {
+                "x": 467,
+                "y": 61,
+                "w": 69,
+                "h": 56
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_06",
+            "frame": {
+                "x": 377,
+                "y": 558,
+                "w": 75,
+                "h": 54
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_07",
+            "frame": {
+                "x": 545,
+                "y": 452,
+                "w": 68,
+                "h": 55
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_08",
+            "frame": {
+                "x": 206,
+                "y": 422,
+                "w": 88,
+                "h": 55
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_09",
+            "frame": {
+                "x": 202,
+                "y": 555,
+                "w": 88,
+                "h": 55
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "robot_punching_10",
+            "frame": {
+                "x": 206,
+                "y": 366,
+                "w": 88,
+                "h": 55
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
             "filename": "robot_shield_01",
             "frame": {
-                "x": 302,
-                "y": 522,
+                "x": 381,
+                "y": 342,
                 "w": 84,
                 "h": 59
             },
@@ -419,8 +536,8 @@
         {
             "filename": "robot_shield_02",
             "frame": {
-                "x": 303,
-                "y": 191,
+                "x": 382,
+                "y": 60,
                 "w": 84,
                 "h": 59
             },
@@ -433,7 +550,7 @@
             "filename": "robot_shield_03",
             "frame": {
                 "x": 382,
-                "y": 122,
+                "y": 0,
                 "w": 84,
                 "h": 59
             },
@@ -445,8 +562,8 @@
         {
             "filename": "robot_shield_04",
             "frame": {
-                "x": 386,
-                "y": 321,
+                "x": 381,
+                "y": 122,
                 "w": 84,
                 "h": 65
             },
@@ -459,7 +576,7 @@
             "filename": "robot_shield_05",
             "frame": {
                 "x": 303,
-                "y": 251,
+                "y": 199,
                 "w": 84,
                 "h": 69
             },
@@ -471,8 +588,8 @@
         {
             "filename": "robot_shield_06",
             "frame": {
-                "x": 386,
-                "y": 387,
+                "x": 377,
+                "y": 486,
                 "w": 84,
                 "h": 71
             },
@@ -484,8 +601,8 @@
         {
             "filename": "robot_shield_07",
             "frame": {
-                "x": 209,
-                "y": 0,
+                "x": 119,
+                "y": 141,
                 "w": 88,
                 "h": 68
             },
@@ -498,7 +615,7 @@
             "filename": "robot_shield_08",
             "frame": {
                 "x": 119,
-                "y": 142,
+                "y": 71,
                 "w": 89,
                 "h": 69
             },
@@ -511,7 +628,7 @@
             "filename": "robot_shield_09",
             "frame": {
                 "x": 119,
-                "y": 71,
+                "y": 0,
                 "w": 89,
                 "h": 70
             },
@@ -524,7 +641,7 @@
             "filename": "robot_shield_10",
             "frame": {
                 "x": 119,
-                "y": 142,
+                "y": 71,
                 "w": 89,
                 "h": 69
             },
@@ -537,7 +654,7 @@
             "filename": "robot_shield_11",
             "frame": {
                 "x": 119,
-                "y": 71,
+                "y": 0,
                 "w": 89,
                 "h": 70
             },
@@ -550,7 +667,7 @@
             "filename": "robot_shield_12",
             "frame": {
                 "x": 119,
-                "y": 142,
+                "y": 71,
                 "w": 89,
                 "h": 69
             },
@@ -562,8 +679,8 @@
         {
             "filename": "robot_shield_13",
             "frame": {
-                "x": 119,
-                "y": 0,
+                "x": 116,
+                "y": 366,
                 "w": 89,
                 "h": 70
             },
@@ -575,8 +692,8 @@
         {
             "filename": "robot_shooting_01",
             "frame": {
-                "x": 300,
-                "y": 400,
+                "x": 215,
+                "y": 478,
                 "w": 85,
                 "h": 60
             },
@@ -588,8 +705,8 @@
         {
             "filename": "robot_shooting_02",
             "frame": {
-                "x": 296,
-                "y": 69,
+                "x": 291,
+                "y": 539,
                 "w": 85,
                 "h": 60
             },
@@ -601,8 +718,8 @@
         {
             "filename": "robot_shooting_03",
             "frame": {
-                "x": 296,
-                "y": 130,
+                "x": 217,
+                "y": 220,
                 "w": 85,
                 "h": 60
             },
@@ -614,8 +731,8 @@
         {
             "filename": "robot_shooting_04",
             "frame": {
-                "x": 300,
-                "y": 339,
+                "x": 301,
+                "y": 425,
                 "w": 85,
                 "h": 60
             },
@@ -627,8 +744,8 @@
         {
             "filename": "robot_shooting_05",
             "frame": {
-                "x": 467,
-                "y": 61,
+                "x": 466,
+                "y": 330,
                 "w": 76,
                 "h": 60
             },
@@ -640,8 +757,8 @@
         {
             "filename": "robot_shooting_06",
             "frame": {
-                "x": 471,
-                "y": 252,
+                "x": 543,
+                "y": 314,
                 "w": 73,
                 "h": 60
             },
@@ -653,8 +770,8 @@
         {
             "filename": "robot_shooting_07",
             "frame": {
-                "x": 471,
-                "y": 122,
+                "x": 472,
+                "y": 182,
                 "w": 75,
                 "h": 64
             },
@@ -666,8 +783,8 @@
         {
             "filename": "robot_shooting_08",
             "frame": {
-                "x": 471,
-                "y": 313,
+                "x": 544,
+                "y": 0,
                 "w": 70,
                 "h": 68
             },
@@ -679,8 +796,8 @@
         {
             "filename": "robot_shooting_09",
             "frame": {
-                "x": 471,
-                "y": 503,
+                "x": 548,
+                "y": 375,
                 "w": 65,
                 "h": 65
             },
@@ -692,8 +809,8 @@
         {
             "filename": "robot_shooting_10",
             "frame": {
-                "x": 471,
-                "y": 443,
+                "x": 545,
+                "y": 508,
                 "w": 67,
                 "h": 59
             },
@@ -705,8 +822,8 @@
         {
             "filename": "robot_shooting_11",
             "frame": {
-                "x": 471,
-                "y": 382,
+                "x": 548,
+                "y": 182,
                 "w": 67,
                 "h": 60
             },
@@ -718,8 +835,8 @@
         {
             "filename": "robot_walking_01",
             "frame": {
-                "x": 217,
-                "y": 278,
+                "x": 296,
+                "y": 0,
                 "w": 85,
                 "h": 60
             },
@@ -731,8 +848,8 @@
         {
             "filename": "robot_walking_02",
             "frame": {
-                "x": 217,
-                "y": 217,
+                "x": 300,
+                "y": 281,
                 "w": 85,
                 "h": 60
             },
@@ -744,8 +861,8 @@
         {
             "filename": "robot_walking_03",
             "frame": {
-                "x": 382,
-                "y": 61,
+                "x": 386,
+                "y": 269,
                 "w": 84,
                 "h": 60
             },
@@ -757,8 +874,8 @@
         {
             "filename": "robot_walking_04",
             "frame": {
-                "x": 387,
-                "y": 522,
+                "x": 388,
+                "y": 188,
                 "w": 83,
                 "h": 60
             },
@@ -770,8 +887,8 @@
         {
             "filename": "robot_walking_05",
             "frame": {
-                "x": 388,
-                "y": 244,
+                "x": 462,
+                "y": 463,
                 "w": 82,
                 "h": 61
             },
@@ -783,8 +900,8 @@
         {
             "filename": "robot_walking_06",
             "frame": {
-                "x": 388,
-                "y": 182,
+                "x": 462,
+                "y": 525,
                 "w": 82,
                 "h": 61
             },
@@ -796,8 +913,8 @@
         {
             "filename": "robot_walking_07",
             "frame": {
-                "x": 388,
-                "y": 459,
+                "x": 466,
+                "y": 120,
                 "w": 82,
                 "h": 61
             },
@@ -809,8 +926,8 @@
         {
             "filename": "robot_walking_08",
             "frame": {
-                "x": 384,
-                "y": 0,
+                "x": 387,
+                "y": 402,
                 "w": 84,
                 "h": 60
             },
@@ -822,8 +939,8 @@
         {
             "filename": "robot_walking_09",
             "frame": {
-                "x": 302,
-                "y": 461,
+                "x": 296,
+                "y": 61,
                 "w": 85,
                 "h": 60
             },
@@ -835,8 +952,8 @@
     ],
     "meta": {
         "size": {
-            "w": 547,
-            "h": 589
+            "w": 617,
+            "h": 613
         },
         "scale": "1"
     }
