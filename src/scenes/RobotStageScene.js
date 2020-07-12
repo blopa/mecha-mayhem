@@ -20,28 +20,7 @@ class RobotStageScene extends Scene {
 
     enemies = [];
 
-    init() {
-        const data = [
-            // JET,
-            // DINO,
-            // MISSILE,
-            NOTHING,
-            NOTHING,
-            NOTHING,
-            NOTHING,
-            NOTHING,
-            NOTHING,
-            JET,
-            NOTHING,
-            NOTHING,
-            DINO,
-            NOTHING,
-            NOTHING,
-            NOTHING,
-            BUILDING,
-            NOTHING,
-        ];
-
+    init(data) {
         this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
         this.data.set(ROBOT_STAGE_CURRENT_POSITION_DATA_KEY, 0);
     }

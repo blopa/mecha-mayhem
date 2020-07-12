@@ -3,10 +3,15 @@ import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
 import DecorationWire from '../sprites/DecorationWire';
 import RedButton from '../sprites/RedButton';
+import { ROBOT_STAGE_LAYOUT_DATA_KEY } from '../constants';
 
 class ControlRoomScene extends Scene {
     constructor() {
         super('ControlRoomScene');
+    }
+
+    init(data) {
+        this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data);
     }
 
     preload() {
@@ -47,7 +52,10 @@ class ControlRoomScene extends Scene {
         });
         this.add.existing(this.hero);
 
-        this.scene.launch('RobotStageScene');
+        this.scene.launch(
+            'RobotStageScene',
+            this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY)
+        );
 
         // Shen stuff
         this.chargeLaserButton = this.input.keyboard.addKey('SPACE');
@@ -130,7 +138,7 @@ class ControlRoomScene extends Scene {
         this.text = this.add.text(50, 370, '');
         this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 20, '').setDepth(10);
         this.counter = 0;
-        //SFX
+        // SFX
         this.laserChargeSfx = this.sound.add('laser_charge_sfx');
         this.laserChargeSfxReadyToPlay = true;
         this.laserChargeCompleteSfx = this.sound.add('laser_charge_complete_sfx');
@@ -139,8 +147,8 @@ class ControlRoomScene extends Scene {
         this.shieldChargeCorrectKeySfx = this.sound.add('shield_charge_correct_key_sfx');
         this.shieldChargeWrongKeySfx = this.sound.add('shield_charge_wrong_key_sfx');
         this.shieldChargeCompleteSfx = this.sound.add('shield_charge_complete_sfx');
-        //battery
-        this.laserBattery = this.add.sprite(this.laserRoom.x - 24,this.laserRoom.y - 21,'battery').setDepth(15);
+        // battery
+        this.laserBattery = this.add.sprite(this.laserRoom.x - 24, this.laserRoom.y - 21, 'battery').setDepth(15);
     }
 
     update(time, delta) {
@@ -160,7 +168,7 @@ class ControlRoomScene extends Scene {
                 }
                 this.readyToResetLaser = true;
                 this.hero.setAnimation('idle');
-                this.laserChargeSfx.stop()
+                this.laserChargeSfx.stop();
                 this.laserChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
                 this.laserChargeCounter += 0.01;
@@ -169,7 +177,7 @@ class ControlRoomScene extends Scene {
                 this.hero.setAnimation('action');
                 if (this.laserChargeSfxReadyToPlay) {
                     this.laserChargeSfxReadyToPlay = false;
-                    this.laserChargeSfx.play()
+                    this.laserChargeSfx.play();
                 }
             } else if (this.physics.overlap(this.hero, this.laserRoom)) {
                 newText = 'Hold SPACE to \ncharge laser';
@@ -227,7 +235,6 @@ class ControlRoomScene extends Scene {
             } else if (this.physics.overlap(this.hero, this.shieldRoom)) {
                 newText = 'Enter letters to \ncharge shield';
             }
-
         }
 
         // RESET CONTROLLERS
@@ -297,8 +304,8 @@ class ControlRoomScene extends Scene {
 
     shieldIncorrectSequenceKeyIsDown() {
         let check = false;
-        let shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0)
-        const incorrectLetters = shieldSequenceLettersCopy.filter(n => !this.shieldSequence.includes(n))
+        const shieldSequenceLettersCopy = this.shieldSequenceLetters.slice(0);
+        const incorrectLetters = shieldSequenceLettersCopy.filter((n) => !this.shieldSequence.includes(n));
         for (let i = 0; i < incorrectLetters.length; i++) {
             const key = this.input.keyboard.addKey(incorrectLetters[i]);
             if (Phaser.Input.Keyboard.JustDown(key)) {
