@@ -133,6 +133,7 @@ class ControlRoomScene extends Scene {
         //SFX
         this.laserChargeSfx = this.sound.add('laser_charge_sfx');
         this.laserChargeSfxReadyToPlay = true;
+        this.laserChargeCompleteSfx = this.sound.add('laser_charge_complete_sfx');
     }
 
     update(time, delta) {
@@ -152,6 +153,8 @@ class ControlRoomScene extends Scene {
                 }
                 this.readyToResetLaser = true;
                 this.hero.setAnimation('idle');
+                this.laserChargeSfx.stop()
+                this.laserChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
                 this.laserChargeCounter += 0.01;
                 this.laserChargeBar.height = this.laserRoom.height * (this.laserChargeCounter / this.laserChargeLimit) * -1;
