@@ -2,10 +2,11 @@
 /* globals IS_DEV */
 import { GameObjects, Scene } from 'phaser';
 import Background from '../sprites/Background';
-import { BUILDING, DINO, JET, NOTHING } from '../constants';
+import {BUILDING, DINO, GAME_JSON_DATA_KEY, JET, NOTHING} from '../constants';
 import DecorationWire from '../sprites/DecorationWire';
 import stages from '../../assets/stages/stages.json';
 import HtmlFileInput from '../HtmlFileInput';
+import {isset} from "../utils";
 
 class MainMenuScene extends Scene {
     constructor() {
@@ -14,7 +15,7 @@ class MainMenuScene extends Scene {
 
     enemies = [];
 
-    init() {
+    init(data) {
         // makes sure the values are all set to false
         window.inGameActions = {
             willDuck: false,
@@ -22,6 +23,10 @@ class MainMenuScene extends Scene {
             willShield: false,
             willDestroyBuilding: false,
         };
+
+        if (isset(data)) {
+            this.data.set(GAME_JSON_DATA_KEY, data);
+        }
     }
 
     preload() {
@@ -78,7 +83,8 @@ class MainMenuScene extends Scene {
         });
         this.add.existing(greenWire);
 
-        this.createStages(stages, false, IS_DEV);
+        const stagesData = this.data.get(GAME_JSON_DATA_KEY) || stages;
+        this.createStages(stagesData, false, IS_DEV);
     }
 
     addEndlessStage = () => {
@@ -138,7 +144,20 @@ class MainMenuScene extends Scene {
                 const reader = new FileReader();
                 reader.addEventListener('load', (event) => {
                     const result = JSON.parse(reader.result);
-                    debugger;
+                    let cancel = false;
+                    result.forEach((data) => {
+                        if (!isset(data.data)) {
+                            cancel = true;
+                        }
+                    });
+
+                    if (!cancel) {
+                        this.mainTheme.stop();
+                        this.scene.start('MainMenuScene', result);
+                        return;
+                    }
+
+                    window.alert('Sorry, your JSON is not valid');
                 });
                 reader.readAsText(e.target.files[0]);
             };

@@ -9,6 +9,7 @@ export const DINO = 'DINO';
 export const ROBOT_STAGE_LAYOUT_DATA_KEY = 'robotStateLayoutDataKey';
 export const ROBOT_STAGE_MAP_DATA_KEY = 'robotStateMapDataKey';
 export const ROBOT_STAGE_CURRENT_POSITION_DATA_KEY = 'robotStateCurrentPositionDataKey';
+export const GAME_JSON_DATA_KEY = 'gameJsonDataKey';
 
 // GAME STUFF
 export const ROBOT_MOVEMENT_TIME = 1000;
