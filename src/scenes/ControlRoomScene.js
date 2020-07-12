@@ -91,8 +91,8 @@ class ControlRoomScene extends Scene {
 
         const laserRedButton = new RedButton({
             scene: this,
-            x: 700,
-            y: 200,
+            x: this.laserRoom.x - 17,
+            y: this.laserRoom.y + 20,
             frame: 'red_button_01',
         });
         this.add.existing(laserRedButton);
@@ -139,6 +139,8 @@ class ControlRoomScene extends Scene {
         this.shieldChargeCorrectKeySfx = this.sound.add('shield_charge_correct_key_sfx');
         this.shieldChargeWrongKeySfx = this.sound.add('shield_charge_wrong_key_sfx');
         this.shieldChargeCompleteSfx = this.sound.add('shield_charge_complete_sfx');
+        //battery
+        this.laserBattery = this.add.sprite(this.laserRoom.x - 24,this.laserRoom.y - 21,'battery').setDepth(15);
     }
 
     update(time, delta) {
