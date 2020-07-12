@@ -24,14 +24,6 @@ class ControlRoomScene extends Scene {
     }
 
     create() {
-        this.roomTerminal = new GameObjects.Image(
-            this,
-            80,
-            220,
-            'terminal'
-        ).setOrigin(0, 0);
-        this.add.existing(this.roomTerminal);
-
         this.laserRoom = new Room({
             scene: this,
             x: 720,
@@ -52,7 +44,6 @@ class ControlRoomScene extends Scene {
             y: 240,
             asset: 'invisible',
         });
-
         this.add.existing(this.laserRoom);
         this.add.existing(this.punchRoom);
         this.add.existing(this.shieldRoom);
@@ -64,6 +55,14 @@ class ControlRoomScene extends Scene {
             asset: 'hero',
         });
         this.add.existing(this.hero);
+
+        this.roomTerminal = new GameObjects.Image(
+            this,
+            this.shieldRoom.x - 38,
+            this.shieldRoom.y - 10,
+            'terminal'
+        ).setOrigin(0, 0).setDepth(10);
+        this.add.existing(this.roomTerminal);
 
         this.scene.launch(
             'RobotStageScene',
@@ -149,7 +148,7 @@ class ControlRoomScene extends Scene {
         this.readyToResetShield = false;
 
         this.text = this.add.text(50, 370, '');
-        this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 10, '').setDepth(10);
+        this.shieldRoomText = this.add.text(this.shieldRoom.x - 4, this.shieldRoom.y, '').setDepth(10);
         this.counter = 0;
         // SFX
         this.laserChargeSfx = this.sound.add('laser_charge_sfx');
