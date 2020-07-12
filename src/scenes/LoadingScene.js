@@ -64,6 +64,7 @@ class LoadingScene extends Scene {
 
         // Music
         this.load.audio('tutorial_theme_music', 'assets/audio/tutorial_theme_music.mp3');
+        this.load.audio('main_theme_music', 'assets/audio/main_level_theme.mp3');
     }
 
     create() {
