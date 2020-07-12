@@ -194,6 +194,7 @@ function handleShootingAction(enemy) {
                 endPointObj.y,
                 0xff0000
             ).setOrigin(0, 0).setDepth(LASER_BEAM_DEPTH);
+            enemy.setAnimation('die');
 
             this.time.delayedCall(
                 ROBOT_MOVEMENT_TIME / 2,
@@ -240,7 +241,7 @@ function handleActionQueue(position) {
     //     actionTaken = true;
     // }
 
-    if (true || willShield && enemyType === DINO) {
+    if (willShield && enemyType === DINO) {
         this::handleShieldAction(enemy);
         window.inGameActions.willShield = false;
         actionTaken = true;
@@ -294,7 +295,9 @@ export function startRobotMovement() {
 
             // TODO the robot occupies 3 positions
             if (this::containsEnemyAtPosition(currentPosition + ROBOT_OCCUPATION_SIZE)) {
+                // BIG TODO
                 console.log('Game over...');
+                this.robot.setAnimation('die');
                 return;
             }
 

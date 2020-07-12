@@ -53,11 +53,12 @@ class Ufo extends GameObjects.Sprite {
                         'ufo_dying_04',
                         'ufo_dying_05',
                         'ufo_dying_06',
+                        'ufo_dying_04',
                     ],
                 }),
-                frameRate: 8,
+                frameRate: 14,
                 // yoyo: true,
-                repeat: -1,
+                repeat: 0,
             });
         }
     };
