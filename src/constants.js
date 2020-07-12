@@ -1,9 +1,9 @@
 // ENEMY TYPES
-export const NOTHING = 0;
-export const JET = 1;
-export const BUILDING = 2;
-export const MISSILE = 3;
-export const DINO = 4;
+export const NOTHING = 'NOTHING';
+export const JET = 'UFO';
+export const BUILDING = 'BUILDING';
+export const MISSILE = 'MISSILE';
+export const DINO = 'DINO';
 
 // DATA KEYS
 export const ROBOT_STAGE_LAYOUT_DATA_KEY = 'robotStateLayoutDataKey';
