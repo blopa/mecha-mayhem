@@ -13,6 +13,12 @@ class MainMenuScene extends Scene {
     }
 
     create() {
+        this.mainTheme = this.sound.add(
+            'tutorial_theme_music',
+            { volume: 0.3 }
+        );
+        this.mainTheme.play();
+
         this.background = new Background({
             scene: this,
             x: 0,
