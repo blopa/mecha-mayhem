@@ -85,7 +85,8 @@ class MainMenuScene extends Scene {
         this.add.existing(greenWire);
 
         const stagesData = this.data.get(GAME_JSON_DATA_KEY) || stages;
-        this.createStages(stagesData, false, IS_DEV);
+        const enableUpload = IS_DEV || localStorage.getItem('enableUpload');
+        this.createStages(stagesData, false, enableUpload);
     }
 
     addEndlessStage = () => {
@@ -145,26 +146,31 @@ class MainMenuScene extends Scene {
                 reader.addEventListener('load', (event) => {
                     const result = JSON.parse(reader.result);
                     let cancel = false;
-                    result.forEach((stageData) => {
-                        const { data, map } = stageData;
-                        if (!isset(data) || !isset(map)) {
-                            cancel = true;
-                        }
 
-                        data.forEach((enemyType) => {
-                            if (![NOTHING, JET, DINO, BUILDING].includes(enemyType)) {
+                    if (isset(result.forEach)) {
+                        result.forEach((stageData) => {
+                            const { data, map } = stageData;
+                            if (!isset(data) || !isset(map)) {
+                                cancel = true;
+                            }
+
+                            data.forEach((enemyType) => {
+                                if (![NOTHING, JET, DINO, BUILDING].includes(enemyType)) {
+                                    cancel = true;
+                                }
+                            });
+
+                            if (!['stage_01', 'stage_02', 'stage_03'].includes(map)) {
                                 cancel = true;
                             }
                         });
-
-                        if (!['stage_01', 'stage_02', 'stage_03'].includes(map)) {
-                            cancel = true;
-                        }
-                    });
+                    } else {
+                        cancel = true;
+                    }
 
                     if (!cancel) {
                         this.mainTheme.stop();
-                        this.scene.start('MainMenuScene', result.slice(0, 5));
+                        this.scene.start('MainMenuScene', result.slice(0, 9));
                     } else {
                         window.alert('Sorry, your JSON is not valid');
                     }
