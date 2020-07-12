@@ -29,6 +29,7 @@ class HtmlFileInput {
 
         const textfield = document.createElement('input');
         textfield.setAttribute('type', 'file');
+        textfield.setAttribute('accept', '.json');
         textfield.setAttribute('id', spriteKey);
         textfield.setAttribute('autocomplete', 'off');
         textfield.onkeypress = (event) => /[A-Za-z0-9_]/i.test(event.key);
