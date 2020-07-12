@@ -117,7 +117,7 @@ class Hero extends GameObjects.Sprite {
             'hero_walking_sfx',
             {
                 loop: true,
-                volume: 0.3,
+                volume: 0.5,
             }
         );
     }

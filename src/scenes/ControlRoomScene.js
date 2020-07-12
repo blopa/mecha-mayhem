@@ -10,6 +10,10 @@ class ControlRoomScene extends Scene {
         super('ControlRoomScene');
     }
 
+    mainThemeMusic = {
+        stop: () => {},
+    }
+
     init(data) {
         this.data.set(ROBOT_STAGE_LAYOUT_DATA_KEY, data.data);
         this.data.set(ROBOT_STAGE_MAP_DATA_KEY, data.map);
@@ -158,7 +162,10 @@ class ControlRoomScene extends Scene {
         // music
         this.mainThemeMusic = this.sound.add(
             'main_theme_music',
-            { volume: 0.3 }
+            {
+                volume: 0.2,
+                loop: true,
+            }
         );
         this.mainThemeMusic.play();
     }

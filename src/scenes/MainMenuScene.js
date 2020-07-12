@@ -15,7 +15,10 @@ class MainMenuScene extends Scene {
     create() {
         this.mainTheme = this.sound.add(
             'tutorial_theme_music',
-            { volume: 0.3 }
+            {
+                volume: 0.2,
+                loop: true,
+            }
         );
         this.mainTheme.play();
         this.menuSelection = this.sound.add(

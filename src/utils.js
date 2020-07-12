@@ -317,6 +317,7 @@ export function startRobotMovement() {
                                 this.time.delayedCall(
                                     ROBOT_MOVEMENT_TIME / 2,
                                     () => {
+                                        this.scene.get('ControlRoomScene').mainThemeMusic.stop();
                                         this.scene.stop('ControlRoomScene');
                                         this.scene.start('MainMenuScene');
                                     }
@@ -349,6 +350,7 @@ export function startRobotMovement() {
                                 this.time.delayedCall(
                                     ROBOT_MOVEMENT_TIME / 2,
                                     () => {
+                                        this.scene.get('ControlRoomScene').mainThemeMusic.stop();
                                         this.scene.stop('ControlRoomScene');
                                         this.scene.start('MainMenuScene');
                                     }
