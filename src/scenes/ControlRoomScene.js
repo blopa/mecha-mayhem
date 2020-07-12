@@ -127,6 +127,7 @@ class ControlRoomScene extends Scene {
         this.add.existing(punchRedButton);
 
         this.physics.world.enable(this.hero);
+        this.hero.body.setCollideWorldBounds()
         this.physics.world.enable(this.laserRoom);
         this.physics.world.enable(this.punchRoom);
         this.physics.world.enable(this.shieldRoom);
