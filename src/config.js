@@ -1,3 +1,4 @@
+/* globals IS_DEV */
 import Phaser from 'phaser';
 
 export default {
@@ -16,7 +17,7 @@ export default {
         default: 'arcade',
         arcade: {
             enableBody: true,
-            debug: true,
+            debug: IS_DEV,
         },
     },
 };
