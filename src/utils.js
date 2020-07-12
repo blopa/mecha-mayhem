@@ -344,7 +344,7 @@ export function startRobotMovement() {
 
             if (currentPosition >= stageLayoutData.length) {
                 console.log('You won yay');
-                const winningQuantity = parseInt(localStorage.getItem('winningQuantity'), 10);
+                const winningQuantity = parseInt(localStorage.getItem('winningQuantity') || 0, 10);
                 localStorage.setItem('winningQuantity', winningQuantity + 1);
                 if (winningQuantity > 8) {
                     localStorage.setItem('enableUpload', true);
