@@ -155,6 +155,9 @@ class ControlRoomScene extends Scene {
         this.punchBatteryIndex = 0;
         this.shieldBattery = this.add.sprite(this.shieldRoom.x, this.shieldRoom.y - 21, 'battery').setDepth(15);
         this.shieldBatteryIndex = 0;
+        // music
+        this.mainThemeMusic = this.sound.add('main_theme_music');
+        this.mainThemeMusic.play();
     }
 
     update(time, delta) {
