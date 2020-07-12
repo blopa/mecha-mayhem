@@ -1,3 +1,4 @@
+/* globals VERSION */
 import { GameObjects, Scene } from 'phaser';
 import Background from '../sprites/Background';
 import { BUILDING, DINO, JET, NOTHING } from '../constants';
@@ -45,9 +46,16 @@ class MainMenuScene extends Scene {
         this.add.existing(this.background);
 
         this.gameLogo = new GameObjects.Image(
-            this, 250, 15, 'game_logo'
+            this, 90, 15, 'game_logo'
         ).setOrigin(0, 0);
         this.add.existing(this.gameLogo);
+
+        this.add.text(
+            610,
+            400,
+            `v${VERSION}`
+        ).setDepth(1000);
+
         const redWire = new DecorationWire({
             scene: this,
             x: 700,

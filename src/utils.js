@@ -81,9 +81,13 @@ export function setSpriteDraggable() {
  */
 export function handleSpriteMovement() {
     const cursors = this.scene.input.keyboard.createCursorKeys();
+    const keyA = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    const keyS = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    const keyD = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    const keyW = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     const velocity = 200;
 
-    if (cursors.left.isDown) {
+    if (cursors.left.isDown || keyA.isDown) {
         this.body.setVelocityX(-velocity);
         this.body.setVelocityY(0);
         this.setAnimation('walk');
@@ -92,7 +96,7 @@ export function handleSpriteMovement() {
             this.setX(this.x - 30);
             this.body.offset.x = 0;
         }
-    } else if (cursors.right.isDown) {
+    } else if (cursors.right.isDown || keyD.isDown) {
         this.body.setVelocityX(velocity);
         this.body.setVelocityY(0);
         this.setAnimation('walk');
@@ -101,11 +105,11 @@ export function handleSpriteMovement() {
             this.setX(this.x + 30);
             this.body.offset.x = 30;
         }
-    } else if (cursors.up.isDown) {
+    } else if (cursors.up.isDown || keyW.isDown) {
         this.body.setVelocityY(-velocity);
         this.body.setVelocityX(0);
         this.setAnimation('walk');
-    } else if (cursors.down.isDown) {
+    } else if (cursors.down.isDown || keyS.isDown) {
         this.body.setVelocityY(velocity);
         this.body.setVelocityX(0);
         this.setAnimation('walk');
@@ -132,6 +136,7 @@ function containsEnemyAtPosition(position) {
 function handlePunchAction(enemy) {
     console.log('punching');
     this.robot.setAnimation('punch');
+    this.robot.robotPunch.play();
 
     this.time.delayedCall(
         ROBOT_MOVEMENT_TIME,
@@ -154,6 +159,7 @@ function handlePunchAction(enemy) {
 function handleShieldAction(enemy) {
     console.log('shielding');
     this.robot.setAnimation('shield');
+    this.robot.robotShilding.play();
     this.tweens.add({
         x: (ROBOT_OCCUPATION_SIZE - 1) * ROBOT_MOVEMENT_SIZE,
         y: enemy.y,
@@ -199,7 +205,7 @@ function handleShootingAction(enemy) {
                 endPointObj.y,
                 0xff0000
             ).setOrigin(0, 0).setDepth(LASER_BEAM_DEPTH);
-            enemy.setAnimation('die');
+            // enemy.setAnimation('die'); // TODO
 
             this.time.delayedCall(
                 ROBOT_MOVEMENT_TIME / 2,

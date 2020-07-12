@@ -74,7 +74,7 @@ class ControlRoomScene extends Scene {
         this.chargeLaserButton = this.input.keyboard.addKey('SPACE');
         this.chargePunchButton = this.input.keyboard.addKey('SPACE');
         this.shieldSequenceLetters =
-            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
+            ['q', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
                 .map((letter) => letter.toUpperCase());
         // this.shieldSequenceButtons = this.input.keyboard.addKeys(this.shieldSequenceLetters, true);
         this.shieldSequence = this.pickLetters();
@@ -127,7 +127,7 @@ class ControlRoomScene extends Scene {
         this.add.existing(punchRedButton);
 
         this.physics.world.enable(this.hero);
-        this.hero.body.setCollideWorldBounds()
+        this.hero.body.setCollideWorldBounds();
         this.physics.world.enable(this.laserRoom);
         this.physics.world.enable(this.punchRoom);
         this.physics.world.enable(this.shieldRoom);

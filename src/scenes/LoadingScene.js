@@ -62,6 +62,7 @@ class LoadingScene extends Scene {
         this.load.audio('shield_charge_complete_sfx', 'assets/audio/shield_charge_complete.mp3');
         this.load.audio('robot_die_sfx', 'assets/audio/robot_die_sfx.mp3');
         this.load.audio('robot_shield_hit_sfx', 'assets/audio/robot_shield_hit_sfx.mp3');
+        this.load.audio('robot_punch_sfx', 'assets/audio/robot_punch_sfx.mp3');
         this.load.audio('menu_selection', 'assets/audio/menu_selection.mp3');
         this.load.audio('hero_walking_sfx', 'assets/audio/hero_walking_sfx.mp3');
         this.load.audio('robot_walking_sfx', 'assets/audio/robot_walking_sfx.mp3');

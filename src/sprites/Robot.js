@@ -225,6 +225,8 @@ class Robot extends GameObjects.Sprite {
     addSoundEffects = () => {
         this.robotLaser = this.scene.sound.add('robot_laser_sfx');
         this.robotDying = this.scene.sound.add('robot_die_sfx');
+        this.robotShilding = this.scene.sound.add('robot_shield_hit_sfx');
+        this.robotPunch = this.scene.sound.add('robot_punch_sfx');
         this.robotWalking = this.scene.sound.add(
             'robot_walking_sfx',
             {
