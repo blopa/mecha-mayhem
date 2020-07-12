@@ -4,6 +4,7 @@ import Hero from '../sprites/Hero';
 import DecorationWire from '../sprites/DecorationWire';
 import RedButton from '../sprites/RedButton';
 import { ROBOT_STAGE_LAYOUT_DATA_KEY, ROBOT_STAGE_MAP_DATA_KEY } from '../constants';
+import Crank from "../sprites/Crank";
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -109,17 +110,18 @@ class ControlRoomScene extends Scene {
         }).setScale(0.2);
         this.add.existing(greenWire);
 
-        const laserRedButton = new RedButton({
+        this.laserCrank = new Crank({
             scene: this,
             x: this.laserRoom.x - 17,
-            y: this.laserRoom.y + 20,
-            frame: 'red_button_01',
+            y: this.laserRoom.y - 7,
+            frame: 'crank_idle_01',
         });
-        this.add.existing(laserRedButton);
+        this.add.existing(this.laserCrank);
+
         const punchRedButton = new RedButton({
             scene: this,
-            x: 660,
-            y: 370,
+            x: 663,
+            y: 380,
             frame: 'red_button_01',
         });
         this.add.existing(punchRedButton);
@@ -195,12 +197,14 @@ class ControlRoomScene extends Scene {
                 }
                 this.readyToResetLaser = true;
                 this.hero.setAnimation('idle');
+                this.laserCrank.setAnimation('stop');
                 this.laserChargeSfx.stop();
                 this.laserChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.laserRoom) && (this.chargeLaserButton.isDown)) {
                 this.laserChargeCounter += 0.01;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
+                this.laserCrank.setAnimation('idle');
                 if (this.laserChargeSfxReadyToPlay) {
                     this.laserChargeSfxReadyToPlay = false;
                     this.laserChargeSfx.play();
