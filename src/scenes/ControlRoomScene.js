@@ -137,7 +137,7 @@ class ControlRoomScene extends Scene {
         this.readyToResetShield = false;
 
         this.text = this.add.text(50, 370, '');
-        this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 20, '').setDepth(10);
+        this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 10, '').setDepth(10);
         this.counter = 0;
         // SFX
         this.laserChargeSfx = this.sound.add('laser_charge_sfx');
@@ -211,7 +211,6 @@ class ControlRoomScene extends Scene {
             } else if (this.physics.overlap(this.hero, this.punchRoom) && (Phaser.Input.Keyboard.JustDown(this.chargePunchButton))) {
                 // https://stackoverflow.com/a/11832950/4307769
                 this.punchChargeCounter = Math.round((this.punchChargeCounter + 0.1 + Number.EPSILON) * 100) / 100;
-                this.punchChargeBar.height = this.punchRoom.height * (this.punchChargeCounter / this.punchChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
                 this.punchChargeSfx.play();
@@ -239,7 +238,6 @@ class ControlRoomScene extends Scene {
                 this.shieldChargeCompleteSfx.play();
             } else if (this.physics.overlap(this.hero, this.shieldRoom) && (this.shieldSequenceKeyIsDown())) {
                 this.shieldChargeCounter += 0.25;
-                this.shieldChargeBar.height = this.shieldRoom.height * (this.shieldChargeCounter / this.shieldChargeLimit) * -1;
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
                 this.shieldChargeCorrectKeySfx.play();
