@@ -71,10 +71,11 @@ class ControlRoomScene extends Scene {
         );
 
         // Shen stuff
+        this.pauseButton = this.input.keyboard.addKey('P');
         this.chargeLaserButton = this.input.keyboard.addKey('SPACE');
         this.chargePunchButton = this.input.keyboard.addKey('SPACE');
         this.shieldSequenceLetters =
-            ['q', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
+            ['q', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
                 .map((letter) => letter.toUpperCase());
         // this.shieldSequenceButtons = this.input.keyboard.addKeys(this.shieldSequenceLetters, true);
         this.shieldSequence = this.pickLetters();
@@ -182,6 +183,12 @@ class ControlRoomScene extends Scene {
     }
 
     update(time, delta) {
+        //pause
+        if (Phaser.Input.Keyboard.JustDown(this.pauseButton)) {
+            this.scene.launch('PauseScene');
+            this.scene.pause('RobotStageScene');
+            this.scene.pause();
+        }
         this.counter += 1;
         this.hero.update(time, delta);
         let newText = '';
