@@ -11,6 +11,7 @@ class Hero extends GameObjects.Sprite {
         });
 
         this.createAnimations();
+        this.addSoundEffects();
         this.setAnimation('idle');
         this.setDepth(HERO_DEPTH);
     }
@@ -98,12 +99,28 @@ class Hero extends GameObjects.Sprite {
             return;
         }
 
+        if (animationName === 'walk') {
+            this.heroWalking.play();
+        } else {
+            this.heroWalking.stop();
+        }
+
         const assetKey = this.texture.key;
         const animationKey = `${assetKey}_${animationName}`;
         this.currentAnimationName = animationName;
         this.currentAnimationKey = animationKey;
         this.anims.play(animationKey);
     };
+
+    addSoundEffects = () => {
+        this.heroWalking = this.scene.sound.add(
+            'hero_walking_sfx',
+            {
+                loop: true,
+                volume: 0.3,
+            }
+        );
+    }
 }
 
 export default Hero;

@@ -18,6 +18,10 @@ class MainMenuScene extends Scene {
             { volume: 0.3 }
         );
         this.mainTheme.play();
+        this.menuSelection = this.sound.add(
+            'menu_selection',
+            { volume: 0.1 }
+        );
 
         this.background = new Background({
             scene: this,
@@ -135,10 +139,12 @@ class MainMenuScene extends Scene {
         );
 
         stageSelectionImage.on('pointerup', () => {
+            this.mainTheme.stop();
             this.scene.start('ControlRoomScene', []);
         });
 
         stageSelectionImage.on('pointerover', () => {
+            this.menuSelection.play();
             stageSelectionImage.setScale(0.98);
             text.setScale(0.9);
         });
@@ -176,10 +182,12 @@ class MainMenuScene extends Scene {
             );
 
             stageSelectionImage.on('pointerup', () => {
+                this.mainTheme.stop();
                 this.scene.start('ControlRoomScene', data);
             });
 
             stageSelectionImage.on('pointerover', () => {
+                this.menuSelection.play();
                 stageSelectionImage.setScale(0.98);
                 text.setScale(0.9);
             });

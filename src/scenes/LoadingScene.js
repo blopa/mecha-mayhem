@@ -1,3 +1,4 @@
+/* globals IS_DEV */
 import { Scene } from 'phaser';
 
 class LoadingScene extends Scene {
@@ -18,7 +19,11 @@ class LoadingScene extends Scene {
         // this.load.image('missile', 'assets/images/missile.png');
         // this.load.image('jet', 'assets/images/jet.png');
         // this.load.image('building', 'assets/images/building.png');
-        this.load.image('tilesetImage', 'assets/images/tileset.png');
+        if (IS_DEV) {
+            this.load.image('tilesetImage', 'assets/images/tileset.png');
+        } else {
+            this.load.image('tilesetImage', 'assets/images/stage_tileset.png');
+        }
         this.load.image('selection_screen', 'assets/images/selection_screen.png');
         this.load.image('stage', 'assets/images/stage.png');
         this.load.image('game_logo', 'assets/images/game_logo.png');
@@ -40,6 +45,7 @@ class LoadingScene extends Scene {
 
         // Map
         this.load.tilemapTiledJSON('stage_01', 'assets/images/stage_01.json');
+        this.load.tilemapTiledJSON('stage_02', 'assets/images/stage_02.json');
 
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');
@@ -52,6 +58,8 @@ class LoadingScene extends Scene {
         this.load.audio('shield_charge_complete_sfx', 'assets/audio/shield_charge_complete.mp3');
         this.load.audio('robot_die_sfx', 'assets/audio/robot_die_sfx.mp3');
         this.load.audio('robot_shield_hit_sfx', 'assets/audio/robot_shield_hit_sfx.mp3');
+        this.load.audio('menu_selection', 'assets/audio/menu_selection.mp3');
+        this.load.audio('hero_walking_sfx', 'assets/audio/hero_walking_sfx.mp3');
 
         // Music
         this.load.audio('tutorial_theme_music', 'assets/audio/tutorial_theme_music.mp3');
