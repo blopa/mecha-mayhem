@@ -52,7 +52,9 @@ class ControlRoomScene extends Scene {
         // Shen stuff
         this.chargeLaserButton = this.input.keyboard.addKey('SPACE');
         this.chargePunchButton = this.input.keyboard.addKey('SPACE');
-        this.shieldSequenceLetters = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'];
+        this.shieldSequenceLetters =
+            ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm']
+                .map((letter) => letter.toUpperCase());
         // this.shieldSequenceButtons = this.input.keyboard.addKeys(this.shieldSequenceLetters, true);
         this.shieldSequence = this.pickLetters();
         this.shieldSequenceIndex = 0;
@@ -125,7 +127,7 @@ class ControlRoomScene extends Scene {
         this.shieldChargeBar.setFillStyle(0x00FF00);
         this.readyToResetShield = false;
 
-        this.text = this.add.text(275, 300, '');
+        this.text = this.add.text(50, 370, '');
         this.shieldRoomText = this.add.text(this.shieldRoom.x - 5, this.shieldRoom.y - 20, '').setDepth(10);
         this.counter = 0;
     }
@@ -153,7 +155,7 @@ class ControlRoomScene extends Scene {
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
             } else if (this.physics.overlap(this.hero, this.laserRoom)) {
-                newText = 'Hold SPACE to charge laser';
+                newText = 'Hold SPACE to \ncharge laser';
             }
         }
 
@@ -175,7 +177,7 @@ class ControlRoomScene extends Scene {
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
             } else if (this.physics.overlap(this.hero, this.punchRoom)) {
-                newText = 'Mash SPACE to charge punch';
+                newText = 'Mash SPACE to \ncharge punch';
             }
         }
 
@@ -196,7 +198,7 @@ class ControlRoomScene extends Scene {
                 newText = 'Charging...';
                 this.hero.setAnimation('action');
             } else if (this.physics.overlap(this.hero, this.shieldRoom)) {
-                newText = 'Enter letters to charge shield';
+                newText = 'Enter letters to \ncharge shield';
             }
         }
 
