@@ -7,6 +7,7 @@ import MainMenuScene from './scenes/MainMenuScene';
 import GameScene from './scenes/GameScene';
 import ControlRoomScene from './scenes/ControlRoomScene';
 import RobotStageScene from './scenes/RobotStageScene';
+import PauseScene from './scenes/PauseScene';
 
 import config from './config';
 
@@ -18,6 +19,7 @@ const gameConfig = Object.assign(config, {
         MainMenuScene,
         ControlRoomScene,
         RobotStageScene,
+        PauseScene,
     ],
 });
 
