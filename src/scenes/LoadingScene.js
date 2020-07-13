@@ -17,7 +17,7 @@ class LoadingScene extends Scene {
         this.load.image('room', 'assets/images/room.png');
         this.load.image('invisible', 'assets/images/invisible.png');
         if (IS_DEV) {
-            this.load.image('tilesetImage', 'assets/images/tileset.png');
+            this.load.image('tilesetImage', 'assets/maps/tileset.png');
         } else {
             this.load.image('tilesetImage', 'assets/images/stage_tileset.png');
         }
@@ -47,6 +47,7 @@ class LoadingScene extends Scene {
         this.load.tilemapTiledJSON('stage_01', 'assets/maps/stage_01.json');
         this.load.tilemapTiledJSON('stage_02', 'assets/maps/stage_02.json');
         this.load.tilemapTiledJSON('stage_03', 'assets/maps/stage_03.json');
+        this.load.tilemapTiledJSON('stage_04', 'assets/maps/stage_04.json');
 
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');

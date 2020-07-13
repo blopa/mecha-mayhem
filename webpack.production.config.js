@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const packageJson = require('./package.json');
 
 // PATH CONSTS
 const MAIN_DIR = path.resolve(__dirname, '');
@@ -22,7 +23,7 @@ module.exports = (env = {}) => {
         entry: {
             main: path.resolve(__dirname, 'src/main.js'),
             vendor: Object.keys(
-                require('./package.json').dependencies
+                packageJson.dependencies
             ),
         },
         mode: 'production',
@@ -41,7 +42,7 @@ module.exports = (env = {}) => {
                 CANVAS_RENDERER: JSON.stringify(true),
                 WEBGL_RENDERER: JSON.stringify(true),
                 IS_DEV: JSON.stringify(false),
-                VERSION: JSON.stringify(require('./package.json').version),
+                VERSION: JSON.stringify(packageJson.version),
                 // if we have an .env file, use it, otherwise use the func argument
                 'process.env.HOST': JSON.stringify(process.env.HOST || env.HOST),
             }),
@@ -51,7 +52,7 @@ module.exports = (env = {}) => {
                     collapseWhitespace: true,
                     preserveLineBreaks: false,
                 },
-                title: 'mecha-mayhem',
+                title: `MechaMayhem v${packageJson.version}`,
                 favicon: `${IMAGE_DIR}/favicon.ico`,
                 template: `${MAIN_DIR}/index.html`,
                 filename: `${distPath}/index.html`,

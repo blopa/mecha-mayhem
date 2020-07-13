@@ -586,7 +586,7 @@
         {
             "columns": 4,
             "firstgid": 1,
-            "image": "..\/images\/tileset.png",
+            "image": "tileset.png",
             "imageheight": 128,
             "imagewidth": 128,
             "margin": 0,

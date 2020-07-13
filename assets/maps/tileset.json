@@ -1,13 +1,12 @@
 { "columns":4,
- "editorsettings":
-    {
+ "editorsettings": {
      "export":
         {
          "format":"",
          "target":"."
         }
     },
- "image":"..\/images\/tileset.png",
+ "image":"tileset.png",
  "imageheight":128,
  "imagewidth":128,
  "margin":0,
