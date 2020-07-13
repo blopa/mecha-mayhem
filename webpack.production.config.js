@@ -51,7 +51,7 @@ module.exports = (env = {}) => {
                     collapseWhitespace: true,
                     preserveLineBreaks: false,
                 },
-                title: 'puppet-master',
+                title: 'mecha-mayhem',
                 favicon: `${IMAGE_DIR}/favicon.ico`,
                 template: `${MAIN_DIR}/index.html`,
                 filename: `${distPath}/index.html`,

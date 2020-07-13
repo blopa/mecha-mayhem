@@ -1,6 +1,6 @@
 {
-    "name": "puppet-master",
-    "version": "0.0.1-alpha.4",
+    "name": "mecha-mayhem",
+    "version": "0.0.1-alpha.5",
     "description": "Description here.",
     "author": "Pablo Pirata",
     "main": "index.js",
@@ -45,7 +45,7 @@
         "webpack-cli": "^3.3.12"
     },
     "dependencies": {
-        "phaser": "^3.23.0",
+        "phaser": "^3.24.0",
         "webfontloader": "^1.6.28"
     }
 }

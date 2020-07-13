@@ -11,7 +11,7 @@ export default {
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     autoRound: false,
-    localStorageName: 'puppet-master',
+    localStorageName: 'mecha-mayhem-game',
     pixelArt: true,
     physics: {
         default: 'arcade',

@@ -7,7 +7,7 @@ class PauseScene extends Scene {
     }
 
     preload() {
-        
+
     }
 
     create() {
@@ -16,15 +16,13 @@ class PauseScene extends Scene {
     }
 
     update() {
-        console.log('Pause scene loaded')
+        console.log('Pause scene loaded');
         if (Phaser.Input.Keyboard.JustDown(this.pauseButton)) {
             this.scene.resume('ControlRoomScene');
             this.scene.resume('RobotStageScene');
             this.scene.stop();
         }
-        
     }
-
 }
 
 export default PauseScene;
