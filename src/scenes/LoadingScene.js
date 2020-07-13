@@ -16,9 +16,6 @@ class LoadingScene extends Scene {
         this.load.image('robot', 'assets/images/robot.png');
         this.load.image('room', 'assets/images/room.png');
         this.load.image('invisible', 'assets/images/invisible.png');
-        // this.load.image('missile', 'assets/images/missile.png');
-        // this.load.image('jet', 'assets/images/jet.png');
-        // this.load.image('building', 'assets/images/building.png');
         if (IS_DEV) {
             this.load.image('tilesetImage', 'assets/images/tileset.png');
         } else {
@@ -46,10 +43,10 @@ class LoadingScene extends Scene {
         // Spritesheet
         this.load.spritesheet('battery', 'assets/images/battery_spritesheet.png', { frameWidth: 48, frameHeight: 21 }, 11);
 
-        // Map
-        this.load.tilemapTiledJSON('stage_01', 'assets/images/stage_01.json');
-        this.load.tilemapTiledJSON('stage_02', 'assets/images/stage_02.json');
-        this.load.tilemapTiledJSON('stage_03', 'assets/images/stage_03.json');
+        // Maps
+        this.load.tilemapTiledJSON('stage_01', 'assets/maps/stage_01.json');
+        this.load.tilemapTiledJSON('stage_02', 'assets/maps/stage_02.json');
+        this.load.tilemapTiledJSON('stage_03', 'assets/maps/stage_03.json');
 
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');

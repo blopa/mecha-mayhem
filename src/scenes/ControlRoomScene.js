@@ -57,14 +57,6 @@ class ControlRoomScene extends Scene {
         });
         this.add.existing(this.hero);
 
-        this.roomTerminal = new GameObjects.Image(
-            this,
-            this.shieldRoom.x - 38,
-            this.shieldRoom.y - 10,
-            'terminal'
-        ).setOrigin(0, 0).setDepth(10);
-        this.add.existing(this.roomTerminal);
-
         this.scene.launch(
             'RobotStageScene',
             this.data.get(ROBOT_STAGE_LAYOUT_DATA_KEY)
@@ -86,14 +78,56 @@ class ControlRoomScene extends Scene {
         this.controlRoomFill.fillRectShape(this.controlRoom);
 
         // TODO pablo tests
+        const mapYPos = 128;
         const tilemap = this.make.tilemap({ key: this.data.get(ROBOT_STAGE_MAP_DATA_KEY) });
         const tileset = tilemap.addTilesetImage('tileset', 'tilesetImage');
-        const layer1 = tilemap.createStaticLayer('background', tileset, 0, 128);
-        const layer2 = tilemap.createStaticLayer('details', tileset, 0, 128);
+        const layer1 = tilemap.createStaticLayer('background', tileset, 0, mapYPos);
+        const layer2 = tilemap.createStaticLayer('details', tileset, 0, mapYPos);
         layer1.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.hero, layer1);
         layer2.setCollisionByProperty({ collides: true });
         this.physics.add.collider(this.hero, layer2);
+
+        const dataLayer = tilemap.getObjectLayer('data');
+        dataLayer.objects.forEach((data) => {
+            const { x, y, name, height, width } = data;
+            if (name === 'hero') {
+                this.hero.setX(
+                    Math.round(x)
+                );
+                this.hero.setY(
+                    Math.round(y) + mapYPos - height
+                );
+            }
+
+            if (name === 'room_1') {
+                this.laserRoom.setX(
+                    Math.round(x) + width
+                );
+                this.laserRoom.setY(
+                    Math.round(y) + mapYPos - (height / 2)
+                );
+            }
+
+            if (name === 'room_2') {
+                this.punchRoom.setX(
+                    Math.round(x) + width
+                );
+                this.punchRoom.setY(
+                    Math.round(y) + mapYPos - (height / 2)
+                );
+            }
+
+            if (name === 'room_3') {
+                this.shieldRoom.setX(
+                    Math.round(x) + width
+                );
+                this.shieldRoom.setY(
+                    Math.round(y) + mapYPos - (height / 2)
+                );
+            }
+        });
+
         const redWire = new DecorationWire({
             scene: this,
             x: 700,
@@ -121,11 +155,19 @@ class ControlRoomScene extends Scene {
 
         const punchRedButton = new RedButton({
             scene: this,
-            x: 663,
-            y: 380,
+            x: this.punchRoom.x - 17,
+            y: this.punchRoom.y + 10,
             frame: 'red_button_01',
         });
         this.add.existing(punchRedButton);
+
+        this.roomTerminal = new GameObjects.Image(
+            this,
+            this.shieldRoom.x - 39,
+            this.shieldRoom.y - 10,
+            'terminal'
+        ).setOrigin(0, 0).setDepth(10);
+        this.add.existing(this.roomTerminal);
 
         this.physics.world.enable(this.hero);
         this.hero.body.setCollideWorldBounds();
