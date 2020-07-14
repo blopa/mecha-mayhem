@@ -114,7 +114,7 @@ class ControlRoomScene extends Scene {
                 );
             }
 
-            if (name === 'room_1') {
+            if (name === 'laser_room') {
                 this.laserRoom.setX(
                     Math.round(x) + width
                 );
@@ -123,7 +123,7 @@ class ControlRoomScene extends Scene {
                 );
             }
 
-            if (name === 'room_2') {
+            if (name === 'punch_room') {
                 this.punchRoom.setX(
                     Math.round(x) + width
                 );
@@ -132,7 +132,7 @@ class ControlRoomScene extends Scene {
                 );
             }
 
-            if (name === 'room_3') {
+            if (name === 'shield_room') {
                 this.shieldRoom.setX(
                     Math.round(x) + width
                 );
