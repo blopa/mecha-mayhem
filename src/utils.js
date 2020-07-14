@@ -545,7 +545,7 @@ export function generateInfiniteData() {
 }
 
 function reachedFinishedline(currentPosition, stageLayoutData) {
-    return currentPosition + ROBOT_OCCUPATION_SIZE + 1 >= stageLayoutData.length
+    return currentPosition + ROBOT_OCCUPATION_SIZE + 1 >= stageLayoutData.length;
 }
 
 export function handleSpikeCollision(hero, spikes) {
