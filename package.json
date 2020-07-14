@@ -45,7 +45,7 @@
         "webpack-cli": "^3.3.12"
     },
     "dependencies": {
-        "phaser": "^3.24.0",
+        "phaser": "^3.24.1",
         "webfontloader": "^1.6.28"
     }
 }
