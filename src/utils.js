@@ -80,6 +80,10 @@ export function setSpriteDraggable() {
  * @this Phaser.GameObject.Sprite
  */
 export function handleSpriteMovement() {
+    if (this.isGettingHit) {
+        return;
+    }
+
     const cursors = this.scene.input.keyboard.createCursorKeys();
     const keyA = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     const keyS = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -538,4 +542,19 @@ export function generateInfiniteData() {
             this::renderStageEnemies();
         }
     );
+}
+
+export function handleSpikeCollision(hero, spikes) {
+    if (spikes.isOn && !hero.isGettingHit) {
+        hero.setIsGettingHit(true);
+        const sign = hero.body.offset.x === 0 ? 1 : -1;
+        hero.body.setVelocityX(400 * sign);
+        hero.scene.time.delayedCall(
+            ROBOT_MOVEMENT_TIME / 5,
+            () => {
+                hero.setIsGettingHit(false);
+                hero.body.setVelocityX(0);
+            }
+        );
+    }
 }

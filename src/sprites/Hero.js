@@ -14,10 +14,15 @@ class Hero extends GameObjects.Sprite {
         this.addSoundEffects();
         this.setAnimation('idle');
         this.setDepth(HERO_DEPTH);
+        this.setIsGettingHit(false);
     }
 
     update(time, delta) {
         this.handleSpriteMovement();
+    }
+
+    setIsGettingHit = (isGettingHit) => {
+        this.isGettingHit = isGettingHit;
     }
 
     createAnimations = () => {

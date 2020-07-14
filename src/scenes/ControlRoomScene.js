@@ -6,6 +6,7 @@ import RedButton from '../sprites/RedButton';
 import { ROBOT_STAGE_LAYOUT_DATA_KEY, ROBOT_STAGE_MAP_DATA_KEY } from '../constants';
 import Crank from '../sprites/Crank';
 import Spikes from '../sprites/Spikes';
+import { handleSpikeCollision } from '../utils';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -100,6 +101,8 @@ class ControlRoomScene extends Scene {
                     frame: 'spikes_idle_05',
                 });
                 this.add.existing(spikes);
+                this.physics.world.enable(spikes);
+                this.physics.add.overlap(this.hero, spikes, handleSpikeCollision);
             }
 
             if (name === 'hero') {
