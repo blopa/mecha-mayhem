@@ -1,31 +1,33 @@
-{ "columns":4,
- "editorsettings": {
-     "export":
-        {
-         "format":"",
-         "target":"."
+{
+    "columns": 4,
+    "editorsettings": {
+        "export": {
+            "format": "",
+            "target": "."
         }
     },
- "image":"tileset.png",
- "imageheight":128,
- "imagewidth":128,
- "margin":0,
- "name":"tileset",
- "spacing":0,
- "tilecount":16,
- "tiledversion":"1.4.1",
- "tileheight":32,
- "tiles":[
+    "image": "tileset.png",
+    "imageheight": 128,
+    "imagewidth": 160,
+    "margin": 0,
+    "name": "tileset",
+    "spacing": 0,
+    "tilecount": 16,
+    "tiledversion": "1.4.1",
+    "tileheight": 32,
+    "tiles": [
         {
-         "id":12,
-         "properties":[
+            "id": 12,
+            "properties": [
                 {
-                 "name":"collides",
-                 "type":"bool",
-                 "value":true
-                }]
-        }],
- "tilewidth":32,
- "type":"tileset",
- "version":1.4
+                    "name": "collides",
+                    "type": "bool",
+                    "value": true
+                }
+            ]
+        }
+    ],
+    "tilewidth": 32,
+    "type": "tileset",
+    "version": 1.4
 }
