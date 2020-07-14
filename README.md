@@ -17,7 +17,7 @@ Brought to you by:
 - Sound/Music by [@themajorbruno](https://twitter.com/themajorbruno)
 - Trailer/Gifs by [@mattstracktv](https://instagram.com/mattstracktv)
 - Arts by [@8bitalo](https://twitter.com/8bitalo)
-- Code by [@shamps](https://shamps.itch.io/) and [@blopa](https://github.com/blopa)
+- Code by [@shamps](https://itch.io/profile/shamps) and [@blopa](https://github.com/blopa)
 
 ### Controls
 *   WASD or Arrow Keys to Move
