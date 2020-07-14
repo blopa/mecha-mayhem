@@ -14,9 +14,9 @@ This game was made during the GMTK Jam 2020, from 07/10/2020 to 07/12/2020. You 
 Play it now on [itch.io](https://shamps.itch.io/mechamayhem) or [Github Pages](https://blopa.github.io/mecha-mayhem/) (latest build).
 
 Brought to you by:
-- Sound/Music by [@themajorbruno](https://instagram.com/themajorbruno)
+- Sound/Music by [@themajorbruno](https://twitter.com/themajorbruno)
 - Trailer/Gifs by [@mattstracktv](https://instagram.com/mattstracktv)
-- Arts by [@8bitalo](https://instagram.com/8bitalo)
+- Arts by [@8bitalo](https://twitter.com/8bitalo)
 - Code by [@shamps](https://shamps.itch.io/) and [@blopa](https://github.com/blopa)
 
 ### Controls
@@ -40,7 +40,7 @@ _ALAS! _At the penultimate hour, disaster strikes! Your Mech has malfunctioned,
 
 Can you quickly regain control of your robotic-creation? Or will Mayor Danewood flunk you one last time...
 
-### Technology
+### Tech Used
 
 This project uses Phaser 3 + Webpack 4 + ES6 + ESlint + Cordova
 Of course this was only possible because of some amazing free/open source softwares available today. So I'd like to say a special thank you to:
