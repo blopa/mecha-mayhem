@@ -346,7 +346,7 @@ export function startRobotMovement() {
                 return;
             }
 
-            if (currentPosition >= stageLayoutData.length) {
+            if (reachedFinishedline(currentPosition, stageLayoutData)) {
                 console.log('You won yay');
                 const winningQuantity = parseInt(localStorage.getItem('winningQuantity') || 0, 10);
                 localStorage.setItem('winningQuantity', winningQuantity + 1);
@@ -542,6 +542,10 @@ export function generateInfiniteData() {
             this::renderStageEnemies();
         }
     );
+}
+
+function reachedFinishedline(currentPosition, stageLayoutData) {
+    return currentPosition + ROBOT_OCCUPATION_SIZE + 1 >= stageLayoutData.length
 }
 
 export function handleSpikeCollision(hero, spikes) {
