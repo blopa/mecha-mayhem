@@ -1,0 +1,76 @@
+{
+    "frames": [
+        {
+            "filename": "spikes_idle_01",
+            "frame": {
+                "x": 0,
+                "y": 26,
+                "w": 32,
+                "h": 14
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "spikes_idle_02",
+            "frame": {
+                "x": 0,
+                "y": 41,
+                "w": 32,
+                "h": 13
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "spikes_idle_03",
+            "frame": {
+                "x": 33,
+                "y": 0,
+                "w": 32,
+                "h": 12
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "spikes_idle_04",
+            "frame": {
+                "x": 0,
+                "y": 13,
+                "w": 32,
+                "h": 12
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "filename": "spikes_idle_05",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 32,
+                "h": 12
+            },
+            "anchor": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "meta": {
+        "size": {
+            "w": 66,
+            "h": 55
+        },
+        "scale": "1"
+    }
+}

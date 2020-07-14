@@ -39,6 +39,7 @@ class LoadingScene extends Scene {
         this.load.atlas('ufo', 'assets/images/ufo.png', 'assets/atlas/ufo.json');
         this.load.atlas('enemy_building', 'assets/images/enemy_building.png', 'assets/atlas/enemy_building.json');
         this.load.atlas('crank', 'assets/images/crank.png', 'assets/atlas/crank.json');
+        this.load.atlas('spikes', 'assets/images/spikes.png', 'assets/atlas/spikes.json');
 
         // Spritesheet
         this.load.spritesheet('battery', 'assets/images/battery_spritesheet.png', { frameWidth: 48, frameHeight: 21 }, 11);
@@ -48,6 +49,7 @@ class LoadingScene extends Scene {
         this.load.tilemapTiledJSON('stage_02', 'assets/maps/stage_02.json');
         this.load.tilemapTiledJSON('stage_03', 'assets/maps/stage_03.json');
         this.load.tilemapTiledJSON('stage_04', 'assets/maps/stage_04.json');
+        this.load.tilemapTiledJSON('stage_05', 'assets/maps/stage_05.json');
 
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');

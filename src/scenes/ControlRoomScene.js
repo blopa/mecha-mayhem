@@ -5,6 +5,7 @@ import DecorationWire from '../sprites/DecorationWire';
 import RedButton from '../sprites/RedButton';
 import { ROBOT_STAGE_LAYOUT_DATA_KEY, ROBOT_STAGE_MAP_DATA_KEY } from '../constants';
 import Crank from '../sprites/Crank';
+import Spikes from '../sprites/Spikes';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -91,6 +92,16 @@ class ControlRoomScene extends Scene {
         const dataLayer = tilemap.getObjectLayer('data');
         dataLayer.objects.forEach((data) => {
             const { x, y, name, height, width } = data;
+            if (name === 'spikes') {
+                const spikes = new Spikes({
+                    scene: this,
+                    x,
+                    y: y + mapYPos - (height / 2),
+                    frame: 'spikes_idle_05',
+                });
+                this.add.existing(spikes);
+            }
+
             if (name === 'hero') {
                 this.hero.setX(
                     Math.round(x)
