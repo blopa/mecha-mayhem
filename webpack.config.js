@@ -11,12 +11,17 @@ const packageJson = require('./package.json');
 // PATHS
 const MAIN_DIR = path.resolve(__dirname, '');
 const IMAGE_DIR = path.resolve(__dirname, 'assets/images');
-const BUILD_PATH = path.resolve(__dirname, 'dist/build');
-const DIST_PATH = path.resolve(__dirname, 'dist');
+let BUILD_PATH = path.resolve(__dirname, 'dist/build');
+let DIST_PATH = path.resolve(__dirname, 'dist');
 const STAGES_PATH = path.resolve(__dirname, 'assets/stages');
 const MAPS_PATH = path.resolve(__dirname, 'assets/maps');
 
-module.exports = async () => {
+module.exports = async (env = {}) => {
+    if (env === 'mobile') {
+        BUILD_PATH = path.resolve(__dirname, 'mobile/www/build');
+        DIST_PATH = path.resolve(__dirname, 'mobile/www');
+    }
+
     const stageFiles = await fs.readdir(STAGES_PATH);
     const mapFiles = await fs.readdir(MAPS_PATH);
     const STAGES = JSON.stringify(
