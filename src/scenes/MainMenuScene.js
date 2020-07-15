@@ -160,7 +160,15 @@ class MainMenuScene extends Scene {
                                 }
                             });
 
-                            if (!['stage_01', 'stage_02', 'stage_03'].includes(map)) {
+                            if (![
+                                'stage_01',
+                                'stage_02',
+                                'stage_03',
+                                'stage_04',
+                                'stage_05',
+                                'stage_06',
+                                'stage_07',
+                            ].includes(map)) {
                                 cancel = true;
                             }
                         });

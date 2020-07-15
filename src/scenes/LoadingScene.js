@@ -51,6 +51,7 @@ class LoadingScene extends Scene {
         this.load.tilemapTiledJSON('stage_04', 'assets/maps/stage_04.json');
         this.load.tilemapTiledJSON('stage_05', 'assets/maps/stage_05.json');
         this.load.tilemapTiledJSON('stage_06', 'assets/maps/stage_06.json');
+        this.load.tilemapTiledJSON('stage_07', 'assets/maps/stage_07.json');
 
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');
