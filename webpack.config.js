@@ -59,6 +59,10 @@ module.exports = async (env = {}) => {
             }),
             new HtmlWebpackPlugin({
                 hash: true,
+                minify: {
+                    collapseWhitespace: true,
+                    preserveLineBreaks: false,
+                },
                 title: `MechaMayhem v${packageJson.version}`,
                 favicon: `${IMAGE_DIR}/favicon.ico`,
                 template: `${MAIN_DIR}/index.html`,
