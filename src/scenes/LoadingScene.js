@@ -1,4 +1,6 @@
 /* globals IS_DEV */
+/* globals STAGES */
+/* globals MAPS */
 import { Scene } from 'phaser';
 
 class LoadingScene extends Scene {
@@ -45,13 +47,16 @@ class LoadingScene extends Scene {
         this.load.spritesheet('battery', 'assets/images/battery_spritesheet.png', { frameWidth: 48, frameHeight: 21 }, 11);
 
         // Maps
-        this.load.tilemapTiledJSON('stage_01', 'assets/maps/stage_01.json');
-        this.load.tilemapTiledJSON('stage_02', 'assets/maps/stage_02.json');
-        this.load.tilemapTiledJSON('stage_03', 'assets/maps/stage_03.json');
-        this.load.tilemapTiledJSON('stage_04', 'assets/maps/stage_04.json');
-        this.load.tilemapTiledJSON('stage_05', 'assets/maps/stage_05.json');
-        this.load.tilemapTiledJSON('stage_06', 'assets/maps/stage_06.json');
-        this.load.tilemapTiledJSON('stage_07', 'assets/maps/stage_07.json');
+        MAPS.forEach((fileName) => {
+            const key = fileName.split('.')[0];
+            this.load.tilemapTiledJSON(key, `assets/maps/${fileName}.json`);
+        });
+
+        // Stages
+        STAGES.forEach((fileName) => {
+            const key = fileName.split('.')[0];
+            this.load.json(key, `assets/stages/${fileName}.json`);
+        });
 
         // Sound Effects
         this.load.audio('robot_laser_sfx', 'assets/audio/robot_laser_sfx.mp3');

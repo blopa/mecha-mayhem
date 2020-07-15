@@ -1,10 +1,10 @@
 /* globals VERSION */
 /* globals IS_DEV */
+/* globals STAGES */
 import { GameObjects, Scene } from 'phaser';
 import Background from '../sprites/Background';
 import { BUILDING, DINO, GAME_JSON_DATA_KEY, JET, NOTHING } from '../constants';
 import DecorationWire from '../sprites/DecorationWire';
-import stages from '../../assets/stages/stages.json';
 import HtmlFileInput from '../HtmlFileInput';
 import { isset } from '../utils';
 
@@ -27,6 +27,14 @@ class MainMenuScene extends Scene {
 
         if (isset(data)) {
             this.data.set(GAME_JSON_DATA_KEY, data);
+        } else {
+            const stages = [];
+            STAGES.forEach((fileName) => {
+                stages.push(
+                    this.cache.json.get(fileName)
+                );
+            });
+            this.data.set(GAME_JSON_DATA_KEY, stages);
         }
     }
 
@@ -84,7 +92,7 @@ class MainMenuScene extends Scene {
         });
         this.add.existing(greenWire);
 
-        const stagesData = this.data.get(GAME_JSON_DATA_KEY) || stages;
+        const stagesData = this.data.get(GAME_JSON_DATA_KEY);
         const enableUpload = IS_DEV || localStorage.getItem('enableUpload');
         this.createStages(stagesData, false, enableUpload);
     }

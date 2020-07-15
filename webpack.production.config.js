@@ -4,20 +4,29 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { promises: fs } = require('fs');
 const packageJson = require('./package.json');
 
-// PATH CONSTS
+// PATHS
 const MAIN_DIR = path.resolve(__dirname, '');
 const IMAGE_DIR = path.resolve(__dirname, 'assets/images');
+const BUILD_PATH = path.resolve(__dirname, 'dist/build');
+const DIST_PATH = path.resolve(__dirname, 'dist');
+const STAGES_PATH = path.resolve(__dirname, 'assets/stages');
+const MAPS_PATH = path.resolve(__dirname, 'assets/maps');
 
-module.exports = (env = {}) => {
-    let buildPath = path.resolve(__dirname, 'dist/build');
-    let distPath = path.resolve(__dirname, 'dist');
-
-    if (env === 'mobile') {
-        buildPath = path.resolve(__dirname, 'mobile/www/build');
-        distPath = path.resolve(__dirname, 'mobile/www');
-    }
+module.exports = async (env = {}) => {
+    const stageFiles = await fs.readdir(STAGES_PATH);
+    const mapFiles = await fs.readdir(MAPS_PATH);
+    const STAGES = JSON.stringify(
+        stageFiles
+            .map((stage) => stage.split('.')[0])
+    );
+    const MAPS = JSON.stringify(
+        mapFiles
+            .filter((stage) => stage.split('.')[1] === 'json' && !stage.includes('tileset'))
+            .map((stage) => stage.split('.')[0])
+    );
 
     return {
         entry: {
@@ -29,7 +38,7 @@ module.exports = (env = {}) => {
         mode: 'production',
         output: {
             pathinfo: true,
-            path: buildPath,
+            path: BUILD_PATH,
             publicPath: './build/',
             filename: '[name].bundle.js',
             chunkFilename: '[name].bundle.js',
@@ -43,19 +52,17 @@ module.exports = (env = {}) => {
                 WEBGL_RENDERER: JSON.stringify(true),
                 IS_DEV: JSON.stringify(false),
                 VERSION: JSON.stringify(packageJson.version),
+                STAGES,
+                MAPS,
                 // if we have an .env file, use it, otherwise use the func argument
                 'process.env.HOST': JSON.stringify(process.env.HOST || env.HOST),
             }),
             new HtmlWebpackPlugin({
                 hash: true,
-                minify: {
-                    collapseWhitespace: true,
-                    preserveLineBreaks: false,
-                },
                 title: `MechaMayhem v${packageJson.version}`,
                 favicon: `${IMAGE_DIR}/favicon.ico`,
                 template: `${MAIN_DIR}/index.html`,
-                filename: `${distPath}/index.html`,
+                filename: `${DIST_PATH}/index.html`,
                 publicPath: './build',
             }),
             new CopyWebpackPlugin({
