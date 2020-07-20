@@ -62,7 +62,7 @@ class Spikes extends GameObjects.Sprite {
                         'spikes_idle_01',
                     ],
                 }),
-                frameRate: 10,
+                frameRate: 100,
                 // yoyo: true,
                 repeat: 0,
             });
