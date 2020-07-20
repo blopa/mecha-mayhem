@@ -32,6 +32,7 @@ class ControlRoomScene extends Scene {
             x: 720,
             y: 200,
             asset: 'invisible',
+            visible: false,
         });
 
         this.punchRoom = new Room({
@@ -39,6 +40,7 @@ class ControlRoomScene extends Scene {
             x: 680,
             y: 370,
             asset: 'invisible',
+            visible: false,
         });
 
         this.shieldRoom = new Room({
@@ -46,6 +48,7 @@ class ControlRoomScene extends Scene {
             x: 110,
             y: 240,
             asset: 'invisible',
+            visible: false,
         });
         this.add.existing(this.laserRoom);
         this.add.existing(this.punchRoom);
@@ -121,6 +124,7 @@ class ControlRoomScene extends Scene {
                 this.laserRoom.setY(
                     Math.round(y) + mapYPos - (height / 2)
                 );
+                this.laserRoom.setVisible(true);
             }
 
             if (name === 'punch_room') {
@@ -130,6 +134,7 @@ class ControlRoomScene extends Scene {
                 this.punchRoom.setY(
                     Math.round(y) + mapYPos - (height / 2)
                 );
+                this.punchRoom.setVisible(true);
             }
 
             if (name === 'shield_room') {
@@ -139,6 +144,7 @@ class ControlRoomScene extends Scene {
                 this.shieldRoom.setY(
                     Math.round(y) + mapYPos - (height / 2)
                 );
+                this.shieldRoom.setVisible(true);
             }
         });
 
@@ -159,29 +165,35 @@ class ControlRoomScene extends Scene {
         }).setScale(0.2);
         this.add.existing(greenWire);
 
-        this.laserCrank = new Crank({
-            scene: this,
-            x: this.laserRoom.x - 17,
-            y: this.laserRoom.y - 7,
-            frame: 'crank_idle_01',
-        });
-        this.add.existing(this.laserCrank);
+        if (this.laserRoom.visible) {
+            this.laserCrank = new Crank({
+                scene: this,
+                x: this.laserRoom.x - 17,
+                y: this.laserRoom.y - 7,
+                frame: 'crank_idle_01',
+            });
+            this.add.existing(this.laserCrank);
+        }
 
-        const punchRedButton = new RedButton({
-            scene: this,
-            x: this.punchRoom.x - 17,
-            y: this.punchRoom.y + 10,
-            frame: 'red_button_01',
-        });
-        this.add.existing(punchRedButton);
+        if (this.punchRoom.visible) {
+            const punchRedButton = new RedButton({
+                scene: this,
+                x: this.punchRoom.x - 17,
+                y: this.punchRoom.y + 10,
+                frame: 'red_button_01',
+            });
+            this.add.existing(punchRedButton);
+        }
 
-        this.roomTerminal = new GameObjects.Image(
-            this,
-            this.shieldRoom.x - 39,
-            this.shieldRoom.y - 10,
-            'terminal'
-        ).setOrigin(0, 0).setDepth(10);
-        this.add.existing(this.roomTerminal);
+        if (this.shieldRoom.visible) {
+            this.roomTerminal = new GameObjects.Image(
+                this,
+                this.shieldRoom.x - 39,
+                this.shieldRoom.y - 10,
+                'terminal'
+            ).setOrigin(0, 0).setDepth(10);
+            this.add.existing(this.roomTerminal);
+        }
 
         this.physics.world.enable(this.hero);
         this.hero.body.setCollideWorldBounds();
@@ -220,13 +232,21 @@ class ControlRoomScene extends Scene {
         this.shieldChargeCorrectKeySfx = this.sound.add('shield_charge_correct_key_sfx');
         this.shieldChargeWrongKeySfx = this.sound.add('shield_charge_wrong_key_sfx');
         this.shieldChargeCompleteSfx = this.sound.add('shield_charge_complete_sfx');
+
         // battery
-        this.laserBattery = this.add.sprite(this.laserRoom.x, this.laserRoom.y - 21, 'battery').setDepth(15);
-        this.laserBatteryIndex = 0;
-        this.punchBattery = this.add.sprite(this.punchRoom.x, this.punchRoom.y - 21, 'battery').setDepth(15);
-        this.punchBatteryIndex = 0;
-        this.shieldBattery = this.add.sprite(this.shieldRoom.x, this.shieldRoom.y - 21, 'battery').setDepth(15);
-        this.shieldBatteryIndex = 0;
+        if (this.laserRoom.visible) {
+            this.laserBattery = this.add.sprite(this.laserRoom.x, this.laserRoom.y - 21, 'battery').setDepth(15);
+            this.laserBatteryIndex = 0;
+        }
+        if (this.punchRoom.visible) {
+            this.punchBattery = this.add.sprite(this.punchRoom.x, this.punchRoom.y - 21, 'battery').setDepth(15);
+            this.punchBatteryIndex = 0;
+        }
+        if (this.shieldRoom.visible) {
+            this.shieldBattery = this.add.sprite(this.shieldRoom.x, this.shieldRoom.y - 21, 'battery').setDepth(15);
+            this.shieldBatteryIndex = 0;
+        }
+
         // music
         this.mainThemeMusic = this.sound.add(
             'main_theme_music',
