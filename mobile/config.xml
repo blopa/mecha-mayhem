@@ -13,7 +13,7 @@
         <param name="android-package" value="nl.xservices.plugins.Insomnia" />
     </feature>
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="Orientation" value="portrait" />
+    <preference name="Orientation" value="landscape" />
     <preference name="FullScreen" value="true" />
     <preference name="android-minSdkVersion" value="28" />
     <preference name="android-targetSdkVersion" value="28" />
