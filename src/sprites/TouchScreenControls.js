@@ -130,7 +130,7 @@ class TouchScreenControls extends GameGroup {
                 case 'action_button':
                 default: {
                     child.setY(child.y - 35);
-                    child.setX(width - paddingX - 35);
+                    child.setX(width - paddingX - 80);
                     break;
                 }
             }
