@@ -53,6 +53,7 @@ module.exports = async (env = {}) => {
                 CANVAS_RENDERER: JSON.stringify(true),
                 WEBGL_RENDERER: JSON.stringify(true),
                 IS_DEV: JSON.stringify(true),
+                IS_MOBILE_BUILD: JSON.stringify(true),
                 VERSION: JSON.stringify(packageJson.version),
                 STAGES,
                 MAPS,

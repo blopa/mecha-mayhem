@@ -13,10 +13,23 @@ import {
     ROBOT_STAGE_CURRENT_POSITION_DATA_KEY,
     ROBOT_STAGE_LAYOUT_DATA_KEY,
 } from './constants';
-import Missile from './sprites/Missile';
 import Ufo from './sprites/Ufo';
 import Building from './sprites/Building';
 import Dino from './sprites/Dino';
+
+/**
+ * Simulate a key event.
+ * @param {Number} keyCode The keyCode of the key to simulate
+ * @param {String} type (optional) The type of event : down, up or press. The default is down
+ */
+export const simulateKeyEvent = (keyCode, type) => {
+    const evtName = (typeof (type) === 'string') ? `key${type}` : 'keydown';
+    const event = document.createEvent('HTMLEvents');
+    event.initEvent(evtName, true, false);
+    event.keyCode = keyCode;
+
+    document.dispatchEvent(event);
+};
 
 export const isObjectEmpty = (obj) =>
     obj !== null

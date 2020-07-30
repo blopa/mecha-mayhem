@@ -34,3 +34,4 @@ export const CRANK_DEPTH = 20;
 export const SPIKES_DEPTH = 20;
 export const HERO_DEPTH = 30;
 export const DECORATION_WIRE_DEPTH = 100;
+export const TOUCH_CONTROLS_DEPTH = 900;

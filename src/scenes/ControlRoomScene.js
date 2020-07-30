@@ -1,3 +1,4 @@
+/* globals IS_MOBILE_BUILD */
 import Phaser, { GameObjects, Scene } from 'phaser';
 import Room from '../sprites/Room';
 import Hero from '../sprites/Hero';
@@ -7,6 +8,7 @@ import { ROBOT_STAGE_LAYOUT_DATA_KEY, ROBOT_STAGE_MAP_DATA_KEY } from '../consta
 import Crank from '../sprites/Crank';
 import Spikes from '../sprites/Spikes';
 import { handleSpikeCollision } from '../utils';
+import TouchScreenControls from '../sprites/TouchScreenControls';
 
 class ControlRoomScene extends Scene {
     constructor() {
@@ -27,6 +29,18 @@ class ControlRoomScene extends Scene {
     }
 
     create() {
+        if (IS_MOBILE_BUILD) {
+            this.touchScreenControls = new TouchScreenControls({
+                scene: this,
+                name: 'touchScreenControls',
+                dPadAsset: 'd_pad',
+                actionButtonAsset: 'action_button',
+            });
+            this.touchScreenControls.getChildren().forEach((child) => {
+                this.add.existing(child);
+            });
+        }
+
         this.laserRoom = new Room({
             scene: this,
             x: 720,
